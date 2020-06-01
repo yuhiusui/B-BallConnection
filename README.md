@@ -33,4 +33,4 @@ B-Ball Connection
 ## 設計書
 
 ### 機能一覧
-[こちらを参照ください](https://docs.google.com/spreadsheets/d/1GeR4o4JfYpEpVDe_aJwOpvDluBYptsv_YAnVU4GCDr0/edit#gid=0){:target="_blank" rel="noopener"}
+[こちらを参照ください](https://docs.google.com/spreadsheets/d/1GeR4o4JfYpEpVDe_aJwOpvDluBYptsv_YAnVU4GCDr0/edit#gid=0){:target="_blank"}
