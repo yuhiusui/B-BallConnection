@@ -16,5 +16,8 @@ class CreateCourts < ActiveRecord::Migration[5.2]
       t.boolean :is_valid,       default: true
       t.timestamps
     end
+
+    add_index :courts, :id
+    add_index :courts, :name
   end
 end
