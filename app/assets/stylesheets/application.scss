@@ -15,38 +15,49 @@
  */
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+/*common*/
+*{
+  margin:0;
+  padding: 0;
+}
+body {
+  width: 100%;
+  position:relative;
+  min-height: 100vh;
+  padding-bottom: 30px;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+header, footer {
+  background-image: url("/assets/wood.jpg");
+  width:100%;
+}
+.main-content {
+  background: url("/assets/bbc-bg.jpg");
+  background-size: cover;
+  background-color:rgba(255,255,255,0.7);
+  background-blend-mode:lighten;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  padding: 15px 0;
+}
+/*common*/
 
 .view-title {
   margin: 50px 0 50px 10%;
   color: #f4a460;
 }
 
-.navbar,.footer{
-  background-image: url("/assets/wood.jpg");
-}
-
-body{
-  background-color: #fffacd;
-}
-
 .bottom-space{
   margin-bottom: 100px;
 }
-
-
 .btn-nav{
   border: solid 2px #fffacd;
   color: #322D00;
 }
-
-
 .btn-nav:hover{
   background-color: #fffacd;
 }
 
-thead, .table_color{
-  background-color: #f5deb3 ;
-}
-.contents--white {
-  background-color: white;
-}

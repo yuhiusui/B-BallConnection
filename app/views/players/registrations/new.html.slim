@@ -28,26 +28,26 @@
       br/
       .form-row
         = f.label "パスワード", class: "col-sm-5"
-        - if @minimum_password_length
-          em
-            | (#{@minimum_password_length} 文字以上)
+          - if @minimum_password_length
+            | パスワード(#{@minimum_password_length} 文字以上)
         = f.password_field :password, autocomplete: "new-password", class: "col-sm-5"
       br/
       .form-row
-        = f.label "パスワード", class: "col-sm-5"
-        span (確認用)
+        = f.label "パスワード確認", class: "col-sm-5"
         = f.password_field :password_confirmation, autocomplete: "new-password", class: "col-sm-5"
       br/
-    .col-md-6
+      .form-row
+        = f.label "自己紹介", class: "col-sm-5"
+        = f.text_area :intro, class: "col-sm-5"
+      br/
       .kotira
         h2 既に登録済みの方
         p
           = link_to "こちら", new_player_session_path
           | からログインしてください。
-      .form-row
-        = f.label "自己紹介", class: "col-sm-5"
-        = f.text_area :intro, class: "col-sm-5"
-      br/
+
+
+    .col-md-6
       .form-row
         img src="/assets/no_image.jpg" width="80%"
         = f.attachment_field :player_images, class: "player_image"
