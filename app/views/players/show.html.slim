@@ -1,0 +1,53 @@
+<h2>マイページ</h2><br>
+
+<% if flash[:notice] %>
+<div class="flash">
+  <%= flash[:notice] %>
+</div>
+<% end %>
+
+<h5>登録情報
+  <%= link_to "編集する", public_edit_path, class: "btn btn-primary" %>
+  <%= link_to "パスワードを変更する", edit_member_registration_path, class: "btn btn-primary" %></h5>
+
+<div class = "row">
+  <div style="width: 65%;">
+  <table class="table table-bordered">
+  <tr class>
+    <th class="col-xs-1">氏名</th>
+    <td><%= current_member.last_name %><%= current_member.first_name %></td>
+  </tr>
+
+  <tr>
+    <th class="col-xs-1">カナ</th>
+    <td><%= current_member.last_kana_name %><%= current_member.first_kana_name %></td>
+  </tr>
+
+  <tr>
+    <th class="col-xs-1">郵便番号</th>
+    <td><%= current_member.postal_code %></td>
+  </tr>
+
+  <tr>
+    <th class="col-xs-1">住所</th>
+    <td><%= current_member.address %></td>
+  </tr>
+
+  <tr>
+    <th class="col-xs-1">電話番号</th>
+    <td><%= current_member.phone_number %></td>
+  </tr>
+
+  <tr>
+    <th class="col-xs-1">メールアドレス</th>
+    <td><%= current_member.email %></td>
+  </tr>
+  </table>
+  </div>
+</div>
+
+<h5>配送先
+  <%= link_to "一覧を見る", public_addresses_path, class: "btn btn-primary" %></h5>
+
+<h5>注文履歴
+  <%= link_to "一覧を見る", public_orders_member_path, class: "btn btn-primary" %></h5>

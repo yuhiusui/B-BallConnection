@@ -1,0 +1,17 @@
+<div class = "retire">
+<h2>本当に退会しますか？</h2><br><br>
+
+<p>退会すると、会員登録情報や</p>
+<p>これまでの購入履歴が閲覧できなくなります。</p>
+<p>退会する場合、「退会する」をクリックしてください。</p>
+
+<%= link_to "退会しない", public_path, class: " btn btn-primary w-25" %>
+<!-- # <%= link_to "退会する", public_leave_path, method: :patch, params: { member: 'is_valid' }, class: "btn btn-danger" %> -->
+<!-- # <%= link_to "退会する", public_leave_path, :method => :patch, class: "btn btn-danger " %> -->
+
+<!-- 会員ステータス(is_valid)をfalseに変更 -->
+<%= form_with model: @member,url: {controller: 'public/members', action: 'update_status' },lacal: true do |f| %>
+  <%= f.hidden_field :is_valid, value: "false" %>
+<%= f.submit "退会する", class: "btn btn-danger w-25" %>
+<% end %>
+</div>

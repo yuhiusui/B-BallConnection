@@ -1,18 +1,19 @@
-h2
-  | Log in
+h2 会員の方はこちらからログイン
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
+  .form-row
+    = f.label :メールアドレス, class: "col-sm-offset-3 col-sm-3"
+    = f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-6"
+  br/
+  .form-row
+    = f.label :パスワード, class: "col-sm-offset-3 col-sm-3"
+    = f.password_field :password, autocomplete: "current-password", class: "col-sm-6"
+  br/
+  = link_to "=>パスワードを忘れた方はこちら", new_password_path(resource_name)
+  br/
   .actions
-    = f.submit "Log in"
-= render "players/shared/links"
+    = f.submit "ログイン", class: "btn btn-primary"
+h2 登録がお済みでない方
+br/
+p
+  = link_to "こちら", new_member_registration_path
+  | から新規登録を行ってください。

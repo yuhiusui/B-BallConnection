@@ -1,0 +1,29 @@
+<h2 class="view-title">会員一覧</h2>
+
+<table class="table table-bordered bg-light">
+  <thead>
+  <tr>
+    <th>会員ID</th>
+    <th>氏名</th>
+    <th>メールアドレス</th>
+    <th>ステータス</th>
+  </tr>
+  </thead>
+
+  <% @members.each do |member| %>
+  <tr>
+    <td><%= member.id %></td>
+    <td>
+      <%=link_to member.last_name, admin_member_path(member) %><%=link_to member.first_name, admin_member_path(member) %> 
+    </td>
+    <td><%= member.email %></td>
+    <td>
+      <% if member.is_valid == true %>
+        <span>有効</span>
+      <% else %>
+        <span>退会済</span>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>

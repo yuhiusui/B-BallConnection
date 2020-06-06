@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+
+.view-title {
+  margin: 50px 0 50px 10%;
+  color: #f4a460;
+}
+
+.navbar,.footer{
+  background-image: url("/assets/wood.jpg");
+}
+
+body{
+  background-color: #fffacd;
+}
+
+.bottom-space{
+  margin-bottom: 100px;
+}
+
+
+.btn-nav{
+  border: solid 2px #fffacd;
+  color: #322D00;
+}
+
+
+.btn-nav:hover{
+  background-color: #fffacd;
+}
+
+thead, .table_color{
+  background-color: #f5deb3 ;
+}
+.contents--white {
+  background-color: white;
+}
