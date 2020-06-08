@@ -1,29 +1,21 @@
-<h2 class="view-title">会員一覧</h2>
+= stylesheet_link_tag 'players'
 
-<table class="table table-bordered bg-light">
-  <thead>
-  <tr>
-    <th>会員ID</th>
-    <th>氏名</th>
-    <th>メールアドレス</th>
-    <th>ステータス</th>
-  </tr>
-  </thead>
-
-  <% @members.each do |member| %>
-  <tr>
-    <td><%= member.id %></td>
-    <td>
-      <%=link_to member.last_name, admin_member_path(member) %><%=link_to member.first_name, admin_member_path(member) %> 
-    </td>
-    <td><%= member.email %></td>
-    <td>
-      <% if member.is_valid == true %>
-        <span>有効</span>
-      <% else %>
-        <span>退会済</span>
-      <% end %>
-    </td>
-  </tr>
-  <% end %>
-</table>
+h2.view-title 会員一覧
+table.table.table-bordered
+  thead
+    tr
+      th
+      th 登録名
+      th ポジション
+      th コート
+      th フォロー・フォロワー
+      th
+  - @players.each do |player|
+    tr
+      td
+      / td= attachment_image_tag player, :player_image, fallback: "/assets/no_image.jpg", class: "player_image"
+      td= link_to player.name, player_path(player)
+      td= player.position
+      td= "お気に入りコート"
+      td= "フォロー・フォロワー"
+      td= "フォロー・アンフォロー"
