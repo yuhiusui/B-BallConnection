@@ -14,13 +14,11 @@ class PlayersController < ApplicationController
   end
 
   def leave
-    @player = Player.find(params[:id])
   end
 
   def update
-    @player = current_player
-    @player.update(player_params)
-    redirect_to public_path, notice: "会員情報の編集に成功しました。"
+    current_player.update(player_params)
+    redirect_to player_path(current_player), notice: "会員情報の編集に成功しました。"
   end
 
   def update_status
