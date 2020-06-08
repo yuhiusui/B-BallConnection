@@ -1,0 +1,15 @@
+= stylesheet_link_tag 'players'
+
+
+.retire
+  h2 本当に退会しますか？
+  br/
+  br/
+  p 退会すると、会員登録情報が消去されます。
+  p 退会する場合、「退会する」をクリックしてください。
+  = link_to "退会しない", public_path, class: " btn btn-primary w-25"
+
+  / 会員ステータス(is_valid)をfalseに変更
+  = form_with model: @player,url: {controller: 'players', action: 'update_status' },lacal: true do |f|
+    = f.hidden_field :is_valid, value: "false"
+    = f.submit "退会する", class: "btn btn-danger w-25"

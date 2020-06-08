@@ -1,0 +1,33 @@
+= stylesheet_link_tag 'players'
+
+
+h2.view-title
+ = current_player.name
+ | さんのページ
+br/
+- if flash[:notice]
+  .flash
+    = flash[:notice]
+.row
+  div style=("width: 65%;")
+    table.table.table-borderless
+      tr
+        th.col-xs-1 メールアドレス
+        td
+          = current_player.email
+      tr
+        th.col-xs-1 ポジション
+        td
+          = current_player.position
+      tr
+        th.col-xs-1 バスケ歴
+        td
+          = current_player.history
+      tr
+        th.col-xs-1 シグネチャームーブ
+        td
+          = current_player.skill
+      tr
+        th.col-xs-1 自己紹介
+        td
+          = current_player.intro

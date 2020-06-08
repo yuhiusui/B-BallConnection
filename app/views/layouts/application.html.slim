@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    title
+      | BBallconnection
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    script src="https://kit.fontawesome.com/61abcfe439.js" crossorigin="anonymous"
+
+  body
+    header.navbar
+      div.container
+        nav
+          - link_to root_path do
+            img src=""
+        nav
+          - if player_signed_in?
+            ul.nav
+              li.nav-item
+                p = current_player.name
+                    |さん!
+              li.nav-item = link_to "マイページ", player_path(current_player), class: "btn btn-nav"
+              li.nav-item = link_to "コート一覧", courts_path, class: "btn btn-nav"
+              li.nav-item = link_to "プレイヤー", players_path, class: "btn btn-nav"
+              li.nav-item = link_to "ログアウト", destroy_player_session_path, method: :delete, class: "btn btn-nav"
+          - else
+            ul.nav
+              li.nav-item = link_to "コート一覧", courts_path, class: "btn btn-nav"
+              li.nav-item = link_to "新規登録", new_player_registration_path, class: "btn btn-nav"
+              li.nav-item = link_to "ログイン", new_player_session_path, class: "btn btn-nav"
+
+    div.container.main-content
+      p#notice =notice
+      =yield
+
+    footer
+      div.row.footer.justify-content-center
+        p CopyRight Yuhi.Perry.inc
