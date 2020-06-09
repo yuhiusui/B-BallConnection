@@ -10,12 +10,19 @@
   text-align: center;
 }
 
-
-th{
+.player__edit--left
+.player__edit--right {
+  position: relative;
 }
-
-td{
+.player__edit--pic-select {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
 }
-
-
-
+.player__edit--btn-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+  transform: translateX(-40%)
+}

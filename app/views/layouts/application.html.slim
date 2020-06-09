@@ -17,21 +17,24 @@ html
             img src=""
         nav
           - if player_signed_in?
+            / = render 'layouts/login_player_header'
             ul.nav
               li.nav-item
-                p = current_player.name
-                    |さん!
+                p
+                  = current_player.name
+                  |さん！お帰りなさい。
               li.nav-item = link_to "マイページ", player_path(current_player), class: "btn btn-nav"
               li.nav-item = link_to "コート一覧", courts_path, class: "btn btn-nav"
               li.nav-item = link_to "プレイヤー", players_path, class: "btn btn-nav"
               li.nav-item = link_to "ログアウト", destroy_player_session_path, method: :delete, class: "btn btn-nav"
           - else
+            / = render 'layouts/unlogin_player_header'
             ul.nav
               li.nav-item = link_to "コート一覧", courts_path, class: "btn btn-nav"
               li.nav-item = link_to "新規登録", new_player_registration_path, class: "btn btn-nav"
               li.nav-item = link_to "ログイン", new_player_session_path, class: "btn btn-nav"
 
-    div.container.main-content
+    main.container
       p#notice =notice
       =yield
 

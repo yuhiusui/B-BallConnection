@@ -15,33 +15,40 @@
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 /*common*/
-*{
-  margin:0;
-  padding: 0;
-}
-body {
-  width: 100%;
-  position:relative;
-  min-height: 100vh;
-  padding-bottom: 30px;/*←footerの高さ*/
-  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
-}
-header, footer {
-  background-image: url("/assets/wood.jpg");
-  width:100%;
-}
-.main-content {
-  background: url("/assets/bbc-bg.jpg");
-  background-size: cover;
-  background-color:rgba(255,255,255,0.7);
-  background-blend-mode:lighten;
-}
-footer {
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  padding: 15px 0;
-}
+  *{
+    margin:0;
+    padding: 0;
+  }
+  body {
+    width: 100%;
+    padding-bottom: 30px;/*←footerの高さ*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+  }
+
+  header{
+    background-image: url("/assets/sky1.jpg");
+    position: fixed;            /* ヘッダーの固定 */
+    top: 0px;                   /* 位置(上0px) */
+    left: 0px;                  /* 位置(右0px) */
+    width: 100%;                /* 横幅100%　*/
+  }
+  main {
+    height: 640px;
+    background: url("/assets/bbc-bg.jpg");
+    background-size: cover;
+    background-color:rgba(255,255,255,0.7);
+    background-blend-mode:lighten;
+  }
+  footer {
+    position: fixed;            /* フッターの固定 */
+    /*position: absolute;*/
+    bottom: 0px;                /* 位置(下0px) */
+    left: 0px;                  /* 位置(左0px) */
+    width: 100%;                /* 横幅100%　*/
+    text-align: center;
+    /*padding: 15px 0;*/
+    background-image: url("/assets/sky1.jpg");
+  }
 /*common*/
 
 .view-title {
@@ -58,5 +65,21 @@ footer {
 }
 .btn-nav:hover{
   background-color: #fffacd;
+}
+.image-xl {
+    width: 300px;
+    height: 300px;
+}
+.image-lg {
+    width: 200px;
+    height: 200px;
+}
+.image-sm {
+    width: 50px;
+    height: 50px;
+}
+.image-shape {
+    border-radius: 50%;
+    object-fit: cover;
 }
 

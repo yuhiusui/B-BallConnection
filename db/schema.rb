@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(version: 2020_06_05_140811) do
     t.string "name", null: false
     t.text "intro"
     t.string "player_image_id"
-    t.string "position"
-    t.string "history"
+    t.integer "position"
+    t.integer "history"
     t.string "skill"
     t.integer "fav_courts"
     t.integer "fav_players"

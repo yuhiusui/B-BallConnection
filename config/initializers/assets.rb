@@ -13,5 +13,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 Rails.application.config.assets.precompile += %w(comments.scss courts.scss favorites.scss 
                                                  homes.scss players.scss relations.scss 
-                                                 images.sscss homes.scss items.scss)
+                                                 images.scss profiles.scss items.scss 
+                                                 images.scss profiles.scss items.scss)
 
