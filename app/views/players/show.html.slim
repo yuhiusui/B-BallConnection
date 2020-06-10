@@ -7,18 +7,17 @@ h2.view-title
  = @player.name
  | さんのページ
 br/
-- if flash[:notice]
+/ - if flash[:notice]
   .flash
     = flash[:notice]
 
 .profile
   .row
-    = attachment_image_tag @player, :player_image, fallback: "/assets/no_image.jpg", class: "image-lg col-sm-5"
+    = attachment_image_tag @player, :player_image, fallback: "/assets/no_image.jpg", class: "image-lg image-shape-round"
 
     .profile-contents.col-sm-5
       .profile-sns
           = link_to "", edit_player_path(@player), class: "fa fa-cog mr-2" if @player == current_player
-
           = link_to "", player_path(current_player), class: "fa fa-twitter-square mr-2"
           = link_to "", player_path(current_player), class: "fa fa-instagram mr-2"
       .profile-links
@@ -26,7 +25,7 @@ br/
          = link_to "お気に入りコート", courts_path, class: "btn btn-primary"
       .profile-links
          = link_to "フォロー", player_path(current_player), class: "btn btn-primary"
-         = link_to "新規コート作成依頼", player_path(current_player), class: "btn btn-primary" if @player == current_player
+         = link_to "新規コート作成依頼", new_court_path, class: "btn btn-primary" if @player == current_player
          / = link_to "新規コート作成(管理者)", player_path(current_player), class: "btn btn-primary" if @player == current_player
 
 
@@ -40,11 +39,10 @@ br/
         tr
           th.col-xs-1 ポジション
           td
-            = current_player.position
+            = current_player.position_i18n
         tr
           th.col-xs-1 バスケ歴
           td
-            / = current_player.history
             = current_player.history_i18n
         tr
           th.col-xs-1 シグネチャームーブ

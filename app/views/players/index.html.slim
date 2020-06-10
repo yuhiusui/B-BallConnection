@@ -1,21 +1,24 @@
 = stylesheet_link_tag 'players'
+= stylesheet_link_tag 'images'
+= stylesheet_link_tag 'profiles'
 
 h2.view-title 会員一覧
-table.table.table-bordered
-  thead
-    tr
-      th
-      th 登録名
-      th ポジション
-      th コート
-      th フォロー・フォロワー
-      th
-  - @players.each do |player|
-    tr
-      td
-      td= attachment_image_tag player, :player_image, fallback: "/assets/no_image.jpg", class: "image-sm"
-      td= link_to player.name, player_path(player)
-      td= player.position
-      td= "お気入コート"
-      td= "フォロー・フォロワー"
-      td= "フォロー・アンフォロー"
+.col-md-8.offset-md-2
+  .table-responsive
+    table.table.text-nowrap
+      thead.table-dark
+        tr
+          th
+          th 登録名
+          th ポジション
+          th フォロー数
+          th コート
+          th
+      - @players.each do |player|
+        tr
+          td= attachment_image_tag player, :player_image, fallback: "/assets/no_image.jpg", class: "image-sm image-shape"
+          td= link_to player.name, player_path(player)
+          td= player.position
+          td フォロー：0
+          td= link_to " お気に入りコート ", courts_path, class: "btn btn-info"
+          td= link_to " フォロー ", player_path(current_player), class: "btn btn-primary"

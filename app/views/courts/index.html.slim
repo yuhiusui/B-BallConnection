@@ -1,0 +1,13 @@
+= stylesheet_link_tag 'courts'
+
+.row.row-cols-1.row-cols-md-3
+  - @courts.shuffle.first(6).each do |court|
+    - if court.is_valid == true
+      = link_to court_path(court) do
+        .col.mb-3
+          .card.card_height
+            = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-md"
+            .card-body
+              h5.card-title.link_text= court.name
+              p.card-text.link_text
+                | コートコートコートコートコート

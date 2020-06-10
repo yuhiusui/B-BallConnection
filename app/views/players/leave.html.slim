@@ -13,3 +13,5 @@
   = form_with model: @player,url: {controller: 'players', action: 'update_status' },lacal: true do |f|
     = f.hidden_field :is_valid, value: "false"
     = f.submit "退会する", class: "btn btn-danger w-25"
+
+

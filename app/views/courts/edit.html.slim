@@ -1,0 +1,45 @@
+= stylesheet_link_tag 'courts'
+
+h2.view-title コート編集（管理者）
+
+= form_with model: @court, local: true do |f|
+  .row
+    .col-xs-3
+      = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-lg"
+      = f.attachment_field :court_image, class: ""
+    .col-xs-3
+      .field
+        = f.label :name, "コート名"
+        = f.text_field :name, class: ""
+      .field
+        = f.label :number, "ゴール数"
+        = f.select :number, [["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9]]
+      .field
+        = f.label :floor, "床"
+        = f.text_field :floor, class: "floor", placeholder: "砂？コンクリート？etc"
+      .field
+        = f.label :fee, "料金"
+        = f.text_field :fee, class: "fee", placeholder: "無料？00円/1時間"
+      .field
+        = f.label :station, "駅"
+        = f.text_field :station, class: "station", placeholder: "~駅徒歩00分"
+    .col-xs-3
+      .field
+        = f.text_field :url, class: "", placeholder: "url"
+      .field
+        = f.label :parking, "駐車場"
+        = f.text_field :parking, class: ""
+      .field
+        = f.label :available_time, "利用可能時間"
+        = f.text_field :available_time, class: ""
+      .field
+        = f.label :address, "街"
+        = f.text_field :address, class: "", placeholder: "〇〇県〇〇市0-0-0（番地）"
+      .field
+        = f.label :is_valid, "利用状況"
+        = f.select :is_valid,[["利用可",true],["利用不可",false]],{include_blank: false, selected: true},{class: "is_valid"}
+  .row
+      .field
+        = f.label :other, "その他補足"
+        = f.text_area :other
+        = f.submit "更新" , class:"btn btn-info btn-sm"

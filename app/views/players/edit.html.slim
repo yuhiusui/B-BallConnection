@@ -21,16 +21,11 @@
         = f.label "ポジション", class: "col-sm-5"
         = f.select :position, Player.positions.keys.map {|k| [I18n.t("enums.player.position.#{k}"), k]},
                               class: "", prompt: "選択してください"
-        / = f.select :position, [["PG",1],["SG",2],["SF",3],["PF",4],["C",5]],
-                             class: "col-sm-5", prompt: "選択してください"
       br/
       .form-row
         = f.label "バスケ歴", class: "col-sm-5"
-        / = f.select :history, [["1年未満"],["1~3年"],["3~5年"],["5~10年"],["10年以上"]],
-                             class: "col-sm-5", prompt: "選択してください"
         = f.select :history, Player.histories.keys.map {|k| [I18n.t("enums.player.history.#{k}"), k]},
                              class: "col-sm-5", prompt: "選択してください"
-
       br/
       .form-row
         = f.label "シグネチャームーブ", class: "col-sm-5"

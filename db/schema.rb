@@ -40,12 +40,15 @@ ActiveRecord::Schema.define(version: 2020_06_05_140811) do
     t.string "floor", null: false
     t.string "fee", default: "無料", null: false
     t.string "available_time", default: "特になし", null: false
-    t.string "station"
+    t.string "station", null: false
+    t.string "parking", null: false
+    t.text "url"
     t.string "court_image_id"
-    t.integer "postal_code", null: false
-    t.integer "prefecture_code", null: false
-    t.string "city", null: false
-    t.string "street", null: false
+    t.integer "postal_code"
+    t.integer "prefecture_code"
+    t.string "city"
+    t.string "street"
+    t.text "address"
     t.text "other"
     t.boolean "is_valid", default: true
     t.datetime "created_at", null: false
@@ -77,6 +80,9 @@ ActiveRecord::Schema.define(version: 2020_06_05_140811) do
     t.string "skill"
     t.integer "fav_courts"
     t.integer "fav_players"
+    t.string "twitter"
+    t.string "facebook"
+    t.string "instagram"
     t.boolean "is_valid", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

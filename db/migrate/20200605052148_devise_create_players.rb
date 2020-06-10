@@ -31,14 +31,17 @@ class DeviseCreatePlayers < ActiveRecord::Migration[5.2]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-      t.string :name, null: false
-      t.text :intro
-      t.string :player_image_id
+      t.string  :name, null: false
+      t.text    :intro
+      t.string  :player_image_id
       t.integer :position
       t.integer :history
-      t.string :skill
+      t.string  :skill
       t.integer :fav_courts
       t.integer :fav_players
+      t.string  :twitter
+      t.string  :facebook
+      t.string  :instagram
       t.boolean :is_valid, default: true
       t.timestamps null: false
     end
