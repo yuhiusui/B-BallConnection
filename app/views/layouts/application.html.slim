@@ -38,6 +38,9 @@ html
       - if flash[:notice]
         p#notice.alert.alert-success.fas.fa-basketball-ball
           = flash[:notice]
+      - if alert
+        p#notice.alert.alert-error.fas.fa-basketball-ball
+          = alert
       =yield
 
     footer

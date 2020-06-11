@@ -1,6 +1,6 @@
 = stylesheet_link_tag 'courts'
 
-= paginate @items
+= paginate @courts
 .row.row-cols-xl-5.row-cols-lg-4.row-cols-md-3.row-cols-sm-2.row-cols-xs-1
   - @courts.each do |court|
     - if court.is_valid == true

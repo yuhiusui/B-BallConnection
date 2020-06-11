@@ -5,6 +5,7 @@ class Player < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   attachment :player_image, destroy: false
+  validates :name, presence: true, length: { in: 3..10 }
 
   has_many :follower, class_name: "Relation", foreign_key: "follower_id", dependent: :destroy # フォロー取得
   has_many :followed, class_name: "Relation", foreign_key: "followed_id", dependent: :destroy # フォロワー取得
