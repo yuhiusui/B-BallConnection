@@ -1,18 +1,4 @@
 ja:
-  enums:
-    player:
-      history:
-        a: 1年未満
-        b: 1-3年
-        c: 3-5年
-        d: 5-10年
-        e: 10年以上
-      position:
-        PG: PG
-        SG: SG
-        SF: SF
-        PF: PF
-        C: C
   activerecord:
     errors:
       messages:
@@ -218,3 +204,17 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  enums:
+    player:
+      history:
+        a: 1年未満
+        b: 1-3年
+        c: 3-5年
+        d: 5-10年
+        e: 10年以上
+      position:
+        PG: PG
+        SG: SG
+        SF: SF
+        PF: PF
+        C: C

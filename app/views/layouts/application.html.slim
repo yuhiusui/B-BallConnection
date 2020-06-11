@@ -35,11 +35,11 @@ html
               li.nav-item = link_to "ログイン", new_player_session_path, class: "btn btn-nav"
 
     main.container
-      - if flash[:notice]
-        p#notice.alert.alert-success.fas.fa-basketball-ball
-          = flash[:notice]
+      - if notice
+        p#notice.alert.alert-notice.alert-success.fas.fa-basketball-ball
+          = notice
       - if alert
-        p#notice.alert.alert-error.fas.fa-basketball-ball
+        p#notice.alert.alert-error.alert-danger.fas.fa-basketball-ball
           = alert
       =yield
 
