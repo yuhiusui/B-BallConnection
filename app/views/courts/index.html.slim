@@ -4,11 +4,9 @@
 .row.row-cols-xl-5.row-cols-lg-4.row-cols-md-3.row-cols-sm-2.row-cols-xs-1
   - @courts.each do |court|
     - if court.is_valid == true
-      = link_to court_path(court) do
-        .col.mb-5
-          .card
-            = attachment_image_tag court, :court_image, fallback: "/assets/no_image.jpg", class: "image-md-court card-img-top"
-            .card-body
-              h5.card-title = court.name
-              p.card-text ゴール数
-              = court.number
+      .col.mb-5
+        .card
+          = attachment_image_tag court, :court_image, fallback: "/assets/no_image.jpg", class: "image-md-court card-img-top"
+          .card-body
+            h5.card-text.font-weight-bolder = link_to court.name, court_path(court)
+            p.card-text = "ゴール数:#{court.number}"

@@ -2,23 +2,4 @@
 = stylesheet_link_tag 'images'
 
 h2.view-title 会員一覧
-= paginate @players
-.col-md-8.offset-md-2
-  .table-responsive
-    table.table.text-nowrap
-      thead.table-dark
-        tr
-          th
-          th 登録名
-          th ポジション
-          th フォロー数
-          th コート
-          th
-      - @players.each do |player|
-        tr
-          td= attachment_image_tag player, :player_image, fallback: "/assets/no_image.jpg", class: "image-xs image-shape"
-          td= link_to player.name, player_path(player)
-          td= player.position
-          td フォロー：0
-          td= link_to " お気に入りコート ", courts_path, class: "btn btn-info"
-          td= link_to " フォロー ", player_path(current_player), class: "btn btn-primary"
+= render '/players/index', players: @players

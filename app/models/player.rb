@@ -7,23 +7,23 @@ class Player < ApplicationRecord
   attachment :player_image, destroy: false
   validates :name, presence: true, length: { in: 3..10 }
 
-  has_many :follower, class_name: "Relation", foreign_key: "follower_id", dependent: :destroy # フォロー取得
+  has_many :following, class_name: "Relation", foreign_key: "following_id", dependent: :destroy # フォロー取得
   has_many :followed, class_name: "Relation", foreign_key: "followed_id", dependent: :destroy # フォロワー取得
-  has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
-  has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
+  has_many :following_player, through: :following, source: :followed # 自分がフォローしている人
+  has_many :follower_player, through: :followed, source: :following # 自分をフォローしている人
 
-  def follow(user_id)
-    follower.create(followed_id: user_id)
+  def follow(player_id)
+    following.create(followed_id: player_id)
   end
 
   # ユーザーのフォローを外す
-  def unfollow(user_id)
-    follower.find_by(followed_id: user_id).destroy
+  def unfollow(player_id)
+    following.find_by(followed_id: player_id).destroy
   end
 
   # フォローしていればtrueを返す
-  def following?(user)
-    following_user.include?(user)
+  def following?(player)
+    following_player.include?(player)
   end
 
   # 会員ステータスがtrueでないとログインできない

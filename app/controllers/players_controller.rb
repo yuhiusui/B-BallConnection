@@ -1,9 +1,8 @@
 class PlayersController < ApplicationController
   before_action :authenticate_player!
-  before_action :ensure_current_player?, only: [:edit, :update, :leave, :update_status]
+  before_action :ensure_current_player?, only: [:edit, :update]
 
   def index
-    # @players = Player.all
     @players = Player.all.page(params[:page]).reverse_order.per(10)
   end
 
@@ -26,7 +25,9 @@ class PlayersController < ApplicationController
   end
 
   def leave
+    @player = current_player
   end
+
   def update_status
     @player = current_player
     @player.update(player_params)

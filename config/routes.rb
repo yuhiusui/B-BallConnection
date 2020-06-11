@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   patch 'leave' => 'players#update_status'
   get 'leave' => 'players#leave'
   resources :players do
-    resource :relations
+    resource :relations, only: [:create, :destroy]
+    get 'follows' => 'relations#following', as: 'follows'
+    get 'followers' => 'relations#followed', as: 'followers'
   end
   resources :courts do
     resource :comments
