@@ -10,3 +10,12 @@
           .card-body
             h5.card-text.font-weight-bolder = link_to court.name, court_path(court)
             p.card-text = "ゴール数:#{court.number}"
+            h3.card-text
+              | いいね件数: #{court.likes.count}
+            - if court.liked_by?(current_player)
+              = link_to court.likes.count, court_likes_path(court), method: :delete, class: "fa fa-heart"
+            - else
+              = link_to court.likes.count, court_likes_path(court), method: :post, class: "fa fa-heart-o"
+            h2 いいねしたユーザー
+            - court.liked_players.each do |player|
+              li= player.name

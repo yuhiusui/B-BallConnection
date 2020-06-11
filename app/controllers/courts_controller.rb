@@ -6,6 +6,7 @@ class CourtsController < ApplicationController
 
   def new
     @court = Court.new
+    @like = Like.new
   end
 
   def edit
