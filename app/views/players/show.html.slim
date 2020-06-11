@@ -1,6 +1,5 @@
 = stylesheet_link_tag 'players'
 = stylesheet_link_tag 'images'
-= stylesheet_link_tag 'profiles'
 
 
 h2.view-title
@@ -13,7 +12,7 @@ br/
 
 .profile
   .row
-    = attachment_image_tag @player, :player_image, fallback: "/assets/no_image.jpg", class: "image-lg image-shape-round"
+    = attachment_image_tag @player, :player_image, fallback: "/assets/no_image.jpg", class: "image-md image-shape-round"
 
     .profile-contents.col-sm-5
       .profile-sns

@@ -1,6 +1,5 @@
 = stylesheet_link_tag 'players'
 = stylesheet_link_tag 'images'
-= stylesheet_link_tag 'profiles'
 
 
 = form_with model: @player, url: {controller: 'players', action: 'update' },local: true do |f|
@@ -49,7 +48,7 @@
     .col-md-6
       .form-row.player__edit--right
         .player__edit--pic-select
-          = attachment_image_tag @player, :player_image, fallback: "/assets/no_image.jpg", class: "image-xl"
+          = attachment_image_tag @player, :player_image, fallback: "/assets/no_image.jpg", class: "image-lg"
           = f.attachment_field :player_image
         .player__edit--btn-bottom
           = f.submit "編集内容を保存する", class: "btn btn-primary mr-3"

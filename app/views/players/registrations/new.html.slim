@@ -54,6 +54,7 @@
 
     .col-md-6
       .form-row
+        = attachment_image_tag resource, :player_image, fallback: "/assets/no_image.jpg", class: "image-xl"
         = f.attachment_field :player_image
       .actions
         = f.submit "新規登録", class: "btn btn-success btn-lg"

@@ -1,8 +1,7 @@
 class CourtsController < ApplicationController
   # before_action :authenticate_player!
   def index
-    # @courts = Court.all.page(params[:page]).reverse_order.per(10)
-    @courts = Court.all
+    @courts = Court.all.page(params[:page]).reverse_order.per(10)
   end
 
   def new

@@ -2,41 +2,42 @@
 
 h2.view-title コート詳細
 
-.d-flex style="padding-left: 10%;"
-  = link_to "コートのプレイヤー", edit_court_path(@court), class: "btn btn-primary"
-  = link_to "編集（管理者）", edit_court_path(@court), class: "btn btn-primary"
+.d-flex style=""
+  = link_to "コートのプレイヤー", courts_path, class: "btn btn-primary"
+  = link_to "編集（管理者）", edit_court_path(@court), class: "btn btn-dark ml-4"
 
 .row
-  .col-6
+  .col-5
     = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-lg"
     .row
       table.col-6
         tr
-          td= @court.name
+          td =link_to @court.name, @court.url, :target=>["_blank"]
+          td
         tr
           td ゴール数：
-          td= @court.number
+          td = @court.number
         tr
           td 床：
-          td= @court.floor
+          td = @court.floor
         tr
           td 料金：
-          td= @court.fee
+          td = @court.fee
         tr
           td 駅：
-          td= @court.station
+          td = @court.station
       table.col-6
         tr
-          td= "＊＊＊＊＊"
+          td = "＊＊＊＊＊"
         tr
           td 駐車場：
-          td= @court.parking
+          td = @court.parking
         tr
           td 利用可能時間：
-          td= @court.available_time
+          td = @court.available_time
         tr
           td 住所：
-          td= @court.address
+          td = @court.address
         tr
           td 利用状況
           td
@@ -47,4 +48,6 @@ h2.view-title コート詳細
     p その他
     - if @court.other.present?
       p.other-box = @court.other
-  .col-6
+  .col-7
+    .comment-outline.other-box
+    .map-outline.other-box

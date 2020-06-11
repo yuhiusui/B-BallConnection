@@ -1,6 +1,5 @@
 = stylesheet_link_tag 'players'
 = stylesheet_link_tag 'images'
-= stylesheet_link_tag 'profiles'
 
 h2.view-title 会員一覧
 .col-md-8.offset-md-2
@@ -16,7 +15,7 @@ h2.view-title 会員一覧
           th
       - @players.each do |player|
         tr
-          td= attachment_image_tag player, :player_image, fallback: "/assets/no_image.jpg", class: "image-sm image-shape"
+          td= attachment_image_tag player, :player_image, fallback: "/assets/no_image.jpg", class: "image-xs image-shape"
           td= link_to player.name, player_path(player)
           td= player.position
           td フォロー：0
