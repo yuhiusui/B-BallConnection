@@ -1,13 +1,13 @@
 = stylesheet_link_tag 'courts'
-
-h2.view-title コート詳細
-
-.d-flex style=""
-  = link_to "コートのプレイヤー", courts_path, class: "btn btn-primary"
-  = link_to "編集（管理者）", edit_court_path(@court), class: "btn btn-dark ml-4"
-
+= stylesheet_link_tag 'players'
+= stylesheet_link_tag 'images'
 .row
   .col-5
+    h2.view-title コート詳細
+    .d-flex
+      / = link_to "コートのプレイヤー", court_liked_players_path, class: "btn btn-primary"
+      = link_to "コートのプレイヤー", courts_path, class: "btn btn-primary"
+      = link_to "編集（管理者）", edit_court_path(@court), class: "btn btn-dark ml-4"
     = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-lg"
     .row
       table.col-6
@@ -48,6 +48,10 @@ h2.view-title コート詳細
     p その他
     - if @court.other.present?
       p.other-box = @court.other
-  .col-7
-    .comment-outline.other-box
-    .map-outline.other-box
+  .col-7#comments-area
+    .comment-form.d-flex
+      = form_with model:[@court, @comment], data: {remote: true} do |f|
+        = f.text_area :comment
+        = f.submit '送信'
+    .scroll-box
+      = render 'comments/comment', comments: @comments

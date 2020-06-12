@@ -1,0 +1,4 @@
+- if court.liked_by?(current_player)
+  = link_to court.likes.count, court_likes_path(court), method: :delete, class: "fa fa-heart"
+- else
+  = link_to court.likes.count, court_likes_path(court), method: :post, class: "fa fa-heart-o"

@@ -2,11 +2,11 @@ class CourtsController < ApplicationController
   # before_action :authenticate_player!
   def index
     @courts = Court.all.page(params[:page]).reverse_order.per(10)
+    @like = Like.new
   end
 
   def new
     @court = Court.new
-    @like = Like.new
   end
 
   def edit
@@ -15,6 +15,8 @@ class CourtsController < ApplicationController
 
   def show
     @court = Court.find(params[:id])
+    @comment = Comment.new
+    @comments = @court.comments.order("id DESC")
   end
 
   def create
@@ -39,7 +41,7 @@ class CourtsController < ApplicationController
 
   def  court_params
     params.require(:court).permit(:court_image,:name, :number, :floor, :fee, :station,
-                                   :url, :available_time, :station, :city, :parking,
+                                  :url, :available_time, :station, :city, :parking,
                                   :is_valid, :other)
   end
 

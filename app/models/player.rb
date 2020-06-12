@@ -9,6 +9,7 @@ class Player < ApplicationRecord
   validates :name, presence: true, length: { in: 3..10 }
   validates :intro, length: {maximum: 30}
 
+  has_many :comments
   has_many :likes
   has_many :liked_courts, through: :likes, source: :court
   has_many :following, class_name: "Relation", foreign_key: "following_id", dependent: :destroy # フォロー取得

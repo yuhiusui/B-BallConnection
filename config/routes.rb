@@ -15,10 +15,12 @@ Rails.application.routes.draw do
     resource :relations, only: [:create, :destroy]
     get 'follows' => 'relations#following', as: 'follows'
     get 'followers' => 'relations#followed', as: 'followers'
+    get 'liked_courts' => 'likes#liked_courts'
   end
   resources :courts do
     resource :comments, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
+    get 'liked_players' => 'likes#liked_players'
   end
 
   root 'homes#top'

@@ -1,5 +1,6 @@
 = stylesheet_link_tag 'courts'
 
+h2.view-title コート一覧
 = paginate @courts
 .row.row-cols-xl-5.row-cols-lg-4.row-cols-md-3.row-cols-sm-2.row-cols-xs-1
   - @courts.each do |court|
@@ -7,15 +8,18 @@
       .col.mb-5
         .card
           = attachment_image_tag court, :court_image, fallback: "/assets/no_image.jpg", class: "image-md-court card-img-top"
-          .card-body
-            h5.card-text.font-weight-bolder = link_to court.name, court_path(court)
-            p.card-text = "ゴール数:#{court.number}"
-            h3.card-text
-              | いいね件数: #{court.likes.count}
-            - if court.liked_by?(current_player)
-              = link_to court.likes.count, court_likes_path(court), method: :delete, class: "fa fa-heart"
-            - else
-              = link_to court.likes.count, court_likes_path(court), method: :post, class: "fa fa-heart-o"
-            h2 いいねしたユーザー
-            - court.liked_players.each do |player|
-              li= player.name
+          .like-btn-card
+            = render '/likes/likes', court: court
+          = link_to court_path(court) do
+            .card-body
+              h5.card-text.card-court-name = court.name
+              table.table.table-borderless
+                tr
+                  td.card-text = "ゴール数:#{court.number}"
+                  td.card-text = "ゴール数:#{court.number}"
+                tr
+                  td.card-text = "ゴール数:#{court.number}"
+                  td.card-text = "ゴール数:#{court.number}"
+              / h2 いいねしたユーザー
+                - court.liked_players.each do |player|
+                  li= player.name

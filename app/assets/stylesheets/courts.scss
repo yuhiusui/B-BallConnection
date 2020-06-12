@@ -4,3 +4,20 @@
 .other-box {
   border: 2px solid gray;
 }
+.card {
+  position: relative;
+}
+.card-body {
+  padding: 10px 0 0;
+}
+.card-court-name {
+  font-weight: bolder;
+  text-decoration: underline;
+}
+.like-btn-card {
+  font-size: 2rem;
+  position: absolute;
+  top: -1.5rem;
+  left:-1rem;
+}
+.like-btn-lg{}
