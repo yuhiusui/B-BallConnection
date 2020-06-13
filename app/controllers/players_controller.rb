@@ -38,7 +38,8 @@ class PlayersController < ApplicationController
   private
   def player_params
     params.require(:player).permit(:name, :email, :intro, :player_image,
-                                   :position,:history, :skill, :is_valid)
+                                   :position,:history, :skill, :is_valid,
+                                   :twitter, :fadebook, :instagram)
   end
   def ensure_current_player?
     player = Player.find(params[:id])

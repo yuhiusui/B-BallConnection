@@ -15,8 +15,10 @@ h2.view-title
         .profile-contents.col-5
           .profile-sns
             = link_to "", edit_player_path(@player), class: "fa fa-cog mr-2" if @player == current_player
-            = link_to "", player_path(current_player), class: "fa fa-twitter-square mr-2"
-            = link_to "", player_path(current_player), class: "fa fa-instagram mr-2"
+            - if @player.twitter.present?
+              = link_to "", @player.twitter, target: :_blank, class: "fa fa-twitter-square mr-2"
+            - if @player.instagram.present?
+              = link_to "", @player.instagram, target: :_blank, class: "fa fa-instagram mr-2"
           .profile-links
             / = link_to "お気に入りコート", court_liked_courts_path, class: "btn btn-primary"
             = link_to "お気に入りコート", courts_path, class: "btn btn-primary"

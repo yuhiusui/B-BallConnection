@@ -44,10 +44,19 @@
         = f.label "自己紹介", class: "col-sm-5"
         = f.text_area :intro, class: "col-sm-5"
 
-
     .col-md-6
       .form-row.player__edit--right
-        .player__edit--pic-select
+        .sns-link
+          h2 SNS URL
+          h4 (Optional)
+          .form-group
+            = f.label 'Twitter URL', class: ''
+            = f.text_field :twitter, placeholder: "Optional", class: "form-control"
+          .form-group
+            = f.label 'Instagram URL', class: ''
+            = f.text_field :instagram, placeholder: "Optional", class: "form-control"
+
+        / .player__edit--pic-select
           = attachment_image_tag @player, :player_image, fallback: "/assets/no_image.jpg", class: "image-lg"
           = f.attachment_field :player_image
         .player__edit--btn-bottom
