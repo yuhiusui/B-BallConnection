@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_05_140811) do
+ActiveRecord::Schema.define(version: 2020_06_11_132745) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 2020_06_05_140811) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "player_id", null: false
-    t.integer "court_id", null: false
-    t.text "comment", null: false
+    t.integer "court_id"
+    t.integer "player_id"
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["court_id"], name: "index_comments_on_court_id"
@@ -40,12 +40,15 @@ ActiveRecord::Schema.define(version: 2020_06_05_140811) do
     t.string "floor", null: false
     t.string "fee", default: "無料", null: false
     t.string "available_time", default: "特になし", null: false
-    t.string "station"
+    t.string "station", null: false
+    t.string "parking", null: false
+    t.text "url"
     t.string "court_image_id"
-    t.integer "postal_code", null: false
-    t.integer "prefecture_code", null: false
-    t.string "city", null: false
-    t.string "street", null: false
+    t.integer "postal_code"
+    t.integer "prefecture_code"
+    t.string "city"
+    t.string "street"
+    t.text "address"
     t.text "other"
     t.boolean "is_valid", default: true
     t.datetime "created_at", null: false
@@ -55,12 +58,21 @@ ActiveRecord::Schema.define(version: 2020_06_05_140811) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "player_id", null: false
-    t.integer "court_id", null: false
+    t.integer "court_id"
+    t.integer "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["court_id"], name: "index_favorites_on_court_id"
     t.index ["player_id"], name: "index_favorites_on_player_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "court_id"
+    t.integer "player_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["court_id"], name: "index_likes_on_court_id"
+    t.index ["player_id"], name: "index_likes_on_player_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -72,11 +84,14 @@ ActiveRecord::Schema.define(version: 2020_06_05_140811) do
     t.string "name", null: false
     t.text "intro"
     t.string "player_image_id"
-    t.string "position"
-    t.string "history"
+    t.integer "position"
+    t.integer "history"
     t.string "skill"
     t.integer "fav_courts"
     t.integer "fav_players"
+    t.string "twitter"
+    t.string "facebook"
+    t.string "instagram"
     t.boolean "is_valid", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

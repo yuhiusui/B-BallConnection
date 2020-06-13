@@ -1,43 +1,55 @@
 = stylesheet_link_tag 'players'
+= stylesheet_link_tag 'images'
 
 
-h2.view-title 登録情報編集
-= form_with model: @member,url: {controller: 'public/members', action: 'update' },lacal: true do |f|
-  .form-row
-    label.col-sm-2= f.label "名前"
-    span.col-sm-1 (姓)
-    = f.text_field :last_name, class: "col-sm-3"
-    span.col-sm-1 (名)
-    = f.text_field :first_name, class: "col-sm-3"
-  br/
-  .form-row
-    label.col-sm-2= f.label "フリガナ"
-    span.col-sm-1 (セイ)
-    = f.text_field :last_kana_name, class: "col-sm-3"
-    span.col-sm-1 (メイ)
-    = f.text_field :first_kana_name, class: "col-sm-3"
-  br/
-  .form-row
-    label.col-sm-3= f.label "email"
-    = f.email_field :email, class: "col-sm-3"
-  br/
-  .form-row
-    label.col-sm-3
-      = f.label "郵便番号"
-      span (ハイフンなし)
-    = f.text_field :postal_code, class: "col-sm-3"
-  br/
-  .form-row
-    label.col-sm-3= f.label "住所"
-    = f.text_field :address, class: "col-sm-7"
-  br/
-  .form-row
-    label.col-sm-3
-      = f.label "電話番号"
-      span (ハイフンなし)
-    = f.text_field :phone_number, class: "col-sm-3"
-  br/
-  .form-row
-    = f.submit "編集内容を保存する", class: "btn btn-primary col-sm-3 offset-3"
-    = link_to "退会する",  public_leave_path, class: "btn btn-danger col-sm-3 offset-1"
+= form_with model: @player, url: {controller: 'players', action: 'update' },local: true do |f|
+  = render "devise/shared/error_messages", resource: @player
 
+  .row
+    .col-md-6
+      h2.view-title 登録情報編集
+      .form-row
+        = f.label "登録名", class: "col-sm-5"
+        = f.text_field :name, autofocus: true, autocomplete: "name", class: "col-sm-5"
+      br/
+      .form-row
+        = f.label "email", class: "col-sm-5"
+        = f.email_field :email, class: "col-sm-5"
+      br/
+      .form-row
+        = f.label "ポジション", class: "col-sm-5"
+        = f.select :position, Player.positions.keys.map {|k| [I18n.t("enums.player.position.#{k}"), k]},
+                              class: "", prompt: "選択してください"
+      br/
+      .form-row
+        = f.label "バスケ歴", class: "col-sm-5"
+        = f.select :history, Player.histories.keys.map {|k| [I18n.t("enums.player.history.#{k}"), k]},
+                             class: "col-sm-5", prompt: "選択してください"
+      br/
+      .form-row
+        = f.label "シグネチャームーブ", class: "col-sm-5"
+        = f.text_area :skill, class: "col-sm-5"
+      br/
+      .form-row
+        = f.label "パスワード", class: "col-sm-5"
+          - if @minimum_password_length
+            | パスワード(#{@minimum_password_length} 文字以上)
+        = f.password_field :password, autocomplete: "new-password", class: "col-sm-5"
+      br/
+      .form-row
+        = f.label "パスワード確認", class: "col-sm-5"
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: "col-sm-5"
+      br/
+      .form-row
+        = f.label "自己紹介", class: "col-sm-5"
+        = f.text_area :intro, class: "col-sm-5"
+
+
+    .col-md-6
+      .form-row.player__edit--right
+        .player__edit--pic-select
+          = attachment_image_tag @player, :player_image, fallback: "/assets/no_image.jpg", class: "image-lg"
+          = f.attachment_field :player_image
+        .player__edit--btn-bottom
+          = f.submit "編集内容を保存する", class: "btn btn-primary mr-3"
+          = link_to "退会する",  leave_path, class: "btn btn-danger"

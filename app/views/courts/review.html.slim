@@ -1,0 +1,22 @@
+= stylesheet_link_tag 'courts'
+
+h2.view-title コートレビュー
+
+row
+  .col-xs-4
+    = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-xl"
+  .col-xs-4
+    table.bottom-space
+      tr
+        td 商品名
+        td= @court.name
+      tr
+        td 利用状況
+        td
+          - if @court.is_valid == true
+            span 利用可
+          - else
+            span 利用不可
+    .bottom-space
+      = link_to "編集", edit_court_path(@court), class: "btn btn-primary"
+

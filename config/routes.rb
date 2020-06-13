@@ -11,16 +11,23 @@ Rails.application.routes.draw do
     passwords: 'admins/passwords'
   }
 
+  resources :players do
+    resource :relations, only: [:create, :destroy]
+    get 'follows' => 'relations#following', as: 'follows'
+    get 'followers' => 'relations#followed', as: 'followers'
+    get 'liked_courts' => 'likes#liked_courts'
+  end
+  resources :courts do
+    resource :comments, only: [:create, :destroy]
+    resource :likes, only: [:create, :destroy]
+    get 'liked_players' => 'likes#liked_players'
+  end
+
   root 'homes#top'
   patch 'leave' => 'players#update_status'
   get 'leave' => 'players#leave'
-  resources :players do
-    resource :relations
-  end
-  resources :courts do
-    resource :comments
-    resource :favorites
-  end
+
+
   # namespace :public do
   #   get '' => 'players#show'
   #   get 'edit' => 'players#edit'

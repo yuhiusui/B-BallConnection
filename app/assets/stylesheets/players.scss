@@ -5,17 +5,36 @@
 .actions{
   text-align: center;
 }
-
 .retire{
   text-align: center;
 }
 
-
-th{
+.player__edit--left
+.player__edit--right {
+  position: relative;
+}
+.player__edit--pic-select {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+.player__edit--btn-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+  transform: translateX(-40%)
 }
 
-td{
+
+.profile {
+  width: 70%;
+  margin-left: 5%;
 }
-
-
-
+.profile-contents
+.profile-sns {
+  padding: 5px;
+}
+.profile-links{
+  padding: 5px;
+}

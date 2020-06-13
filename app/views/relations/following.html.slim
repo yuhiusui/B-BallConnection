@@ -1,0 +1,8 @@
+= stylesheet_link_tag 'players'
+= stylesheet_link_tag 'images'
+
+h2.view-title フォロー一覧
+- if @players.count > 0
+  = render '/players/index', players: @players
+- else
+  p ユーザーはいません

@@ -1,0 +1,25 @@
+= paginate @players
+.col-md-10.offset-md-1
+  .table-responsive
+    table.table.text-nowrap
+      thead.table-dark
+        tr
+          th
+          th 登録名
+          th ポジション
+          th フォロー数
+          th コート
+          th
+      - @players.each do |player|
+        tr
+          td = attachment_image_tag player, :player_image, fallback: "/assets/no_image.jpg", class: "image-xs image-shape"
+          td = link_to player.name, player_path(player)
+          td = player.position
+          td フォロー：#{player.following.count}<br>
+             フォロワー:#{player.followed.count}
+          td = link_to " お気に入りコート ", courts_path, class: "btn btn-info"
+          - if current_player != player
+            - if current_player.following?(player)
+              td = link_to 'フォロー外す', player_relations_path(player.id), method: :delete, class: "btn btn-primary"
+            - else
+              td = link_to 'フォローする', player_relations_path(player.id), method: :POST, class: "btn btn-success"

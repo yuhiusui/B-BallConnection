@@ -1,8 +1,14 @@
 class Court < ApplicationRecord
-  has_many :favorites
+  has_many :likes
   has_many :comments
+  has_many :liked_players, through: :likes, source: :player
 
-  def favorited_by?(player) # いいねしてたら消えるボタン
-    favorites.where(player_id: player.id).exists?
+  attachment :court_image, destroy: false
+
+  def liked_by?(player) # いいねしてたら消えるボタン
+    likes.where(player_id: player.id).exists?
+  end
+  def already_liked?(court)
+    self.likes.exists?(court_id: court.id)
   end
 end

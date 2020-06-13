@@ -15,48 +15,180 @@
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 /*common*/
-*{
-  margin:0;
-  padding: 0;
-}
-body {
-  width: 100%;
-  position:relative;
-  min-height: 100vh;
-  padding-bottom: 30px;/*←footerの高さ*/
-  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
-}
-header, footer {
-  background-image: url("/assets/wood.jpg");
-  width:100%;
-}
-.main-content {
-  background: url("/assets/bbc-bg.jpg");
-  background-size: cover;
-  background-color:rgba(255,255,255,0.7);
-  background-blend-mode:lighten;
-}
-footer {
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  padding: 15px 0;
-}
+  *{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  a {
+    color: black;
+  }
+  body {
+    width: 100%;
+    padding-bottom: 30px;/*←footerの高さ*/
+    padding-top: 6.5rem;
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+  }
+
+  nav{
+    background-image: url("/assets/sky1.jpg");
+    position: fixed;            /* ヘッダーの固定 */
+    top: 0px;                   /* 位置(上0px) */
+    left: 0px;                  /* 位置(右0px) */
+    width: 100%;                /* 横幅100%　*/
+  }
+  main {
+    height: 640px;
+    background: url("/assets/bbc-bg.jpg");
+    background-size: cover;
+    background-color:rgba(255,255,255,0.7);
+    background-blend-mode:lighten;
+  }
+  footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+    background-image: url("/assets/sky1.jpg");
+  }
+  #notice {
+    color: black;
+    font-size: 16px;
+  }
+  #notice::before {
+  content: "\f434";
+  font-family: "Font Awesome 5 Free";
+  }
+  #notice::after {
+  content: "\f434";
+  font-family: "Font Awesome 5 Free";
+  }
+  .view-title {
+    display: inline-block;
+    margin: 20px 0 20px 10%;
+    padding: 2px 15px;
+    border-radius: 5px;
+    color: black;
+    background: #f4a460;
+  }
+  .scroll-box{
+    max-width: 600px;
+    height:500px;
+    overflow-y:scroll;
+  }
 /*common*/
 
-.view-title {
-  margin: 50px 0 50px 10%;
-  color: #f4a460;
-}
+/*table*/
+  table {
+  }
+  .table-pic {
+    width: 150px;
+  }
+  thead {
+    background-color: rgb(244,164,96);
+  }
+  td {
+    overflow-wrap : break-word;
+    padding: 0.2rem!important;
+  }
+  th{
+    overflow-wrap : break-word;
+  }
+/*table*/
 
-.bottom-space{
-  margin-bottom: 100px;
-}
-.btn-nav{
-  border: solid 2px #fffacd;
-  color: #322D00;
-}
-.btn-nav:hover{
-  background-color: #fffacd;
-}
+
+/*btn*/
+  .nav-player {
+    margin-right: 5px;
+    padding: 5px 5px;
+    border-radius: 5px;
+    color: black;
+    background: #f4a460;
+  }
+  .btn {
+    margin: 2px;
+  }
+  .btn-nav{
+    margin-right: 5px;
+    border: solid 2px #f4a460;
+    color: #322D00;
+  }
+  .btn-nav:hover{
+    background-color: #f4a460;
+  }
+  .btn-margin {
+    margin: 50px 0;
+  }
+/*btn*/
+
+/*image*/
+  .image-xl {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+  }
+  .image-lg{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  .image-md {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  .image-md-court {
+    height: 150px;
+    object-fit: cover;
+  }
+  .image-xs {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+  }
+  .image-shape {
+    border: 3px solid #f4a460;
+  }
+  .image-shape-round {
+    border-radius: 50%;
+    padding: 5px;
+    border: 3px solid #f4a460;
+  }
+/*image*/
+
+/*fontawesome*/
+  .fa-heart{
+    color: red;
+  }
+  .fa-heart-o{
+    color: red;
+  }
+  /*Twitter*/
+  .fa-twitter-square{
+    color:#1da1f2;
+    font-size: 2.5em;
+  }
+  /*Facebook*/
+  .fa-facebook-square{
+    color:#3b5998;
+    font-size: 2.5em;
+  }
+  /*instagram*/
+  .fa-instagram{
+    color:#e1306c;
+    font-size: 2.5em;
+  }
+  .fa-cog {
+    color:gray;
+    font-size: 2.5em;
+  }
+  /*YouTube*/
+  .fa-youtube{color:#ff0000;}
+  /*LINE*/
+  .fa-line{color:#00c300;}
+
+  .fa-basketball-ball {
+  }
+/*fontawesome*/
 
