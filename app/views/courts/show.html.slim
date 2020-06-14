@@ -5,8 +5,8 @@
   .col-5
     h2.view-title コート詳細
     .d-flex
-      / = link_to "コートのプレイヤー", court_liked_players_path, class: "btn btn-primary"
-      = link_to "コートのプレイヤー", courts_path, class: "btn btn-primary"
+      = link_to "コートのプレイヤー", court_liked_players_path(@court), class: "btn btn-primary"
+      / = link_to "コートのプレイヤー", courts_path, class: "btn btn-primary"
       = link_to "編集（管理者）", edit_court_path(@court), class: "btn btn-dark ml-4"
     = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-lg"
     .row

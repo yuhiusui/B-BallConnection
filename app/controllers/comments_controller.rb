@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
       flash[:success] = "Comment was successfully created."
       # redirect_to court_path(@court)
     else
-      @comments = courtComment.where(id: @court)
+      @comments = Comment.where(id: @court)
       # redirect_to court_path(@court)
     end
   end
