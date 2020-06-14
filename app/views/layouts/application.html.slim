@@ -13,6 +13,7 @@ html
     header
         nav.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top
           = link_to root_path, class: "navbar-brand" do
+            / img_tag
             img src=("#{asset_path "logo2.png"}") style="height: 90%;"
           button.navbar-toggler aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替" data-target="#Navber" data-toggle="collapse" type="button" 
             span.navbar-toggler-icon
