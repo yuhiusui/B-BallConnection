@@ -6,8 +6,11 @@ snsリンク
 Q, 地図機能
 
 
-
-
+ec2 git pull 後
+lsof -i:3000
+COMMAND   PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+ruby    25415 ec2-user    8u  IPv4 102346      0t0  TCP *:hbci (LISTEN)
+kill -9 25415
 
 
 
