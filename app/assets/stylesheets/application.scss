@@ -31,7 +31,7 @@
   }
 
   nav{
-    background-image: url("/assets/sky1.jpg");
+    background-image: image-url("sky1.jpg");
     position: fixed;            /* ヘッダーの固定 */
     top: 0px;                   /* 位置(上0px) */
     left: 0px;                  /* 位置(右0px) */
@@ -39,7 +39,7 @@
   }
   main {
     height: 640px;
-    background: url("/assets/bbc-bg.jpg");
+    background-image: image-url("bbc-bg.jpg");
     background-size: cover;
     background-color:rgba(255,255,255,0.7);
     background-blend-mode:lighten;
@@ -50,7 +50,7 @@
     left: 0px;
     width: 100%;
     text-align: center;
-    background-image: url("/assets/sky1.jpg");
+    background-image: image-url("sky1.jpg");
   }
   #notice {
     color: black;
