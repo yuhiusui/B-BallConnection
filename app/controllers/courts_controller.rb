@@ -8,17 +8,6 @@ class CourtsController < ApplicationController
   def new
     @court = Court.new
   end
-
-  def edit
-    @court = Court.find(params[:id])
-  end
-
-  def show
-    @court = Court.find(params[:id])
-    @comment = Comment.new
-    @comments = @court.comments.order("id DESC")
-  end
-
   def create
     @court = Court.new(court_params)
     if @court.save
@@ -28,6 +17,22 @@ class CourtsController < ApplicationController
     end
   end
 
+
+  def show
+    @court = Court.find(params[:id])
+    @comment = Comment.new
+    @comments = @court.comments.order("id DESC")
+  end
+  def review
+    @court = Court.find(params[:id])
+    @review = Review.new
+    @reviews = @court.reviews.order("id DESC")
+  end
+
+
+  def edit
+    @court = Court.find(params[:id])
+  end
   def update
     @court = Court.find(params[:id])
     if @court.update(court_params)

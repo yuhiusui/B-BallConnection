@@ -1,11 +1,12 @@
 // Place all the styles related to the courts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.other-box {
-  border: 2px solid gray;
-}
-.card {
+.court-image {
   position: relative;
+}
+.court-links {
+  margin-bottom: 10px;
+  display: flex;
 }
 .card-body {
   padding: 10px 0 0;
@@ -14,10 +15,21 @@
   font-weight: bolder;
   text-decoration: underline;
 }
-.like-btn-card {
+.like-court-index {
   font-size: 2rem;
   position: absolute;
   top: -1.5rem;
   left:-1rem;
 }
-.like-btn-lg{}
+.like-court-show{
+  font-size: 3rem;
+  position: absolute;
+  top: -1.5rem;
+  left:-1rem;
+}
+.other-box {
+  border: 2px solid gray;
+}
+.court-show-right {
+  margin: 20px 0;
+}

@@ -57,25 +57,21 @@
     font-size: 16px;
   }
   #notice::before {
-  content: "\f434";
-  font-family: "Font Awesome 5 Free";
+    content: "\f434";
+    font-family: "Font Awesome 5 Free";
   }
   #notice::after {
-  content: "\f434";
-  font-family: "Font Awesome 5 Free";
+    content: "\f434";
+    font-family: "Font Awesome 5 Free";
   }
   .view-title {
+    // 各ページのタイトル
     display: inline-block;
-    margin: 20px 0 20px 10%;
+    margin: 20px 0 10px 10%;
     padding: 2px 15px;
     border-radius: 5px;
     color: black;
     background: #f4a460;
-  }
-  .scroll-box{
-    max-width: 600px;
-    height:500px;
-    overflow-y:scroll;
   }
 /*common*/
 
@@ -94,6 +90,12 @@
   }
   th{
     overflow-wrap : break-word;
+  }
+  .scroll-box{
+    // 溢れたテーブルのため
+    max-width: 600px;
+    height:500px;
+    overflow-y:scroll;
   }
 /*table*/
 

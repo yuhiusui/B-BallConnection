@@ -1,22 +1,61 @@
 = stylesheet_link_tag 'courts'
+= stylesheet_link_tag 'players'
+= stylesheet_link_tag 'images'
+.row
 
-h2.view-title コートレビュー
+  .col-5
+    h2.view-title コートレビュー
+    .court-links.d-flex
+      = link_to "コートのプレイヤー", court_liked_players_path(@court), class: "btn btn-primary"
+      = link_to "編集（管理者）", edit_court_path(@court), class: "btn btn-dark ml-4"
+    .court-image
+      = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-lg"
+      .like-court-show.court_#{@court.id}
+        = render 'likes/likes', court: @court
+    .row
+      table.col-6
+        tr
+          td =link_to @court.name, @court.url, :target=>["_blank"]
+          td
+        tr
+          td ゴール数：
+          td = @court.number
+        tr
+          td 床：
+          td = @court.floor
+        tr
+          td 料金：
+          td = @court.fee
+        tr
+          td 駅：
+          td = @court.station
+      table.col-6
+        tr
+          td = "＊＊＊＊＊"
+        tr
+          td 駐車場：
+          td = @court.parking
+        tr
+          td 利用可能時間：
+          td = @court.available_time
+        tr
+          td 住所：
+          td = @court.address
+        tr
+          td 利用状況
+          td
+            - if @court.is_valid == true
+              span 利用可
+            - else
+              span 利用不可
+    p その他
+    - if @court.other.present?
+      p.other-box = @court.other
 
-row
-  .col-xs-4
-    = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-xl"
-  .col-xs-4
-    table.bottom-space
-      tr
-        td 商品名
-        td= @court.name
-      tr
-        td 利用状況
-        td
-          - if @court.is_valid == true
-            span 利用可
-          - else
-            span 利用不可
-    .bottom-space
-      = link_to "編集", edit_court_path(@court), class: "btn btn-primary"
-
+  .col-7
+    .review-form.d-flex
+      = form_with model:[@court, @comment], data: {remote: true} do |f|
+        = f.text_area :comment
+        = f.submit '送信'
+    .scroll-box.review_#{@court.id}
+      = render 'comments/comment', comments: @comments

@@ -1,1 +1,1 @@
-$("#comments-area").html("<%= j(render 'comments/comment', comments: @comments) %>")
+$(".comment_<%= @court.id %>").html("<%= j(render 'comments/comment', comments: @comments) %>")

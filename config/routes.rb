@@ -18,8 +18,10 @@ Rails.application.routes.draw do
     get 'liked_courts' => 'likes#liked_courts'
   end
   resources :courts do
+    resource :reviews, only: [:create, :destroy]
     resource :comments, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
+    get 'review' => 'courts#review'
     get 'liked_players' => 'likes#liked_players'
   end
 

@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
     @new_comment = Court.new
     @comment = @court.comments.new(comment_params)
     @comment.player_id = current_player.id
+    @comments = @court.comments.order("id DESC")
     if @comment.save
       flash[:success] = "Comment was successfully created."
       # redirect_to court_path(@court)
@@ -16,6 +17,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:court_id])
     @court = @comment.court
+    @comments = @court.comments.order("id DESC")
     if @comment.player != current_player
       redirect_to request.referer
     end
