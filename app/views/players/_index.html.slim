@@ -10,7 +10,7 @@
           th フォロー数
           th コート
           th
-      - @players.each do |player|
+      - players.each do |player|
         tr
           td = attachment_image_tag player, :player_image, fallback: "/assets/no_image.jpg", class: "image-xs image-shape"
           td = link_to player.name, player_path(player)

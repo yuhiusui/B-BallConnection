@@ -1,7 +1,9 @@
 = stylesheet_link_tag 'courts'
 
-h2.view-title コート一覧
-= paginate @courts
+.d-flex
+  h2.view-title コート一覧
+  p = paginate @courts
+
 .row.row-cols-xl-5.row-cols-lg-4.row-cols-md-3.row-cols-sm-2.row-cols-xs-1
   - @courts.each do |court|
     - if court.is_valid == true
@@ -10,13 +12,19 @@ h2.view-title コート一覧
           = attachment_image_tag court, :court_image, fallback: "/assets/no_image.jpg", class: "image-md-court card-img-top"
           div class="like-court-index court_#{court.id}"
             = render 'likes/likes', court: court
-          = link_to court_path(court) do
-            .card-body
-              h5.card-text.card-court-name = court.name
-              table.table.table-borderless
-                tr
-                  td.card-text = "ゴール数:#{court.number}"
-                  td.card-text = "ゴール数:#{court.number}"
-                tr
-                  td.card-text = "ゴール数:#{court.number}"
-                  td.card-text = "ゴール数:#{court.number}"
+          .card-body
+            = link_to court_path(court) do
+              h5 class="card-text.card-court-name" id="star-rate-#{court.id}"
+                = court.name
+                = "リング:#{court.number}"
+            table.table.table-borderless
+              tr
+                td.card-text = link_to "口コミ#{court.reviews.count}件", court_review_path(court)
+                td.card-text = link_to "コメント#{court.comments.count}件"
+              tr
+                td.card-text = court.city
+                td = link_to 'Destroy', court_path(court), method: :delete, class: 'btn-sm btn-danger'
+
+
+/ 星評価のjavascript
+/ = render 'reviews/star', court: @court

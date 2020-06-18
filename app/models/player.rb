@@ -18,26 +18,37 @@ class Player < ApplicationRecord
   has_many :following_player, through: :following, source: :followed # 自分がフォローしている人
   has_many :follower_player, through: :followed, source: :following # 自分をフォローしている人
 
+# 住所登録関連
+  include JpPrefecture
+  jp_prefecture :prefecture_code
+
+  def prefecture_name
+    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
+
+  def prefecture_name=(prefecture_name)
+    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
+# フォロー関連
   def follow(player_id)
     following.create(followed_id: player_id)
   end
-
   # ユーザーのフォローを外す
   def unfollow(player_id)
     following.find_by(followed_id: player_id).destroy
   end
-
   # フォローしていればtrueを返す
   def following?(player)
     following_player.include?(player)
   end
 
-  # 会員ステータスがtrueでないとログインできない
+# 会員ステータスがtrueでないとログインできない
   def active_for_authentication?
     super && (self.is_valid == true)
   end
 
-  # 会員一覧をIDの古い順番で表示
+# 会員一覧をIDの古い順番で表示
   default_scope -> { order(created_at: :desc) }
 
   enum history:{

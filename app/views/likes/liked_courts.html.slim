@@ -2,19 +2,23 @@
 
 h2.view-title お気に入りのコート
 
-/ = paginate @player.liked_courts
 .row.row-cols-xl-5.row-cols-lg-4.row-cols-md-3.row-cols-sm-2.row-cols-xs-1
-  - @player.liked_courts.each do |court|
+  - @courts.each do |court|
     - if court.is_valid == true
       .col.mb-5
-        .card
+        .card.court-image
           = attachment_image_tag court, :court_image, fallback: "/assets/no_image.jpg", class: "image-md-court card-img-top"
-          .card-body
-            h5.card-text.font-weight-bolder = link_to court.name, court_path(court)
-            p.card-text = "ゴール数:#{court.number}"
-            h3.card-text
-              | いいね件数: #{court.likes.count}
-            - if court.liked_by?(current_player)
-              = link_to court.likes.count, court_likes_path(court), method: :delete, class: "fa fa-heart"
-            - else
-              = link_to court.likes.count, court_likes_path(court), method: :post, class: "fa fa-heart-o"
+          div class="like-court-index court_#{court.id}"
+            = render 'likes/likes', court: court
+          = link_to court_path(court) do
+            .card-body
+              h5.card-text.card-court-name = court.name
+              table.table.table-borderless
+                tr
+                  td.card-text = "ゴール数:#{court.number}"
+                  td.card-text = "ゴール数:#{court.number}"
+                tr
+                  td.card-text = "ゴール数:#{court.number}"
+                  td.card-text = "ゴール数:#{court.number}"
+
+= paginate @courts

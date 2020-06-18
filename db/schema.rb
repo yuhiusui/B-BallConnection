@@ -109,12 +109,16 @@ ActiveRecord::Schema.define(version: 2020_06_15_102031) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer "court_id"
+    t.integer "player_id"
     t.string "rv_title", null: false
     t.text "rv_body", null: false
     t.float "rate", default: 0.0, null: false
     t.string "rv_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["court_id"], name: "index_reviews_on_court_id"
+    t.index ["player_id"], name: "index_reviews_on_player_id"
   end
 
 end

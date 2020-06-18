@@ -10,89 +10,23 @@ html
     script src="https://kit.fontawesome.com/61abcfe439.js" crossorigin="anonymous"
 
   body
-    header
-        nav.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top
-          = link_to root_path, class: "navbar-brand" do
-            img src="/assets/logo2.png" style="height: 90%;"
-          button.navbar-toggler aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替" data-target="#Navber" data-toggle="collapse" type="button" 
-            span.navbar-toggler-icon
-          #Navber.collapse.navbar-collapse
-            ul.navbar-nav.mr-auto
-              |
-              li.nav-item
-                a.nav-link href="#"  Home
-              li.nav-item
-                a.nav-link href="#"  About
-
-            - if player_signed_in?
-              / = render 'layouts/login_player_header'
-              ul.navbar-nav
-                li.nav-item
-                  p.nav-player
-                    = current_player.name
-                    |さん! お帰りなさい。
-                li.nav-item = link_to "マイページ", player_path(current_player), class: "btn btn-nav nav-link"
-                li.nav-item = link_to "コート一覧", courts_path, class: "btn btn-nav nav-link"
-                li.nav-item = link_to "プレイヤー", players_path, class: "btn btn-nav nav-link"
-                li.nav-item = link_to "ログアウト", destroy_player_session_path, method: :delete, class: "btn btn-nav nav-link"
-                li.nav-item.dropdown
-                  a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
-                    | ドロップダウン
-                  .dropdown-menu aria-labelledby="navbarDropdown"
-                    a.dropdown-item href="#"  メニュー1
-                    a.dropdown-item href="#"  メニュー2
-                    .dropdown-divider
-                    a.dropdown-item href="#"  その他
-            - else
-              / = render 'layouts/unlogin_player_header'
-              ul.nav
-                li.nav-item = link_to "コート一覧", courts_path, class: "btn btn-nav nav-link"
-                li.nav-item = link_to "新規登録", new_player_registration_path, class: "btn btn-nav nav-link"
-                li.nav-item = link_to "ログイン", new_player_session_path, class: "btn btn-nav nav-link"
-                li.nav-item.dropdown
-                  a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
-                    | ドロップダウン
-                  .dropdown-menu aria-labelledby="navbarDropdown" 
-                    a.dropdown-item href="#"  メニュー1
-                    a.dropdown-item href="#"  メニュー2
-                    .dropdown-divider
-                    a.dropdown-item href="#"  その他
-          / form.form-inline.my-2.my-lg-0
-          /   input.form-control.mr-sm-2 aria-label="検索..." placeholder="検索..." type="search" /
-          /   button.btn.btn-outline-success.my-2.my-sm-0 type="submit"  検索
-    / header.navbar
-      div.container
-        nav
-          = link_to root_path do
-            img src="/assets/logo.png"
-        nav
-          - if player_signed_in?
-            / = render 'layouts/login_player_header'
-            ul.nav
-              li.nav-item
-                p.nav-player
-                  = current_player.name
-                  |さん! お帰りなさい。
-              li.nav-item = link_to "マイページ", player_path(current_player), class: "btn btn-nav"
-              li.nav-item = link_to "コート一覧", courts_path, class: "btn btn-nav"
-              li.nav-item = link_to "プレイヤー", players_path, class: "btn btn-nav"
-              li.nav-item = link_to "ログアウト", destroy_player_session_path, method: :delete, class: "btn btn-nav"
-          - else
-            / = render 'layouts/unlogin_player_header'
-            ul.nav
-              li.nav-item = link_to "コート一覧", courts_path, class: "btn btn-nav"
-              li.nav-item = link_to "新規登録", new_player_registration_path, class: "btn btn-nav"
-              li.nav-item = link_to "ログイン", new_player_session_path, class: "btn btn-nav"
-
+    = render "layouts/header"
     main.container
-      - if notice
-        p#notice.alert.alert-notice.alert-success.fas.fa-basketball-ball
-          = notice
-      - if alert
-        p#notice.alert.alert-error.alert-danger.fas.fa-basketball-ball
-          = alert
+      #alert-message
+      - flash.each do |key, value|
+        -if notice
+          p#notice.alert.alert-notice.alert-success.fas.fa-basketball-ball
+            = notice
+            button type="button" class="close" data-dismiss="alert" &times;
+        -elsif alert
+          p#notice.alert.alert-error.alert-danger.fas.fa-basketball-ball
+            = alert
+            button type="button" class="close" data-dismiss="alert" &times;
+        -else
+          p class="alert alert-#{key} fas fa-basketball-ball" id="notice"
+            = value
+            button type="button" class="close" data-dismiss="alert" &times;
       =yield
 
     footer
-      div.row.footer.justify-content-center
-        p.nav-player CopyRight Yuhi.Perry.inc
+      p.copyright &copy Yuhi.Perry.inc

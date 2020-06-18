@@ -1,9 +1,8 @@
 Q, ルーティングidを隠す場合（？public_uid
-Q, フォロー機能のモデルについて
-q.tableのスクロール.文字の切り返し（コート一覧）
-いいねの一覧
-snsリンク
-Q, 地図機能
+Q, 地図機能(1.該当コートの地図を表示or2.検索＝一覧ページ。左にコート情報。みぎにマップ)
+Q, jquery=raty.js, image uploader, skipper
+q, 管理者権限（pとcの削除、cの作成と編集)
+q.pagenate
 
 
 ec2 git pull 後
@@ -11,7 +10,6 @@ lsof -i:3000
 COMMAND   PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
 ruby    25415 ec2-user    8u  IPv4 102346      0t0  TCP *:hbci (LISTEN)
 kill -9 25415
-
 
 
 

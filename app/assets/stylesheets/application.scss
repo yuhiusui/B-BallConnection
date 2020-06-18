@@ -12,8 +12,17 @@
  *
  *= require_self
  */
- // Custom bootstrap variables must be set or imported *before* bootstrap.
+ /*Custom bootstrap variables must be set or imported *before* bootstrap.*/
 @import "bootstrap";
+
+.skipper {
+  height: 500px;
+}
+#theTarget div{
+  width: 300px;
+  height: 300px;
+}
+
 /*common*/
   *{
     margin:0;
@@ -30,7 +39,7 @@
     box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
   }
 
-  nav{
+  header nav{
     background-image: image-url("sky1.jpg");
     position: fixed;            /* ヘッダーの固定 */
     top: 0px;                   /* 位置(上0px) */
@@ -45,11 +54,13 @@
     background-blend-mode:lighten;
   }
   footer {
+    display: flex;
+    justify-content: center;
     position: fixed;
     bottom: 0px;
     left: 0px;
     width: 100%;
-    text-align: center;
+    height: 50px;
     background-image: image-url("sky1.jpg");
   }
   #notice {
@@ -73,6 +84,9 @@
     color: black;
     background: #f4a460;
   }
+  .copyright {
+    line-height: 50px;
+  }
 /*common*/
 
 /*table*/
@@ -94,20 +108,13 @@
   .scroll-box{
     // 溢れたテーブルのため
     max-width: 600px;
-    height:500px;
+    height:550px;
     overflow-y:scroll;
   }
 /*table*/
 
 
 /*btn*/
-  .nav-player {
-    margin-right: 5px;
-    padding: 5px 5px;
-    border-radius: 5px;
-    color: black;
-    background: #f4a460;
-  }
   .btn {
     margin: 2px;
   }
@@ -156,6 +163,22 @@
     border-radius: 50%;
     padding: 5px;
     border: 3px solid #f4a460;
+  }
+
+  .image1 {
+    background-image: image-url("test1.jpg");
+  }
+  .image2 {
+    background-image: image-url("test2.jpg");
+  }
+  .image3 {
+    background-image: image-url("test3.jpg");
+  }
+  .image4 {
+    background-image: image-url("test4.jpg");
+  }
+  .image5 {
+    background-image: image-url("test5.jpg");
   }
 /*image*/
 

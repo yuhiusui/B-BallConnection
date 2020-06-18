@@ -1,0 +1,18 @@
+table.table.table-borderless
+  - reviews.each do |review|
+    tbody
+      tr.row
+        td.col-2.text-right
+          = link_to player_path(review.player), class: "player_#{review.player.id}" do
+            = attachment_image_tag review.player, :player_image, :fill, fallback: "no_image.jpg", class: "image-xs image-shape-round"
+        td.col-7
+          div id="star-rate-#{review.id}" = review.rate
+          = "：#{review.rv_title}"
+          = "by #{review.player.name}"
+          br/
+          = "=>#{review.rv_body}"
+        td.col-3
+          = l review.created_at, format: :short
+          br/
+          - if review.player == current_player
+            = link_to 'Destroy', court_reviews_path(review), method: :delete, remote: true, class: 'btn-sm btn-danger'

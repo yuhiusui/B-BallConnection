@@ -8,7 +8,7 @@ h2.view-title
 
 .profile
   .row
-    .col-9
+    .col-12
       .row
         = attachment_image_tag @player, :player_image, fallback: "/assets/no_image.jpg", class: "image-md image-shape-round"
 
@@ -56,7 +56,3 @@ h2.view-title
             tr
               th.col-xs-1 自己紹介
               th = current_player.intro
-    .col-3
-      h3 いいねしている投稿
-      - @player.liked_courts.each do |court|
-        = court.name

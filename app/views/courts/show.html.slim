@@ -1,61 +1,76 @@
 = stylesheet_link_tag 'courts'
 = stylesheet_link_tag 'players'
 = stylesheet_link_tag 'images'
+
 .row
 
   .court-show-left.col-5
     h2.view-title コート詳細
-    .court-links.d-flex
+    .court-links
       = link_to "コートのプレイヤー", court_liked_players_path(@court), class: "btn btn-primary"
       = link_to "編集（管理者）", edit_court_path(@court), class: "btn btn-dark ml-4"
     .court-image
       = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-lg"
       div class="like-court-show court_#{@court.id}"
         = render 'likes/likes', court: @court
-    .row
-      table.col-6
-        tr
-          td =link_to @court.name, @court.url, :target=>["_blank"]
-          td
-        tr
-          td ゴール数：
-          td = @court.number
-        tr
-          td 床：
-          td = @court.floor
-        tr
-          td 料金：
-          td = @court.fee
-        tr
-          td 駅：
-          td = @court.station
-      table.col-6
-        tr
-          td = "＊＊＊＊＊"
-        tr
-          td 駐車場：
-          td = @court.parking
-        tr
-          td 利用可能時間：
-          td = @court.available_time
-        tr
-          td 住所：
-          td = @court.address
-        tr
-          td 利用状況
-          td
-            - if @court.is_valid == true
-              span 利用可
-            - else
-              span 利用不可
-    p その他
-    - if @court.other.present?
-      p.other-box = @court.other
+    = render 'courts/info', court: @court
 
   .court-show-right.col-7
-    div class="scroll-box comment_#{@court.id}"
-      = render 'comments/comment', comments: @comments
-    .comment-form.d-flex
-      = form_with model:[@court, @comment], data: {remote: true} do |f|
-        = f.text_area :comment
-        = f.submit '送信'
+
+    h2 Your MAP
+    div id="map" class="#{@court.prefecture_code} + #{@court.city} + #{@court.street}" style="height: 400px;"
+
+javascript:
+
+    // mapを関数の外で定義(codeAddressでも使うため)
+    let map
+    let geocoder
+
+    function initMap(){
+      // geocoderを初期化
+      geocoder = new google.maps.Geocoder()
+      geocoder.geocode( { 'address': $('#map').attr('class')}, function(results, status) {
+        if (status == 'OK') {
+    　　　　　　　　　　　　// map.setCenterで地図が移動
+          map.setCenter(results[0].geometry.location);
+
+    　　　　　　　　　　　　// google.maps.Markerでーカが立つ
+          var marker = new google.maps.Marker({
+              // マーカーの落ちる場所を中心に
+              map: map,
+              // マーカーを落とす場所
+              position: results[0].geometry.location
+          });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+      // 初期ポジション
+      map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -34.397, lng: 150.644},
+      zoom: 8
+      });
+    }
+
+    // 検索ボタンに#addressのinputがあれば意味あり
+    function codeAddress(){
+      // 入力を取得
+      let inputAddress = document.getElementById('address').value;
+      // geocodingしたあとmapを移動
+    }
+
+script async="" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=#{ENV['SECRET_KEY']}&callback=initMap"
+
+//     / div class="scroll-box comment_#{@court.id}"
+//     /   = render 'comments/comment', comments: @comments
+//     / .comment-form
+//     /   = form_with model:[@court, @comment], data: {remote: true} do |f|
+//     /     .row
+//     /       .offset-4.col-3
+//     /         = f.text_area :comment, placeholder: "コメント"
+//     /       .col-3.offset-1
+//     /         = f.submit '投稿する', class: "btn btn-info btn-lg"
+
+
+// / 星評価のjavascript
+// = render 'reviews/star', court: @court

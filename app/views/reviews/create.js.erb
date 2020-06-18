@@ -1,4 +1,4 @@
 $("textarea").val("");
-$(".comment_<%= @court.id %>").html("<%= j(render 'comments/comment', comments: @comments) %>");
+$(".review_<%= @court.id %>").html("<%= j(render 'reviews/review', reviews: @reviews) %>");
 $('#alert-message').html('<div class="alert alert-success fas fa-basketball-ball" id="notice"><%= @success %></div>')
 $('#alert-message').html('<div class="alert alert-warning fas fa-basketball-ball" id="notice"><%= @warning %></div>')

@@ -1,26 +1,25 @@
 class ReviewsController < ApplicationController
   def create
     @court = Court.find(params[:court_id])
-    @new_review = Court.new
     @review = @court.reviews.new(review_params)
     @review.player_id = current_player.id
+    @reviews = @court.reviews.order("id DESC")
     if @review.save
-      flash[:success] = "Review was successfully created."
-      # redirect_to court_path(@court)
+      @success = "レビューが保存されました"
     else
       @reviews = Review.where(id: @court)
-      # redirect_to court_path(@court)
+      @warning = "必要箇所を記入してください"
     end
   end
 
   def destroy
     @review = Review.find(params[:court_id])
     @court = @review.court
-    if @review.player != current_player
-      redirect_to request.referer
-    end
+    @reviews = @court.reviews.order("id DESC")
+    # ボタンプッシュ後
+    redirect_to request.referer if @review.player != current_player
     @review.destroy
-    # redirect_to request.referer
+    @success = "レビューが削除されました"
   end
 
   private

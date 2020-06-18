@@ -1,7 +1,7 @@
 class CourtsController < ApplicationController
   # before_action :authenticate_player!
   def index
-    @courts = Court.all.page(params[:page]).reverse_order.per(10)
+    @courts = Court.page(params[:page]).reverse_order.per(8)
     @like = Like.new
   end
 
@@ -24,7 +24,7 @@ class CourtsController < ApplicationController
     @comments = @court.comments.order("id DESC")
   end
   def review
-    @court = Court.find(params[:id])
+    @court = Court.find(params[:court_id])
     @review = Review.new
     @reviews = @court.reviews.order("id DESC")
   end
@@ -42,11 +42,18 @@ class CourtsController < ApplicationController
     end
   end
 
+  def destroy
+    @court = Court.find(params[:id])
+    @court.destroy
+    redirect_to courts_path
+  end
+
   private
 
   def  court_params
     params.require(:court).permit(:court_image,:name, :number, :floor, :fee, :station,
-                                  :url, :available_time, :station, :city, :parking,
+                                  :url, :available_time, :station, :parking, :postal_code,
+                                  :prefecture_code, :city, :street, :address,
                                   :is_valid, :other)
   end
 

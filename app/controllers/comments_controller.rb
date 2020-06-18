@@ -1,16 +1,14 @@
 class CommentsController < ApplicationController
   def create
     @court = Court.find(params[:court_id])
-    @new_comment = Court.new
     @comment = @court.comments.new(comment_params)
     @comment.player_id = current_player.id
     @comments = @court.comments.order("id DESC")
     if @comment.save
-      flash[:success] = "Comment was successfully created."
-      # redirect_to court_path(@court)
+      @success = "コメントが保存されました"
     else
       @comments = Comment.where(id: @court)
-      # redirect_to court_path(@court)
+      @warning = "コメントを入力してください"
     end
   end
 
@@ -18,11 +16,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:court_id])
     @court = @comment.court
     @comments = @court.comments.order("id DESC")
-    if @comment.player != current_player
-      redirect_to request.referer
-    end
+    # ボタンプッシュ後
+    redirect_to request.referer if @comment.player != current_player
     @comment.destroy
-    # redirect_to request.referer
+    @success = "コメントが削除されました"
   end
 
   private
