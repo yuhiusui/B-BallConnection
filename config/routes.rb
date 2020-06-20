@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resource :comments, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
     get 'review' => 'courts#review'
+    get 'comment' => 'courts#comment'
     get 'liked_players' => 'likes#liked_players'
   end
 

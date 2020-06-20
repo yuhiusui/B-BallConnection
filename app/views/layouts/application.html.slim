@@ -12,21 +12,9 @@ html
   body
     = render "layouts/header"
     main.container
-      #alert-message
-      - flash.each do |key, value|
-        -if notice
-          p#notice.alert.alert-notice.alert-success.fas.fa-basketball-ball
-            = notice
-            button type="button" class="close" data-dismiss="alert" &times;
-        -elsif alert
-          p#notice.alert.alert-error.alert-danger.fas.fa-basketball-ball
-            = alert
-            button type="button" class="close" data-dismiss="alert" &times;
-        -else
-          p class="alert alert-#{key} fas fa-basketball-ball" id="notice"
-            = value
-            button type="button" class="close" data-dismiss="alert" &times;
-      =yield
+      = render "layouts/flash"
+      .outline
+        =yield
 
     footer
       p.copyright &copy Yuhi.Perry.inc

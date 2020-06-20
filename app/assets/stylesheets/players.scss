@@ -9,17 +9,13 @@
   text-align: center;
 }
 
-.player__edit--left
-.player__edit--right {
-  position: relative;
-}
-.player__edit--pic-select {
+.edit-pic-select {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
 }
-.player__edit--btn-bottom {
+.edit-btn-bottom {
   position: absolute;
   bottom: 0;
   left: 40%;

@@ -32,6 +32,10 @@
   a {
     color: black;
   }
+  a:hover {
+    text-decoration: none;
+    background-color: #f4a460;
+  }
   body {
     width: 100%;
     padding-bottom: 30px;/*←footerの高さ*/
@@ -47,11 +51,15 @@
     width: 100%;                /* 横幅100%　*/
   }
   main {
-    height: 640px;
+    min-height: 640px;
     background-image: image-url("bbc-bg.jpg");
+    background-attachment: fixed;
     background-size: cover;
     background-color:rgba(255,255,255,0.7);
     background-blend-mode:lighten;
+  }
+  .outline {
+    padding: 10px 0;
   }
   footer {
     display: flex;
@@ -78,8 +86,8 @@
   .view-title {
     // 各ページのタイトル
     display: inline-block;
-    margin: 20px 0 10px 10%;
-    padding: 2px 15px;
+    margin: 0 0 10px 5%;
+    padding: 0 15px;
     border-radius: 5px;
     color: black;
     background: #f4a460;
@@ -148,7 +156,7 @@
     object-fit: cover;
   }
   .image-md-court {
-    height: 150px;
+    height: 100px;
     object-fit: cover;
   }
   .image-xs {

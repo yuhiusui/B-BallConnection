@@ -1,8 +1,8 @@
 Q, ルーティングidを隠す場合（？public_uid
 Q, 地図機能(1.該当コートの地図を表示or2.検索＝一覧ページ。左にコート情報。みぎにマップ)
-Q, jquery=raty.js, image uploader, skipper
 q, 管理者権限（pとcの削除、cの作成と編集)
-q.pagenate
+q. liked_courtが普通
+q。flash
 
 
 ec2 git pull 後
