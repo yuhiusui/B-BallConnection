@@ -1,37 +1,38 @@
-.court-info.row
+.court-info.mt-3
   h4.font-weight-bold = @court.name
   / レイアウト崩れる
-  table.col-6
-    tr
-      td =link_to @court.name, @court.url, :target=>["_blank"]
-    tr
-      td ゴール数：
-      td = @court.number
-    tr
-      td 床：
-      td = @court.floor
-    tr
-      td 料金：
-      td = @court.fee
-    tr
-      td 駅：
-      td = @court.station
-  table.col-6
-    tr
-      td id="star-rate-#{@court.id}" = link_to "", court_review_path(@court)
-    tr
-      td 駐車場：
-      td = @court.parking
-    tr
-      td 利用可能時間：
-      td = @court.available_time
-    tr
-      td 利用状況
-      td
-        - if @court.is_valid == true
-          span 利用可
-        - else
-          span 利用不可
+  .row
+    table.col-5.offset-1
+      tr
+        td =link_to "HPリンク", @court.url, :target=>["_blank"]
+      tr
+        td ゴール数：
+        td = @court.number
+      tr
+        td 床：
+        td = @court.floor
+      tr
+        td 料金：
+        td = @court.fee
+      tr
+        td 駅：
+        td = @court.station
+    table.col-5.offset-1
+      tr
+        td id="star-rate-#{@court.id}" = link_to "", court_review_path(@court)
+      tr
+        td 駐車場：
+        td = @court.parking
+      tr
+        td 利用可能時間：
+        td = @court.available_time
+      tr
+        td 利用状況
+        td
+          - if @court.is_valid == true
+            span 利用可
+          - else
+            span 利用不可
 h5 補足
 - if @court.other.present?
   p.other-box = @court.other

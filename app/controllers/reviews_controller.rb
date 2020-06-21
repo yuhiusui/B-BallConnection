@@ -7,7 +7,6 @@ class ReviewsController < ApplicationController
     if @review.save
       @success = "レビューが保存されました"
     else
-      @reviews = Review.where(id: @court)
       @warning = "必要箇所を記入してください"
     end
   end

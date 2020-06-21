@@ -7,26 +7,32 @@ javascript:
     function initMap(){
       // geocoderを初期化
       geocoder = new google.maps.Geocoder()
+
+      // 初期ポジション
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 35.6585, lng: 139.7486}, //東京タワー
+        zoom: 8
+      });
+
       geocoder.geocode( { 'address': $('#map').attr('class')}, function(results, status) {
         if (status == 'OK') {
-    　　　　　　　　　　　　// map.setCenterで地図が移動
-          map.setCenter(results[0].geometry.location);
+          map.setCenter(results[0].geometry.location); // map.setCenterで地図が移動
 
-    　　　　　　　　　　　　// google.maps.Markerでーカが立つ
           var marker = new google.maps.Marker({
-              // マーカーの落ちる場所を中心に
-              map: map,
-              // マーカーを落とす場所
-              position: results[0].geometry.location
+              map: map, // マーカーの落ちる場所を中心に
+              position: results[0].geometry.location // マーカーを落とす場所
           });
+
+          var infoWindow = new google.maps.InfoWindow({ // 吹き出しの追加
+                content: '<div class="map">TAM 大阪</div>' // 吹き出しに表示する内容
+          });
+
+          marker.addListener('click', function() { // マーカーをクリックしたとき
+             infoWindow.open(map, marker); // 吹き出しの表示
+            });
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
         }
-      });
-      // 初期ポジション
-      map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -34.397, lng: 150.644},
-      zoom: 8
       });
     }
 
@@ -37,4 +43,4 @@ javascript:
       // geocodingしたあとmapを移動
     }
 
-script async="" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=#{ENV['SECRET_KEY']}&callback=initMap"
+script async="" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAP_API']}&callback=initMap"

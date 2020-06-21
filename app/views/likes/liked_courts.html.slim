@@ -16,6 +16,8 @@
             = link_to court_path(court) do
               h5 class="card-text.card-court-name" id="star-rate-#{court.id}"
                 = court.name
+                / 星評価のjavascript
+                = render 'reviews/star', court: court
             table.table.table-borderless
               tr
                 td.card-text = link_to "口コミ#{court.reviews.count}件", court_review_path(court)

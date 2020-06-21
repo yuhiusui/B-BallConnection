@@ -7,10 +7,9 @@ header
     #Navber.collapse.navbar-collapse
       ul.navbar-nav.mr-auto
         |
-        li.nav-item
-          / a.nav-link href="#"  Home
-        li.nav-item
-          / a.nav-link href="#"  About
+        li.nav-item = link_to "Home", root_path, class: "btn btn-nav nav-link"
+        li.nav-item = link_to "About", root_path, class: "btn btn-nav nav-link"
+        li.nav-item = render "layouts/flash"
 
       - if player_signed_in?
         / = render 'layouts/login_player_header'

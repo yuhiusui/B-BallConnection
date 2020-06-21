@@ -1,12 +1,12 @@
 class LikesController < ApplicationController
   def liked_courts
     @player = Player.find(params[:player_id])
-    @courts = @player.liked_courts.page(params[:page]).reverse_order.per(2)
+    @courts = @player.liked_courts.page(params[:page]).reverse_order.per(10)
   end
 
   def liked_players
     @court = Court.find(params[:court_id])
-    @players = @court.liked_players.page(params[:page]).reverse_order.per(2)
+    @players = @court.liked_players.page(params[:page]).reverse_order.per(10)
   end
 
   def create

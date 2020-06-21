@@ -1,16 +1,13 @@
 Q, ルーティングidを隠す場合（？public_uid
-Q, 地図機能(1.該当コートの地図を表示or2.検索＝一覧ページ。左にコート情報。みぎにマップ)
 q, 管理者権限（pとcの削除、cの作成と編集)
-q. liked_courtが普通
 q。flash
-
+q.一覧画面（検索タグと大きな地図）-pre_codeの日本語化
 
 ec2 git pull 後
 lsof -i:3000
 COMMAND   PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
 ruby    25415 ec2-user    8u  IPv4 102346      0t0  TCP *:hbci (LISTEN)
 kill -9 25415
-
 
 
 

@@ -11,14 +11,14 @@ h2.view-title コート詳細
       = link_to "コメント(#{@court.comments.count})", court_comment_path(@court), class: "btn btn-info ml-2"
       = link_to "レビュー(#{@court.reviews.count})", court_review_path(@court), class: "btn btn-primary ml-2"
     .court-image
-      = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-lg"
+      = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-lg image-shape"
       div class="like-court-show court_#{@court.id}"
         = render 'likes/likes', court: @court
     = render 'courts/info', court: @court
 
   .show-right.col-7
     div id="map" class="#{@court.prefecture_code} + #{@court.city} + #{@court.street}" style="height: 400px;"
-    h3 所在地：#{@court.prefecture_code}#{@court.city}#{@court.street}
+    h3 所在地：#{@court.prefecture_name}#{@court.city}#{@court.street}
 
 
 

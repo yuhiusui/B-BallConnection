@@ -3,7 +3,6 @@
 = stylesheet_link_tag 'images'
 
 .row
-
   .court-left.col-5
     h2.view-title コートレビュー
     = link_to "編集（管理者）", edit_court_path(@court), class: "btn btn-dark ml-4 mb-3"
@@ -12,14 +11,33 @@
       = link_to "コメント(#{@court.comments.count})", court_comment_path(@court), class: "btn btn-info ml-2"
       = link_to "詳細ページ", court_path(@court), class: "btn btn-primary ml-2"
     .court-image
-      = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-lg"
+      = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-lg image-shape"
       .like-court-show.court_#{@court.id}
         = render 'likes/likes', court: @court
     = render 'courts/info', court: @court
 
   .court-right.col-7
     div class="scroll-box review_#{@court.id}"
-      = render 'reviews/review', reviews: @reviews
+      / = render 'reviews/review', reviews: @reviews
+      table.table.table-borderless
+        - reviews.each do |review|
+          tbody
+            tr.row
+              td.col-2.text-right
+                = link_to player_path(review.player), class: "player_#{review.player.id}" do
+                  = attachment_image_tag review.player, :player_image, :fill, fallback: "no_image.jpg", class: "image-xs image-shape-round"
+              td.col-7
+                div id="star-rate-#{review.id}" = review.rate
+                = "：#{review.rv_title}"
+                = "by #{review.player.name}"
+                br/
+                = "=>#{review.rv_body}"
+              td.col-3
+                = l review.created_at, format: :short
+                br/
+                - if review.player == current_player
+                  = link_to 'Destroy', court_reviews_path(review), method: :delete, remote: true, class: 'btn-sm btn-danger'
+
     .review-form
       = form_with model:[@court, @review], data: {remote: true} do |f|
         .row

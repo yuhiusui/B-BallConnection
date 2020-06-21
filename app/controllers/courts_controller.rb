@@ -1,8 +1,19 @@
 class CourtsController < ApplicationController
   # before_action :authenticate_player!
   def index
-    @courts = Court.page(params[:page]).reverse_order.per(2)
+    # @courts = Court.page(params[:page]).reverse_order.per(5)
     @like = Like.new
+    if params[:q].nil?
+      @q = Court.ransack(params[:q])
+    else
+      prefecture_code = JpPrefecture::Prefecture.find(name: params[:q][:prefecture_code_eq]).try(:code)
+      @q = Court.ransack({
+        prefecture_code_eq: prefecture_code,
+        name_cont: params[:q][:name_cont],
+      })
+    end
+    @courts = @q.result(distinct: true).page(params[:page]).reverse_order.per(10)
+    @q = Court.ransack()
   end
 
   def new

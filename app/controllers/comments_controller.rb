@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
     if @comment.save
       @success = "コメントが保存されました"
     else
-      @comments = Comment.where(id: @court)
       @warning = "コメントを入力してください"
     end
   end

@@ -11,7 +11,7 @@
         = f.text_field :postal_code, class: "form-control col-5"
       .form-group.form-row
         = f.label :prefecture_code, "都道府県", class: "col-5"
-        = f.text_field :prefecture_code, class: "form-control col-5"
+        = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name, class: "form-control col-5"
       .form-group.form-row
         = f.label :city, "市町区以下", class: "col-5"
         = f.text_field :city, class: "form-control col-5"

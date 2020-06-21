@@ -3,7 +3,7 @@ class PlayersController < ApplicationController
   before_action :ensure_current_player?, only: [:edit, :update]
 
   def index
-    @players = Player.page(params[:page]).reverse_order.per(2)
+    @players = Player.page(params[:page]).reverse_order.per(5)
   end
 
   def show

@@ -3,6 +3,13 @@
 .d-flex
   h2.view-title コート一覧
   p.ml-2 = paginate @courts
+  p.ml-2
+    = search_form_for @q, url:courts_path do |f|
+      = f.label :name_cont, "コート名"
+      = f.search_field :name_cont
+      = f.label :prefecture_code_eq, "都道府県検索"
+      = f.search_field :prefecture_code_eq
+      = f.submit
 
 .row.row-cols-xl-5.row-cols-lg-4.row-cols-md-3.row-cols-sm-2.row-cols-xs-1
   - @courts.each do |court|
@@ -16,6 +23,7 @@
             = link_to court_path(court) do
               h5 class="card-text.card-court-name" id="star-rate-#{court.id}"
                 = court.name
+                / 星評価のjavascript
                 = render 'reviews/star', court: court
             table.table.table-borderless
               tr
@@ -24,6 +32,3 @@
               tr
                 td.card-text = court.address
                 td.card-text = "リング:#{court.number}"
-
-/ 星評価のjavascript
-/ = render 'reviews/star', court: court
