@@ -8,7 +8,18 @@
 .retire{
   text-align: center;
 }
-
+.new-pic-select {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.new-btn-bottom {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  transform: translateY(-10%)
+}
 .edit-pic-select {
   position: absolute;
   top: 50%;

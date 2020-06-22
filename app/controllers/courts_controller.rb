@@ -73,8 +73,6 @@ class CourtsController < ApplicationController
   end
 
   def ensure_admin_player?
-    admin_player = Player.find(1)
-    redirect_to player_path(current_player) unless current_player == admin_player
+    redirect_to player_path(current_player) unless current_player.admin?
   end
-
 end

@@ -12,11 +12,11 @@ class RelationsController < ApplicationController
 
   def following
     player = Player.find(params[:player_id])
-    @players = player.following_player.page(params[:page]).reverse_order.per(7)
+    @players = player.following_player.page(params[:page]).reverse_order.per(20)
   end
 
   def followed
     player = Player.find(params[:player_id])
-    @players = player.follower_player.page(params[:page]).reverse_order.per(7)
+    @players = player.follower_player.page(params[:page]).reverse_order.per(20)
   end
 end

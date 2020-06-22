@@ -1,18 +1,16 @@
 header
   nav.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top
     = link_to root_path, class: "navbar-brand" do
-      img src="/assets/logo2.png" style="height: 90%;"
+      = image_tag "header-logo.png", class: "header-logo p-0"
     button.navbar-toggler aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替" data-target="#Navber" data-toggle="collapse" type="button" 
       span.navbar-toggler-icon
     #Navber.collapse.navbar-collapse
       ul.navbar-nav.mr-auto
-        |
-        li.nav-item = link_to "Home", root_path, class: "btn btn-nav nav-link"
-        li.nav-item = link_to "About", root_path, class: "btn btn-nav nav-link"
         li.nav-item = render "layouts/flash"
+        / li.nav-item = link_to "Home", root_path, class: "btn btn-nav nav-link"
+        / li.nav-item = link_to "About", "root_path", class: "btn btn-nav nav-link"
 
       - if player_signed_in?
-        / = render 'layouts/login_player_header'
         ul.navbar-nav
           / li.nav-item
           /   p.nav-player
@@ -31,7 +29,6 @@ header
           /     .dropdown-divider
           /     a.dropdown-item href="#"  その他
       - else
-        / = render 'layouts/unlogin_player_header'
         ul.nav
           li.nav-item = link_to "コート一覧", courts_path, class: "btn btn-nav nav-link"
           li.nav-item = link_to "新規登録", new_player_registration_path, class: "btn btn-nav nav-link"
@@ -44,6 +41,3 @@ header
           /     a.dropdown-item href="#"  メニュー2
           /     .dropdown-divider
           /     a.dropdown-item href="#"  その他
-    / form.form-inline.my-2.my-lg-0
-    /   input.form-control.mr-sm-2 aria-label="検索..." placeholder="検索..." type="search" /
-    /   button.btn.btn-outline-success.my-2.my-sm-0 type="submit"  検索

@@ -17,8 +17,11 @@
           td フォロー：#{player.following.count}<br>
              フォロワー:#{player.followed.count}
           td = link_to " お気に入りコート ", player_liked_courts_path(player), class: "btn btn-primary"
-          - if current_player != player
-            - if current_player.following?(player)
-              td = link_to 'フォロー外す', player_relations_path(player.id), method: :delete, class: "btn btn-danger"
+          - if !current_player?(player)
+            - if player.is_valid == false
+              p.btn.btn-dark 退会済み
             - else
-              td = link_to 'フォローする', player_relations_path(player.id), method: :POST, class: "btn btn-success"
+              - if current_player.following?(player)
+                td = link_to 'フォロー外す', player_relations_path(player.id), method: :delete, class: "btn btn-danger"
+              - else
+                td = link_to 'フォローする', player_relations_path(player.id), method: :POST, class: "btn btn-success"

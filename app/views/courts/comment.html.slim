@@ -18,16 +18,7 @@
     = render 'courts/info', court: @court
 
   .court-right.col-7
-    div class="scroll-box comment_#{@court.id}"
-      = render 'comments/comment', comments: @comments
-    .comment-form
-      = form_with model:[@court, @comment], data: {remote: true} do |f|
-        .row
-          .offset-4.col-3
-            = f.text_area :comment, placeholder: "コメント"
-          .col-3.offset-1
-            = f.submit '投稿する', class: "btn btn-info btn-lg"
-
+    = render 'comments/comment', comments: @comments
 
 / 星評価のjavascript
 = render 'reviews/star', court: @court

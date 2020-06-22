@@ -4,7 +4,9 @@
 .d-flex
   h2.view-title フォロー一覧
   p.ml-2 = paginate @players
+
 - if @players.count > 0
   = render '/players/index', players: @players
+  = paginate @players
 - else
   p ユーザーはいません

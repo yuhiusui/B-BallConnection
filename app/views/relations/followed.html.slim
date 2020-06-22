@@ -7,5 +7,6 @@
 
 - if @players.count > 0
   = render '/players/index', players: @players
+  = paginate @players
 - else
   p ユーザーはいません

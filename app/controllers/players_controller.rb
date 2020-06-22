@@ -1,10 +1,10 @@
 class PlayersController < ApplicationController
   before_action :authenticate_player!
-  before_action :ensure_current_player?, only: [:edit, :update]
-  before_action :ensure_admin_player?, only: [:destroy]
+  before_action :ensure_current_player?, only: [:edit, :update, :destroy]
+  # before_action :ensure_admin_player?, only: [:admin_destroy]
 
   def index
-    @players = Player.page(params[:page]).reverse_order.per(7)
+    @players = Player.page(params[:page]).reverse_order.per(50)
     # gon.players = Player.all
   end
 
@@ -30,9 +30,21 @@ class PlayersController < ApplicationController
     @player = current_player
   end
 
+  def destroy
+    @player = Player.find(params[:id]).destroy
+    flash[:success] = "退会しました"
+    redirect_to root_path
+  end
+
+  def admin_destroy
+    @player = Player.find(params[:player_id]).destroy
+    flash[:success] = "プレイヤーを削除しました"
+    redirect_to root_path
+  end
+
   def update_status
-    @player = current_player
-    @player.update(player_params)
+    player = current_player
+    player.update(is_valid: false)
     reset_session
     redirect_to root_path
   end
@@ -42,7 +54,7 @@ class PlayersController < ApplicationController
   private
   def player_params
     params.require(:player).permit(:name, :email, :intro, :player_image,
-                                   :position,:history, :skill, :is_valid,
+                                   :position,:history, :skill,
                                    :twitter, :fadebook, :instagram)
   end
 
@@ -52,8 +64,7 @@ class PlayersController < ApplicationController
   end
 
   def ensure_admin_player?
-    admin_player = Player.find(1)
-    redirect_to player_path(current_player) unless current_player == admin_player
+    redirect_to player_path(current_player) unless current_player.admin?
   end
 
 

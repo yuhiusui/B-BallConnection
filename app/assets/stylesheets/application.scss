@@ -22,7 +22,6 @@
   width: 300px;
   height: 300px;
 }
-
 /*common*/
   *{
     margin:0;
@@ -37,6 +36,19 @@
     background-color: #f4a460;
   }
   body {
+    min-width: 1000px;
+    font-family: "Ricky Diminished", "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+    font-weight: 500;
+    line-height: 2;
+    color: #333;
+  }
+
+  strong, b, mark, b, .typo-bold {
+    font-family: "Ricky Diminished",'游ゴシック体', YuGothic, '游ゴシック', 'Yu Gothic', '游ゴシック', 'Yu Gothic', sans-serif;
+    font-weight: 700;
+  }
+
+  body {
     width: 100%;
     padding-bottom: 30px;/*←footerの高さ*/
     padding-top: 6.5rem;
@@ -50,9 +62,9 @@
     left: 0px;                  /* 位置(右0px) */
     width: 100%;                /* 横幅100%　*/
   }
-  main {
+  .main-content {
     min-height: 640px;
-    background-image: image-url("bbc-bg.jpg");
+    background-image: url("bbc-bg.jpg");
     background-attachment: fixed;
     background-size: cover;
     background-color:rgba(255,255,255,0.7);
@@ -96,6 +108,9 @@
   .copyright {
     line-height: 50px;
   }
+  .header-logo {
+    width: 100px;
+  }
 /*common*/
 
 /*table*/
@@ -117,7 +132,7 @@
   .scroll-box{
     // 溢れたテーブルのため
     max-width: 600px;
-    height:550px;
+    height:520px;
     overflow-y:scroll;
   }
 /*table*/

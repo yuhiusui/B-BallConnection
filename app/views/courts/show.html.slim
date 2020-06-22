@@ -3,7 +3,8 @@
 = stylesheet_link_tag 'images'
 
 h2.view-title コート詳細
-= link_to "編集（管理者）", edit_court_path(@court), class: "btn btn-dark ml-4 mb-3"
+-if current_player.admin?
+  = link_to "編集（管理者）", edit_court_path(@court), class: "btn btn-dark ml-4 mb-3"
 .row
   .show-left.col-5
     .court-links

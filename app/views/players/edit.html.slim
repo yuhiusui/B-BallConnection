@@ -6,47 +6,46 @@
   = render "devise/shared/error_messages", resource: @player
   h2.view-title 登録情報編集
   .row
-    .player-left.col-md-6
+    .player-left.col-6
       .form-row.form-group
-        = f.label "登録名", class: "col-5"
-        = f.text_field :name, autofocus: true, autocomplete: "name", class: "col-5 form-control"
+        = f.label "登録名(2~15文字)", class: "col-5"
+        = f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "必須", class: "col-5 form-control"
       .form-group.form-row
         = f.label "email", class: "col-5"
-        = f.email_field :email, class: "form-control col-5"
+        = f.email_field :email, placeholder: "必須", class: "form-control col-5"
       .form-group.form-row
         = f.label "ポジション", class: "col-5"
         = f.select :position, Player.positions.keys.map {|k| [I18n.t("enums.player.position.#{k}"), k]},
-                              class: "form-control col-5", prompt: "選択してください"
+                              {prompt: "選択してください"}, class: "form-control col-5"
       .form-group.form-row
         = f.label "バスケ歴", class: "col-5"
         = f.select :history, Player.histories.keys.map {|k| [I18n.t("enums.player.history.#{k}"), k]},
-                             class: "form-control col-5", prompt: "選択してください"
+                             {prompt: "選択してください"}, class: "form-control col-5"
       .form-group.form-row
         = f.label "シグネチャームーブ", class: "col-5"
-        = f.text_area :skill, class: "form-control col-5"
+        = f.text_area :skill, placeholder: "任意", class: "form-control col-5"
       .form-group.form-row
         = f.label "パスワード", class: "col-5"
           - if @minimum_password_length
             | パスワード(#{@minimum_password_length} 文字以上)
-        = f.password_field :password, autocomplete: "new-password", class: "form-control col-5"
+        = f.password_field :password, autocomplete: "new-password", placeholder: "必須", class: "form-control col-5"
       .form-group.form-row
         = f.label "パスワード確認", class: "col-5"
-        = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control col-5"
+        = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "必須", class: "form-control col-5"
       .form-group.form-row
-        = f.label "自己紹介", class: "col-5"
-        = f.text_area :intro, class: "form-control col-5"
+        = f.label "自己紹介(300文字まで)", class: "col-5"
+        = f.text_area :intro, placeholder: "任意", class: "form-control col-5"
 
-    .player-right.col-md-6.position-relative
+    .player-right.col-6.position-relative
       .form-group.form-row
         = f.label 'Twitter URL', class: 'col-5'
-        = f.text_field :twitter, placeholder: "Optional", class: "form-control col-5"
+        = f.text_field :twitter, placeholder: "任意", class: "form-control col-5"
       .form-group.form-row
         = f.label 'Instagram URL', class: 'col-5'
-        = f.text_field :instagram, placeholder: "Optional", class: "form-control col-5"
-
+        = f.text_field :instagram, placeholder: "任意", class: "form-control col-5"
       .edit-pic-select
         = attachment_image_tag @player, :player_image, fallback: "/assets/no_image.jpg", class: "image-lg"
         = f.attachment_field :player_image
       .edit-btn-bottom
         = f.submit "編集内容を保存する", class: "btn btn-primary mr-3"
-        = link_to "退会する",  leave_path, class: "btn btn-danger"
+        = link_to "退会する", leave_path, class: "btn btn-danger"

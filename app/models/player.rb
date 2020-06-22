@@ -1,14 +1,12 @@
 class Player < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   attachment :player_image, destroy: false
   attachment :court_image, destroy: false
 
-  validates :name, presence: true, length: { in: 3..15 }
-  validates :intro, length: {maximum: 30}
+  validates :name, presence: true, length: { in: 2..15 }
+  validates :intro, length: {maximum: 300}
 
   has_many :comments, dependent: :destroy
   has_many :reviews, dependent: :destroy
@@ -18,7 +16,6 @@ class Player < ApplicationRecord
   has_many :followed, class_name: "Relation", foreign_key: "followed_id", dependent: :destroy # フォロワー取得
   has_many :following_player, through: :following, source: :followed # 自分がフォローしている人
   has_many :follower_player, through: :followed, source: :following # 自分をフォローしている人
-
 
 # フォロー関連
   def follow(player_id)

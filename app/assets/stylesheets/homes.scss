@@ -1,3 +1,82 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+  .section-space {
+    padding: 100px 0;
+  }
+  .section-title {
+    margin-bottom: 50px;
+    text-align: center;
+    font-weight: bolder;
+  }
+  .section-text {
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.5;
+  }
+  .section-text:not(:last-child){
+    margin-bottom: 50px;
+  }
+
+
+  #introduction {
+  }
+
+
+
+  #feature {
+    background: image-url("logo.jpg") center center no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  .feature-list {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 50px;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  .feature-list-item:nth-child(even){
+    flex-direction: row-reverse;
+  }
+  .feature-block {
+    display: flex;
+    background-color: #fffff5;
+  }
+  .feature-block-img {
+    width: 50%;
+  }
+  .feature-block-wrapper {
+    width: 50%;
+    padding: 20px 20px;
+    box-sizing: border-box;
+  }
+  .feature-block-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: bolder;
+  }
+  .feature-block-text {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+
+
+  #master {
+    font-family: "851手書き雑フォント", "851マカポップ";
+  }
+
+  .master-list {
+    display: flex;
+    justify-content: space-between;
+    width: 780px;
+    margin: 0 auto;
+    list-style: none;
+  }
+  .signature {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+  }

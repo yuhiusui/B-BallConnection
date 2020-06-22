@@ -14,7 +14,8 @@ h2.view-title
 
         .profile-contents.col-5
           .profile-sns
-            = link_to "", edit_player_path(@player), class: "fa fa-cog mr-2" if @player == current_player
+            - if current_player?(@player)
+              = link_to "", edit_player_path(@player), class: "fa fa-cog mr-2"
             - if @player.twitter.present?
               = link_to "", @player.twitter, target: :_blank, class: "fa fa-twitter-square mr-2"
             - if @player.instagram.present?
@@ -23,14 +24,21 @@ h2.view-title
             = link_to "お気に入りコート", player_liked_courts_path(@player), class: "btn btn-primary"
             / = link_to "お気に入りコート", courts_path, class: "btn btn-primary"
           .profile-links
-            - if current_player == @player
-              = link_to "新規コート作成(管理者)", new_court_path, class: "btn btn-primary"
-               / = link_to "新規コート作成依頼", new_court_path, class: "btn btn-primary"
+            - if current_player?(@player)
+              - if current_player.admin?
+                = link_to "新規コート作成(管理者)", new_court_path, class: "btn btn-primary"
+              -else
+                = link_to "新規コート作成依頼", to_admin_path, class: "btn btn-primary"
             - else
-              - if current_player.following?(@player)
-                = link_to 'フォロー外す', player_relations_path(@player), method: :delete, class: "btn btn-primary"
+              - if @player.is_valid == false
+                p.btn.btn-dark 退会済み
               - else
-                = link_to 'フォローする', player_relations_path(@player), method: :POST, class: "btn btn-success"
+                - if current_player.following?(@player)
+                  = link_to 'フォロー外す', player_relations_path(@player), method: :delete, class: "btn btn-primary"
+                - else
+                  = link_to 'フォローする', player_relations_path(@player), method: :POST, class: "btn btn-success"
+            / - if current_player.admin? && !current_player?(@player)
+            = link_to "強制退会", player_admin_destroy_path(@player), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger"
 
 
       .row
@@ -39,9 +47,6 @@ h2.view-title
             tr
               th = link_to "フォロー：#{@player.following.count}", player_follows_path(@player)
               th = link_to "フォロワー:#{@player.followed.count}", player_followers_path(@player)
-            tr
-              th email
-              th = current_player.email
             tr
               th.col-xs-1 ポジション
               th = current_player.position_i18n
@@ -53,6 +58,7 @@ h2.view-title
                 |シグネチャー<br>
                 |ムーブ
               th = current_player.skill
-            tr
-              th.col-xs-1 自己紹介
+        .col-6
+          h3 自己紹介
+          = current_player.intro
               th = current_player.intro

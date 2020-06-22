@@ -17,20 +17,8 @@
     = render 'courts/info', court: @court
 
   .court-right.col-7
-    div class="scroll-box review_#{@court.id}"
-      = render 'reviews/review', reviews: @reviews
+    = render 'reviews/review', reviews: @reviews
 
-    .review-form
-      = form_with model:[@court, @review], data: {remote: true} do |f|
-        .row
-          .form-group#star.col-4
-            = f.text_field :rv_title, placeholder: "タイトル", class: "form-control"
-            = f.label :rate, "点数"
-            = f.hidden_field :rate, id: :review_star
-          .form-group.col-4
-            = f.text_area :rv_body, placeholder: "コメント", class: "form-control"
-          .col-4
-            = f.submit '投稿する', class: "btn btn-info btn-lg"
 
 
 / 星評価のjavascript
