@@ -1,9 +1,11 @@
 class PlayersController < ApplicationController
   before_action :authenticate_player!
   before_action :ensure_current_player?, only: [:edit, :update]
+  before_action :ensure_admin_player?, only: [:destroy]
 
   def index
-    @players = Player.page(params[:page]).reverse_order.per(5)
+    @players = Player.page(params[:page]).reverse_order.per(7)
+    # gon.players = Player.all
   end
 
   def show
@@ -35,15 +37,23 @@ class PlayersController < ApplicationController
     redirect_to root_path
   end
 
+
+
   private
   def player_params
     params.require(:player).permit(:name, :email, :intro, :player_image,
                                    :position,:history, :skill, :is_valid,
                                    :twitter, :fadebook, :instagram)
   end
+
   def ensure_current_player?
     player = Player.find(params[:id])
     redirect_to player_path(current_player) unless player == current_player
+  end
+
+  def ensure_admin_player?
+    admin_player = Player.find(1)
+    redirect_to player_path(current_player) unless current_player == admin_player
   end
 
 

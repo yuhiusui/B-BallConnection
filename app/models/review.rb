@@ -1,6 +1,8 @@
 class Review < ApplicationRecord
   belongs_to :court
   belongs_to :player
+  attachment :court_image, destroy: false
+  attachment :player_image, destroy: false
 
   validates :rv_title, presence: true, length: { in: 3..10 }
   validates :rv_body, presence: true, length: { in: 3..50 }

@@ -5,19 +5,19 @@ class Player < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   attachment :player_image, destroy: false
+  attachment :court_image, destroy: false
 
-  validates :name, presence: true, length: { in: 3..10 }
+  validates :name, presence: true, length: { in: 3..15 }
   validates :intro, length: {maximum: 30}
 
-  has_many :comments
-  has_many :reviews
-  has_many :likes
+  has_many :comments, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :liked_courts, through: :likes, source: :court
   has_many :following, class_name: "Relation", foreign_key: "following_id", dependent: :destroy # フォロー取得
   has_many :followed, class_name: "Relation", foreign_key: "followed_id", dependent: :destroy # フォロワー取得
   has_many :following_player, through: :following, source: :followed # 自分がフォローしている人
   has_many :follower_player, through: :followed, source: :following # 自分をフォローしている人
-
 
 
 # フォロー関連

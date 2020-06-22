@@ -11,7 +11,7 @@
         = f.text_field :postal_code, class: "form-control col-5"
       .form-group.form-row
         = f.label :prefecture_code, "都道府県", class: "col-5"
-        = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, class: "form-control col-5"
+        = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, {selected: 1}, class: "form-control col-5"
       .form-group.form-row
         = f.label :city, "市町区以下", class: "col-5"
         = f.text_field :city, class: "form-control col-5"
@@ -34,7 +34,7 @@
         = f.text_area :url, class: "form-control col-5 ", placeholder: "url"
       .form-group.form-row
         = f.label :number, "ゴール数", class: "col-5"
-        = f.select :number, [["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9]], class: "form-control col-5"
+        = f.select :number, [["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9]], {selected: 1}, class: "form-control col-5"
       .form-group.form-row
         = f.label :floor, "床", class: "col-5"
         = f.text_field :floor, class: "form-control col-5", placeholder: "砂？コンクリート？etc"
@@ -46,7 +46,7 @@
         = f.text_field :parking, class: "form-control col-5"
       .form-group.form-row
         = f.label :is_valid, "利用状況", class: "col-5"
-        = f.select :is_valid,[["利用可",true],["利用不可",false]], class: "form-control col-5 is_valid"
+        = f.select :is_valid,[["利用可",true],["利用不可",false]], {selected: 1},class: "form-control col-5 is_valid"
       .form-group.form-row
         = f.label :available_time, "利用可能時間", class: "col-5"
         = f.text_field :available_time, class: "form-control col-5"

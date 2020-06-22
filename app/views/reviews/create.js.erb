@@ -1,5 +1,10 @@
 $("textarea").val("");
 $("input").val("");
 $(".review_<%= @court.id %>").html("<%= j(render 'reviews/review', reviews: @reviews) %>");
-$('#alert-message').html('<div class="alert alert-success fas fa-basketball-ball" id="notice"><%= @success %></div>')
-$('#alert-message').html('<div class="alert alert-warning fas fa-basketball-ball" id="notice"><%= @warning %></div>')
+var success = '<%= @success %>';
+if (success) {
+  $('#alert-message').html('<div class="alert alert-success fas fa-basketball-ball" id="notice"><%= @success %></div>')
+}
+else{
+  $('#alert-message').html('<div class="alert alert-warning fas fa-basketball-ball" id="notice"><%= @warning %></div>')
+}

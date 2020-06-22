@@ -1,7 +1,8 @@
 class CourtsController < ApplicationController
-  # before_action :authenticate_player!
+  before_action :authenticate_player!
+  before_action :ensure_admin_player?, only: [:new, :create, :edit, :update, :destroy]
+
   def index
-    # @courts = Court.page(params[:page]).reverse_order.per(5)
     @like = Like.new
     if params[:q].nil?
       @q = Court.ransack(params[:q])
@@ -15,6 +16,7 @@ class CourtsController < ApplicationController
     @courts = @q.result(distinct: true).page(params[:page]).reverse_order.per(10)
     @q = Court.ransack()
   end
+
 
   def new
     @court = Court.new
@@ -43,6 +45,7 @@ class CourtsController < ApplicationController
     @comments = @court.comments.order("id DESC")
   end
 
+
   def edit
     @court = Court.find(params[:id])
   end
@@ -54,7 +57,6 @@ class CourtsController < ApplicationController
       render :edit
     end
   end
-
   def destroy
     @court = Court.find(params[:id])
     @court.destroy
@@ -68,6 +70,11 @@ class CourtsController < ApplicationController
                                   :url, :available_time, :station, :parking, :postal_code,
                                   :prefecture_code, :city, :street, :address,
                                   :is_valid, :other)
+  end
+
+  def ensure_admin_player?
+    admin_player = Player.find(1)
+    redirect_to player_path(current_player) unless current_player == admin_player
   end
 
 end

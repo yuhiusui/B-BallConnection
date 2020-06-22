@@ -2,11 +2,13 @@ class Court < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :liked_players, through: :likes, source: :player, dependent: :destroy
+  has_many :liked_players, through: :likes, source: :player
 
   attachment :court_image, destroy: false
+  attachment :player_image, destroy: false
 
 
+# 住所登録関連
   include JpPrefecture
   jp_prefecture :prefecture_code
   def prefecture_name
@@ -17,8 +19,8 @@ class Court < ApplicationRecord
   end
 
 
-
-  def liked_by?(player) # いいねしてたら消えるボタン
+# いいね確認用
+  def liked_by?(player)
     likes.where(player_id: player.id).exists?
   end
   def already_liked?(court)

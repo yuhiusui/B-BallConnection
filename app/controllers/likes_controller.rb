@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  before_action :authenticate_player!
   def liked_courts
     @player = Player.find(params[:player_id])
     @courts = @player.liked_courts.page(params[:page]).reverse_order.per(10)

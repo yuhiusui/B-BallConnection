@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_player!
   def create
     @court = Court.find(params[:court_id])
     @comment = @court.comments.new(comment_params)
@@ -15,14 +16,15 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:court_id])
     @court = @comment.court
     @comments = @court.comments.order("id DESC")
-    # ボタンプッシュ後
+
+  # ボタンプッシュ後
     redirect_to request.referer if @comment.player != current_player
     @comment.destroy
     @success = "コメントが削除されました"
   end
 
-  private
 
+  private
   def comment_params
     params.require(:comment).permit(:comment)
   end

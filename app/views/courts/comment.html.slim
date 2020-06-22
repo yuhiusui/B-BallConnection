@@ -5,7 +5,7 @@
 .row
 
   .court-left.col-5
-    h2.view-title コートレビュー
+    h2.view-title コートコメント
     = link_to "編集（管理者）", edit_court_path(@court), class: "btn btn-dark ml-4 mb-3"
     .court-links.d-flex
       = link_to "コートのプレイヤー", court_liked_players_path(@court), class: "btn btn-primary"
@@ -19,23 +19,7 @@
 
   .court-right.col-7
     div class="scroll-box comment_#{@court.id}"
-      / = render 'comments/comment', comments: @comments
-      table.table.table-borderless
-        - comments.each do |comment|
-          tbody
-            tr.row
-              td.col-2.text-right
-                = link_to player_path(comment.player), class: "player_#{comment.player.id}" do
-                  = attachment_image_tag comment.player, :player_image, :fill, fallback: "no_image.jpg", class: "image-xs image-shape-round"
-              td.col-7
-                = comment.player.name
-                br/
-                = comment.comment
-              td.col-3
-                = l comment.created_at, format: :short
-                br/
-                - if comment.player == current_player
-                  = link_to 'Destroy', court_comments_path(comment), method: :delete, remote: true, class: 'btn-sm btn-danger'
+      = render 'comments/comment', comments: @comments
     .comment-form
       = form_with model:[@court, @comment], data: {remote: true} do |f|
         .row

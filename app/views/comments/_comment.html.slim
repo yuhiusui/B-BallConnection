@@ -4,7 +4,7 @@ table.table.table-borderless
       tr.row
         td.col-2.text-right
           = link_to player_path(comment.player), class: "player_#{comment.player.id}" do
-            = attachment_image_tag comment.player, :player_image, :fill, fallback: "no_image.jpg", class: "image-xs image-shape-round"
+            = attachment_image_tag comment.player, :player_image, fallback: "no_image.jpg", class: "image-xs image-shape-round"
         td.col-7
           = comment.player.name
           br/
