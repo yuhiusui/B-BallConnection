@@ -8,11 +8,11 @@ h2.view-title
 
 .profile
   .row
-    .col-12
+    .col-6
       .row
         = attachment_image_tag @player, :player_image, fallback: "/assets/no_image.jpg", class: "image-md image-shape-round"
 
-        .profile-contents.col-5
+        .profile-contents.col-7
           .profile-sns
             - if current_player?(@player)
               = link_to "", edit_player_path(@player), class: "fa fa-cog mr-2"
@@ -42,7 +42,7 @@ h2.view-title
 
 
       .row
-        .col-6
+        .col-10.offset-1
           table.table.table-borderless
             tr
               th = link_to "フォロー：#{@player.following.count}", player_follows_path(@player)
@@ -58,7 +58,8 @@ h2.view-title
                 |シグネチャー<br>
                 |ムーブ
               th = current_player.skill
-        .col-6
-          h3 自己紹介
-          = current_player.intro
-              th = current_player.intro
+    .col-5
+      h3 自己紹介
+      .profile-intro
+        = simple_format(current_player.intro)
+    .offset-1

@@ -35,7 +35,7 @@
 
 
 .profile {
-  width: 80%;
+  width: 100%;
   margin-left: 5%;
 }
 .profile-contents
@@ -44,4 +44,8 @@
 }
 .profile-links{
   padding: 5px;
+}
+.profile-intro{
+  font-family: "851マカポップ";
+  word-break: break-all;
 }
