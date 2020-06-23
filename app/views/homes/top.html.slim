@@ -2,8 +2,11 @@
 
 / アプリ導入
 section#introduction.section-space
-  h2.section-title まだ見ぬ場所・人と繋がろう
+  h2.section-title B-Ball Connection
   p.section-text
+    |~まだ見ぬ場所・人と繋がろう~
+    br
+    br
     | B-Ball Connection(BBC)はバスケを通して人とつながる場です。
     br
     | 日本国内で吹き荒れるバスケットボール・ストリートボール革命の中、
@@ -46,6 +49,8 @@ section#feature.section-space
           | もしあなたの知ってるコートがまだ登録されてないなら？みんなに知らせることでそのコートに新しいボーラーが来るかも！
           br
           | 方法は簡単。管理者さんのSNSリンクから直接コート作成依頼のDMを送ろう！
+          br
+          = link_to "新規コート作成依頼", to_admin_path, class: "btn btn-primary"
     .feature-block.feature-list-item
       = image_tag "top/many_ball.jpeg", class: "feature-block-img"
       .feature-block-wrapper
@@ -62,7 +67,7 @@ section#feature.section-space
 /開発者の思い
 section#master.section-space.position-relative
   h2.section-title 管理者より個人的な思い
-  p.section-text
+  p.section-text.handwrite
     |バスケットボールが日本国内においてより一層人気になっているのを肌で感じる2020年4月。
     br
     |ストリートボールの3on3が3X3として生まれ変わり、今や小学生の子供たちですらストリートボールの文化を表現している。
@@ -71,7 +76,10 @@ section#master.section-space.position-relative
     br
     |そして、自分自身をプレーとファッションをもって表現し合う。（もちろん努力をした上で）
     br
-    |他人に話しかける文化があまりないこの国において、ストリートボール文化を通して、より多くの人々に繋がりを得て欲しい。
+    |他人に話しかける文化があまりないこの国において、
+    br
+    ストリートボール文化を通して、より多くの人々に繋がりを得て欲しい。
+    br
     br
     |長くなりましたが、ぜひ私にも直接DMくれるなりして、BBCの感想やバスケのお誘いください>_<
   = image_tag "https://fontmeme.com/permalink/200622/ee6c53c41a84ac1e9343145662c195e4.png", class: "signature"

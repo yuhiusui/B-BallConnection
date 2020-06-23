@@ -15,13 +15,6 @@
  /*Custom bootstrap variables must be set or imported *before* bootstrap.*/
 @import "bootstrap";
 
-.skipper {
-  height: 500px;
-}
-#theTarget div{
-  width: 300px;
-  height: 300px;
-}
 /*common*/
   *{
     margin:0;
@@ -36,25 +29,19 @@
     background-color: #f4a460;
   }
   body {
+    padding: 73px 0 30px;/*←header footerの高さ*/
     min-width: 1000px;
-    font-family: "Ricky Diminished", "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+    width: 100%;
     font-weight: 500;
     line-height: 2;
     color: #333;
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+    font-family: "Ricky Diminished", "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
   }
-
-  strong, b, mark, b, .typo-bold {
+  strong, b, mark, .typo-bold {
     font-family: "Ricky Diminished",'游ゴシック体', YuGothic, '游ゴシック', 'Yu Gothic', '游ゴシック', 'Yu Gothic', sans-serif;
     font-weight: 700;
   }
-
-  body {
-    width: 100%;
-    padding-bottom: 30px;/*←footerの高さ*/
-    padding-top: 6.5rem;
-    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
-  }
-
   header nav{
     background-image: image-url("sky1.jpg");
     position: fixed;            /* ヘッダーの固定 */
@@ -63,8 +50,8 @@
     width: 100%;                /* 横幅100%　*/
   }
   .main-content {
-    min-height: 640px;
-    background-image: url("bbc-bg.jpg");
+    min-height: 670px;
+    background-image: image-url("bbc-bg.jpg");
     background-attachment: fixed;
     background-size: cover;
     background-color:rgba(255,255,255,0.7);
@@ -105,6 +92,12 @@
     color: black;
     background: #f4a460;
   }
+  .handwrite {
+    font-family: "851手書き雑フォント";
+  }
+  .underline-orange {
+    border-bottom: 4px groove #f4a460;
+  }
   .copyright {
     line-height: 50px;
   }
@@ -144,7 +137,7 @@
   }
   .btn-nav{
     margin-right: 5px;
-    border: solid 2px #f4a460;
+    border: groove 4px #f4a460;
     color: #322D00;
   }
   .btn-nav:hover{
@@ -181,12 +174,12 @@
     object-fit: cover;
   }
   .image-shape {
-    border: 3px solid #f4a460;
+    border: 3px groove #f4a460;
   }
   .image-shape-round {
     border-radius: 50%;
-    padding: 5px;
-    border: 3px solid #f4a460;
+    padding: 3px;
+    border: 3px groove #f4a460;
   }
 
   .image1 {

@@ -22,7 +22,6 @@ h2.view-title
               = link_to "", @player.instagram, target: :_blank, class: "fa fa-instagram mr-2"
           .profile-links
             = link_to "お気に入りコート", player_liked_courts_path(@player), class: "btn btn-primary"
-            / = link_to "お気に入りコート", courts_path, class: "btn btn-primary"
           .profile-links
             - if current_player?(@player)
               - if current_player.admin?
@@ -37,8 +36,8 @@ h2.view-title
                   = link_to 'フォロー外す', player_relations_path(@player), method: :delete, class: "btn btn-primary"
                 - else
                   = link_to 'フォローする', player_relations_path(@player), method: :POST, class: "btn btn-success"
-            / - if current_player.admin? && !current_player?(@player)
-            = link_to "強制退会", player_admin_destroy_path(@player), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger"
+            - if current_player.admin? && !current_player?(@player)
+              = link_to "強制退会", player_admin_destroy_path(@player), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger"
 
 
       .row
@@ -48,18 +47,18 @@ h2.view-title
               th = link_to "フォロー：#{@player.following.count}", player_follows_path(@player)
               th = link_to "フォロワー:#{@player.followed.count}", player_followers_path(@player)
             tr
-              th.col-xs-1 ポジション
-              th = current_player.position_i18n
+              th.col-xs-3 ポジション
+              th = @player.position_i18n
             tr
-              th.col-xs-1 バスケ歴
-              th = current_player.history_i18n
+              th.col-xs3 バスケ歴
+              th = @player.history_i18n
             tr
-              th.col-xs-1
+              th.col-xs-3
                 |シグネチャー<br>
                 |ムーブ
-              th = current_player.skill
+              th.profile-skills = simple_format(@player.skill)
     .col-5
-      h3 自己紹介
-      .profile-intro
-        = simple_format(current_player.intro)
+      h3.underline-orange 自己紹介
+      .profile-intro.handwrite
+        = simple_format(@player.intro)
     .offset-1

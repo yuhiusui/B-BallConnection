@@ -18,11 +18,11 @@ h2.view-title コート詳細
     = render 'courts/info', court: @court
 
   .show-right.col-7
+    h3.underline-orange 所在地：#{@court.prefecture_name}#{@court.city}#{@court.street}
     div id="map" class="#{@court.prefecture_code} + #{@court.city} + #{@court.street}" style="height: 400px;"
-    h3 所在地：#{@court.prefecture_name}#{@court.city}#{@court.street}
-
-
-
+    h4.underline-orange.d-inline 補足
+    - if @court.other.present?
+        .handwrite = simple_format(@court.other)
 
 / 星評価のjs
 = render 'reviews/star', court: @court

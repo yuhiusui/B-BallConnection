@@ -1,7 +1,7 @@
 class PlayersController < ApplicationController
   before_action :authenticate_player!
   before_action :ensure_current_player?, only: [:edit, :update, :destroy]
-  # before_action :ensure_admin_player?, only: [:admin_destroy]
+  before_action :ensure_admin_player?, only: [:admin_destroy]
 
   def index
     @players = Player.page(params[:page]).reverse_order.per(50)

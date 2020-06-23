@@ -12,16 +12,16 @@
       - players.each do |player|
         tr
           td = attachment_image_tag player, :player_image, fallback: "/assets/no_image.jpg", class: "image-xs image-shape"
-          td = link_to player.name, player_path(player)
-          td = player.position
+          td.pt-3 = link_to player.name, player_path(player)
+          td.text-center.pt-3 = player.position
           td フォロー：#{player.following.count}<br>
              フォロワー:#{player.followed.count}
-          td = link_to " お気に入りコート ", player_liked_courts_path(player), class: "btn btn-primary"
+          td = link_to " お気に入りコート ", player_liked_courts_path(player), class: "btn btn-primary mt-3"
           - if !current_player?(player)
             - if player.is_valid == false
-              p.btn.btn-dark 退会済み
+              td.text-center.pt-3 退会済み
             - else
               - if current_player.following?(player)
-                td = link_to 'フォロー外す', player_relations_path(player.id), method: :delete, class: "btn btn-danger"
+                td = link_to 'フォロー外す', player_relations_path(player.id), method: :delete, class: "btn btn-danger mt-3"
               - else
-                td = link_to 'フォローする', player_relations_path(player.id), method: :POST, class: "btn btn-success"
+                td = link_to 'フォローする', player_relations_path(player.id), method: :POST, class: "btn btn-success mt-3"

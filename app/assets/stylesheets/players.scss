@@ -8,6 +8,19 @@
 .retire{
   text-align: center;
 }
+.profile {
+  width: 100%;
+  margin-left: 5%;
+}
+.profile-contents
+.profile-sns, .profile-links {
+  padding: 5px;
+}
+.profile-intro, .profile-skills {
+  word-break: break-all;
+}
+
+
 .new-pic-select {
   position: absolute;
   top: 50%;
@@ -31,21 +44,4 @@
   bottom: 0;
   left: 40%;
   transform: translateX(-40%)
-}
-
-
-.profile {
-  width: 100%;
-  margin-left: 5%;
-}
-.profile-contents
-.profile-sns {
-  padding: 5px;
-}
-.profile-links{
-  padding: 5px;
-}
-.profile-intro{
-  font-family: "851マカポップ";
-  word-break: break-all;
 }
