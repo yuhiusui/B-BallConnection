@@ -110,9 +110,9 @@ section#master.section-space.position-relative
   #carouselExampleFade.carousel.slide.carousel-fade data-ride="carousel"
     .carousel-inner
       .carousel-item.active
-        img.d-block.w-100 src="/assets/team_pic.jpg" alt="cake_top"
+        img.d-block.w-100 src=("#{asset_path "team_pic.jpg"}")  alt="cake_top"
       .carousel-item
-        img.d-block.w-100 src="/assets/Nagano_cake_pic.jpg" alt="cake_top"
+        img.d-block.w-100 src=("#{asset_path "Nagano_cake_pic.jpg"}")  alt="cake_top"
 
     a.carousel-control-prev href="#carouselExampleFade" role="button" data-slide="prev"
       span.carousel-control-prev-icon aria-hidden="true"
