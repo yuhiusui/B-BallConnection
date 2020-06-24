@@ -33,6 +33,7 @@ class CourtsController < ApplicationController
 
   def show
     @court = Court.find(params[:id])
+    courts = Court.all
   end
   def review
     @court = Court.find(params[:court_id])
