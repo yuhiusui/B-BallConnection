@@ -4,7 +4,6 @@
   .row
     .court-left.col-6
       .form-group
-        = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-lg"
         = f.attachment_field :court_image, class: "form-control-file"
       .form-group.form-row
         = f.label :postal_code, "郵便番号", class: "col-5"

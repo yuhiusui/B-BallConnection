@@ -1,5 +1,4 @@
 = stylesheet_link_tag 'players'
-= stylesheet_link_tag 'images'
 
 
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
@@ -50,8 +49,9 @@
       .form-group.form-row
         = f.label 'Instagram URL', class: 'col-5'
         = f.text_field :instagram, placeholder: "任意", class: "form-control col-5"
+
+      h3.underline-orange プロフィール画像登録
       .new-pic-select
-        = attachment_image_tag resource, :player_image, fallback: "/assets/no_image.jpg", class: "image-xl"
         = f.attachment_field :player_image
       .new-btn-bottom
         = f.submit "新規登録", class: "btn btn-success btn-lg"

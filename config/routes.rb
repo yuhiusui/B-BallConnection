@@ -31,16 +31,4 @@ Rails.application.routes.draw do
   get 'to_admin' => 'homes#to_admin'
   get 'leave' => 'players#leave'
   patch 'leave' => 'players#update_status'
-  # namespace :public do
-  #   get '' => 'players#show'
-  #   get 'edit' => 'players#edit'
-  #   patch '' => 'players#update'
-  #   patch 'leave' => 'players#update_status'
-  #   get 'leave' => 'players#leave'
-  #   resources :players
-  #   resources :courts
-  #   resources :comments
-  #   resources :favorites
-  #   resources :relations
-  # end
 end

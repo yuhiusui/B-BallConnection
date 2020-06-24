@@ -14,7 +14,6 @@
  */
  /*Custom bootstrap variables must be set or imported *before* bootstrap.*/
 @import "bootstrap";
-
 /*common*/
   *{
     margin:0;
@@ -103,6 +102,10 @@
   }
   .header-logo {
     width: 100px;
+  }
+  .thumb {
+    // 新規画像プレビューの大きさ
+    width: 80%;
   }
 /*common*/
 

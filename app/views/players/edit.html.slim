@@ -1,5 +1,4 @@
 = stylesheet_link_tag 'players'
-= stylesheet_link_tag 'images'
 
 
 = form_with model: @player, url: {controller: 'players', action: 'update' },local: true do |f|
@@ -43,8 +42,9 @@
       .form-group.form-row
         = f.label 'Instagram URL', class: 'col-5'
         = f.text_field :instagram, placeholder: "任意", class: "form-control col-5"
+
+      h3.underline-orange プロフィール画像変更
       .edit-pic-select
-        = attachment_image_tag @player, :player_image, fallback: "/assets/no_image.jpg", class: "image-lg"
         = f.attachment_field :player_image
       .edit-btn-bottom
         = f.submit "編集内容を保存する", class: "btn btn-primary mr-3"
