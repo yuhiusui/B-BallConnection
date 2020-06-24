@@ -1,8 +1,11 @@
 = stylesheet_link_tag 'players'
-= stylesheet_link_tag 'images'
 
-h2.view-title フォロワー一覧
+.d-flex
+  h2.view-title フォロワー一覧
+  p.ml-2 = paginate @players
+
 - if @players.count > 0
   = render '/players/index', players: @players
+  = paginate @players
 - else
   p ユーザーはいません

@@ -1,4 +1,5 @@
 class RelationsController < ApplicationController
+  before_action :authenticate_player!
   def create
     current_player.follow(params[:player_id])
     redirect_to request.referer
@@ -11,11 +12,11 @@ class RelationsController < ApplicationController
 
   def following
     player = Player.find(params[:player_id])
-    @players = player.following_player
+    @players = player.following_player.page(params[:page]).reverse_order.per(20)
   end
 
   def followed
     player = Player.find(params[:player_id])
-    @players = player.follower_player
+    @players = player.follower_player.page(params[:page]).reverse_order.per(20)
   end
 end

@@ -13,31 +13,22 @@ Rails.application.routes.draw do
 
   resources :players do
     resource :relations, only: [:create, :destroy]
+    delete 'admin_destroy' => 'players#admin_destroy'
     get 'follows' => 'relations#following', as: 'follows'
     get 'followers' => 'relations#followed', as: 'followers'
     get 'liked_courts' => 'likes#liked_courts'
   end
   resources :courts do
+    resource :reviews, only: [:create, :destroy]
     resource :comments, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
+    get 'review' => 'courts#review'
+    get 'comment' => 'courts#comment'
     get 'liked_players' => 'likes#liked_players'
   end
 
   root 'homes#top'
-  patch 'leave' => 'players#update_status'
+  get 'to_admin' => 'homes#to_admin'
   get 'leave' => 'players#leave'
-
-
-  # namespace :public do
-  #   get '' => 'players#show'
-  #   get 'edit' => 'players#edit'
-  #   patch '' => 'players#update'
-  #   patch 'leave' => 'players#update_status'
-  #   get 'leave' => 'players#leave'
-  #   resources :players
-  #   resources :courts
-  #   resources :comments
-  #   resources :favorites
-  #   resources :relations
-  # end
+  patch 'leave' => 'players#update_status'
 end

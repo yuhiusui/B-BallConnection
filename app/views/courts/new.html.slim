@@ -1,45 +1,56 @@
 = stylesheet_link_tag 'courts'
-
-h2.view-title コート新規登録（管理者）
-
 = form_with model: @court, local: true do |f|
+  h2.view-title コート作成（管理者）
   .row
-    .col-xs-3
-      = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-lg"
-      = f.attachment_field :court_image, class: ""
-    .col-xs-3
-      .field
-        = f.label :name, "コート名"
-        = f.text_field :name, class: ""
-      .field
-        = f.label :number, "ゴール数"
-        = f.select :number, [["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9]]
-      .field
-        = f.label :floor, "床"
-        = f.text_field :floor, class: "floor", placeholder: "砂？コンクリート？etc"
-      .field
-        = f.label :fee, "料金"
-        = f.text_field :fee, class: "fee", placeholder: "無料？00円/1時間"
-      .field
-        = f.label :station, "駅"
-        = f.text_field :station, class: "station", placeholder: "~駅徒歩00分"
-    .col-xs-3
-      .field
-        = f.text_field :url, class: "", placeholder: "url"
-      .field
-        = f.label :parking, "駐車場"
-        = f.text_field :parking, class: ""
-      .field
-        = f.label :available_time, "利用可能時間"
-        = f.text_field :available_time, class: ""
-      .field
-        = f.label :address, "街"
-        = f.text_field :address, class: "", placeholder: "〇〇県〇〇市0-0-0（番地）"
-      .field
-        = f.label :is_valid, "利用状況"
-        = f.select :is_valid,[["利用可",true],["利用不可",false]],{include_blank: false, selected: true},{class: "is_valid"}
-  .row
-      .field
-        = f.label :other, "その他補足"
-        = f.text_area :other
-        = f.submit "新規登録" , class:"btn btn-primary btn-sm"
+    .court-left.col-6
+      .form-group
+        = f.attachment_field :court_image, class: "form-control-file"
+      .form-group.form-row
+        = f.label :postal_code, "郵便番号", class: "col-5"
+        = f.text_field :postal_code, class: "form-control col-5"
+      .form-group.form-row
+        = f.label :prefecture_code, "都道府県", class: "col-5"
+        = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, {selected: 1}, class: "form-control col-5"
+      .form-group.form-row
+        = f.label :city, "市町区以下", class: "col-5"
+        = f.text_field :city, class: "form-control col-5"
+      .form-group.form-row
+        = f.label :street, "番地", class: "col-5"
+        = f.text_field :street, class: "form-control col-5"
+      .form-group.form-row
+        = f.label :address, "場所（表示）", class: "col-5"
+        = f.text_field :address, class: "form-control col-5", placeholder: "〇〇市"
+      .form-group.form-row
+        = f.label :station, "駅", class: "col-5"
+        = f.text_field :station, class: "form-control col-5", placeholder: "~駅徒歩00分"
+
+    .court-right.col-6.position-relative
+      .form-group.form-row
+        = f.label :name, "コート名", class: "col-5"
+        = f.text_field :name, class: "form-control col-5"
+      .form-group.form-row
+        = f.label :url, "ホームページ", class: "col-5"
+        = f.text_area :url, class: "form-control col-5 ", placeholder: "url"
+      .form-group.form-row
+        = f.label :number, "ゴール数", class: "col-5"
+        = f.select :number, [["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9]], {selected: 1}, class: "form-control col-5"
+      .form-group.form-row
+        = f.label :floor, "床", class: "col-5"
+        = f.text_field :floor, class: "form-control col-5", placeholder: "砂？コンクリート？etc"
+      .form-group.form-row
+        = f.label :fee, "料金", class: "col-5"
+        = f.text_field :fee, class: "form-control col-5", placeholder: "無料？00円/1時間"
+      .form-group.form-row
+        = f.label :parking, "駐車場", class: "col-5"
+        = f.text_field :parking, class: "form-control col-5"
+      .form-group.form-row
+        = f.label :is_valid, "利用状況", class: "col-5"
+        = f.select :is_valid,[["利用可",true],["利用不可",false]], {selected: 1},class: "form-control col-5 is_valid"
+      .form-group.form-row
+        = f.label :available_time, "利用可能時間", class: "col-5"
+        = f.text_field :available_time, class: "form-control col-5"
+      .form-group.form-row
+        = f.label :other, "その他補足", class: "col-5"
+        = f.text_area :other, class: "form-control col-5"
+      .btn-bottom
+        = f.submit "作成する" , class: "btn btn-success mr-3"

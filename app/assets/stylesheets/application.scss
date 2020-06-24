@@ -12,7 +12,7 @@
  *
  *= require_self
  */
- // Custom bootstrap variables must be set or imported *before* bootstrap.
+ /*Custom bootstrap variables must be set or imported *before* bootstrap.*/
 @import "bootstrap";
 /*common*/
   *{
@@ -23,59 +23,89 @@
   a {
     color: black;
   }
-  body {
-    width: 100%;
-    padding-bottom: 30px;/*←footerの高さ*/
-    padding-top: 6.5rem;
-    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+  a:hover {
+    text-decoration: none;
+    background-color: #f4a460;
   }
-
-  nav{
+  body {
+    padding: 73px 0 30px;/*←header footerの高さ*/
+    min-width: 1000px;
+    width: 100%;
+    font-weight: 500;
+    line-height: 2;
+    color: #333;
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+    font-family: "Ricky Diminished", "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  }
+  strong, b, mark, .typo-bold {
+    font-family: "Ricky Diminished",'游ゴシック体', YuGothic, '游ゴシック', 'Yu Gothic', '游ゴシック', 'Yu Gothic', sans-serif;
+    font-weight: 700;
+  }
+  header nav{
     background-image: image-url("sky1.jpg");
     position: fixed;            /* ヘッダーの固定 */
     top: 0px;                   /* 位置(上0px) */
     left: 0px;                  /* 位置(右0px) */
     width: 100%;                /* 横幅100%　*/
   }
-  main {
-    height: 640px;
+  .main-content {
+    min-height: 670px;
     background-image: image-url("bbc-bg.jpg");
+    background-attachment: fixed;
     background-size: cover;
     background-color:rgba(255,255,255,0.7);
     background-blend-mode:lighten;
   }
+  .outline {
+    padding: 10px 0;
+  }
   footer {
+    display: flex;
+    justify-content: center;
     position: fixed;
     bottom: 0px;
     left: 0px;
     width: 100%;
-    text-align: center;
+    height: 50px;
     background-image: image-url("sky1.jpg");
   }
   #notice {
     color: black;
     font-size: 16px;
+    z-index: 10;
   }
   #notice::before {
-  content: "\f434";
-  font-family: "Font Awesome 5 Free";
+    content: "\f434";
+    font-family: "Font Awesome 5 Free";
   }
   #notice::after {
-  content: "\f434";
-  font-family: "Font Awesome 5 Free";
+    content: "\f434";
+    font-family: "Font Awesome 5 Free";
   }
   .view-title {
+    // 各ページのタイトル
     display: inline-block;
-    margin: 20px 0 20px 10%;
-    padding: 2px 15px;
+    margin: 0 0 10px 5%;
+    padding: 0 15px;
     border-radius: 5px;
     color: black;
     background: #f4a460;
   }
-  .scroll-box{
-    max-width: 600px;
-    height:500px;
-    overflow-y:scroll;
+  .handwrite {
+    font-family: "851手書き雑フォント";
+  }
+  .underline-orange {
+    border-bottom: 4px groove #f4a460;
+  }
+  .copyright {
+    line-height: 50px;
+  }
+  .header-logo {
+    width: 100px;
+  }
+  .thumb {
+    // 新規画像プレビューの大きさ
+    width: 80%;
   }
 /*common*/
 
@@ -95,23 +125,22 @@
   th{
     overflow-wrap : break-word;
   }
+  .scroll-box{
+    // 溢れたテーブルのため
+    max-width: 600px;
+    height:520px;
+    overflow-y:scroll;
+  }
 /*table*/
 
 
 /*btn*/
-  .nav-player {
-    margin-right: 5px;
-    padding: 5px 5px;
-    border-radius: 5px;
-    color: black;
-    background: #f4a460;
-  }
   .btn {
     margin: 2px;
   }
   .btn-nav{
     margin-right: 5px;
-    border: solid 2px #f4a460;
+    border: groove 4px #f4a460;
     color: #322D00;
   }
   .btn-nav:hover{
@@ -139,7 +168,7 @@
     object-fit: cover;
   }
   .image-md-court {
-    height: 150px;
+    height: 100px;
     object-fit: cover;
   }
   .image-xs {
@@ -148,12 +177,28 @@
     object-fit: cover;
   }
   .image-shape {
-    border: 3px solid #f4a460;
+    border: 3px groove #f4a460;
   }
   .image-shape-round {
     border-radius: 50%;
-    padding: 5px;
-    border: 3px solid #f4a460;
+    padding: 3px;
+    border: 3px groove #f4a460;
+  }
+
+  .image1 {
+    background-image: image-url("test1.jpg");
+  }
+  .image2 {
+    background-image: image-url("test2.jpg");
+  }
+  .image3 {
+    background-image: image-url("test3.jpg");
+  }
+  .image4 {
+    background-image: image-url("test4.jpg");
+  }
+  .image5 {
+    background-image: image-url("test5.jpg");
   }
 /*image*/
 

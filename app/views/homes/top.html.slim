@@ -1,4 +1,112 @@
-.row
+= stylesheet_link_tag 'homes'
+
+/ アプリ導入
+section#introduction.section-space
+  h2.section-title B-Ball Connection
+  p.section-text
+    |~まだ見ぬ場所・人と繋がろう~
+    br
+    br
+    | B-Ball Connection(BBC)はバスケを通して人とつながる場です。
+    br
+    | 日本国内で吹き荒れるバスケットボール・ストリートボール革命の中、
+    br
+    | 人種、国籍、男女、年齢関係なく人々がバスケを楽しめることを願っています。
+
+/ サイトの特徴
+section#feature.section-space
+  h2.view-title BBCの使い方
+  .feature-list
+    .feature-block.feature-list-item
+      = image_tag "top/unknown_court.jpeg", class: "feature-block-img"
+      .feature-block-wrapper
+        h3.feature-block-title まだ知らぬコートに出会おう
+        p.feature-block-text
+          | ストリートコートって見つけにくいですよね？
+          br
+          | でも知らないだけで、意外とご近所にあるかも。
+          br
+          | BBCは登録してある全国のコートが簡単に探せます！
+          br
+          | みなさんがコートに行く前に欲しい情報やレビュー、そこのコートに関する他のユーザーのコメントも逐一チェックが可能です。
+    .feature-block.feature-list-item
+      = image_tag "top/bbc_connection.jpeg", class: "feature-block-img"
+      .feature-block-wrapper
+        h3.feature-block-title コートを通じてボーラーに出会おう
+        p.feature-block-text
+          | 直接話しづらい人や一人でコートに行く人も安心。
+          br
+          | コートを「いいね」してる人を一覧で確認できます。
+          br
+          | その人のバスケに関する情報を前もって知れるし、SNSを登録してる人なら直接そのSNSを通してDMを送ってみましょう！
+          br
+          | 逆に見知らぬボーラーからコンタクトがもらえるかも？！プロフィールは充実させておこう！
+    .feature-block.feature-list-item
+      = image_tag "top/court_share", class: "feature-block-img"
+      .feature-block-wrapper
+        h3.feature-block-title 自分の知ってるコートをみんなに教えよう
+        p.feature-block-text
+          | もしあなたの知ってるコートがまだ登録されてないなら？みんなに知らせることでそのコートに新しいボーラーが来るかも！
+          br
+          | 方法は簡単。管理者さんのSNSリンクから直接コート作成依頼のDMを送ろう！
+          br
+          = link_to "新規コート作成依頼", to_admin_path, class: "btn btn-primary"
+    .feature-block.feature-list-item
+      = image_tag "top/many_ball.jpeg", class: "feature-block-img"
+      .feature-block-wrapper
+        h3.feature-block-title 繋がった後は自分次第
+        p.feature-block-text
+          | 知り合ってしまえば後は一緒にバスケしましょう！
+          br
+          | BBCがサポートするのは知り合うまで。
+          br
+          | 1on1,3on3,5on5対決したりお互いの「シグネチャームーブ」を教えたり,彼らとどう楽しむかはあなた次第！
+          br
+          | 実践を通して思いっきり自分を表現しよう！
+
+/開発者の思い
+section#master.section-space.position-relative
+  h2.section-title 管理者より個人的な思い
+  p.section-text.handwrite
+    |バスケットボールが日本国内においてより一層人気になっているのを肌で感じる2020年4月。
+    br
+    |ストリートボールの3on3が3X3として生まれ変わり、今や小学生の子供たちですらストリートボールの文化を表現している。
+    br
+    |その文化とはボール一つ持って街中のコートに出向き、そこで出会ったものと一緒に遊ぶ。
+    br
+    |そして、自分自身をプレーとファッションをもって表現し合う。（もちろん努力をした上で）
+    br
+    |他人に話しかける文化があまりないこの国において、
+    br
+    ストリートボール文化を通して、より多くの人々に繋がりを得て欲しい。
+    br
+    br
+    |長くなりましたが、ぜひ私にも直接DMくれるなりして、BBCの感想やバスケのお誘いください>_<
+  = image_tag "https://fontmeme.com/permalink/200622/ee6c53c41a84ac1e9343145662c195e4.png", class: "signature"
+
+
+
+
+
+
+
+
+/ .skipper
+/   #theTarget
+/     .image1
+/     .image2
+/     .image3
+/     .image4
+/     .image5
+
+
+
+
+
+
+
+
+/ .row
   #carouselExampleFade.carousel.slide.carousel-fade data-ride="carousel"
     .carousel-inner
       .carousel-item.active

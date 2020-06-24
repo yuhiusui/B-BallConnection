@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_11_132745) do
+ActiveRecord::Schema.define(version: 2020_06_22_042335) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2020_06_11_132745) do
     t.boolean "is_valid", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_players_on_email", unique: true
     t.index ["id"], name: "index_players_on_id"
     t.index ["name"], name: "index_players_on_name"
@@ -106,6 +107,19 @@ ActiveRecord::Schema.define(version: 2020_06_11_132745) do
     t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "court_id"
+    t.integer "player_id"
+    t.string "rv_title", null: false
+    t.text "rv_body", null: false
+    t.float "rate", default: 0.0, null: false
+    t.string "rv_image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["court_id"], name: "index_reviews_on_court_id"
+    t.index ["player_id"], name: "index_reviews_on_player_id"
   end
 
 end

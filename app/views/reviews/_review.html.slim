@@ -1,0 +1,32 @@
+div class="scroll-box review_#{@court.id}"
+  table.table.table-borderless
+    - reviews.each do |review|
+      tbody
+        tr.row
+          td.col-2.text-right
+            = link_to player_path(review.player), class: "player_#{review.player.id}" do
+              = attachment_image_tag review.player, :player_image, fallback: "no_image.jpg", class: "image-xs image-shape-round"
+          td.col-7
+            div id="star-rate-#{review.id}" = review.rate
+            = "：#{review.rv_title}"
+            = "by #{review.player.name}"
+            br/
+            = "=>#{review.rv_body}"
+          td.col-3
+            = l review.created_at, format: :short
+            br/
+            - if current_player?(review.player) || current_player.admin?
+              = link_to 'Destroy', court_reviews_path(review), method: :delete, remote: true, class: 'btn-sm btn-danger'
+
+
+.review-form
+  = form_with model:[@court, @review], data: {remote: true} do |f|
+    .row
+      .form-group#star.col-4
+        = f.text_field :rv_title, placeholder: "タイトル(3~10文字)", class: "form-control"
+        = f.label :rate, "点数"
+        = f.hidden_field :rate, id: :review_star
+      .form-group.col-4
+        = f.text_area :rv_body, placeholder: "コメント(3~50文字)", class: "form-control"
+      .col-4
+        = f.submit '投稿する', class: "btn btn-success btn-lg"

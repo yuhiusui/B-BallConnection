@@ -1,2 +1,9 @@
-$("#comments-area").html("<%= j(render 'comments/comment', comments: @comments) %>");
 $("textarea").val("");
+$(".comment_<%= @court.id %>").html("<%= j(render 'comments/comment', comments: @comments) %>");
+var success = '<%= @success %>';
+if (success) {
+  $('#alert-message').html('<div class="alert alert-success fas fa-basketball-ball" id="notice"><%= @success %></div>')
+}
+else {
+  $('#alert-message').html('<div class="alert alert-warning fas fa-basketball-ball" id="notice"><%= @warning %></div>')
+}

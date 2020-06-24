@@ -1,0 +1,36 @@
+.court-info.mt-3
+  h4.font-weight-bold =link_to "#{@court.name}(HPはこちら)", @court.url, :target=>["_blank"]
+  / レイアウト崩れる
+  .row
+    table.col-6
+      tr
+        td.fas.fa-basketball-ball：
+        td = "ゴール#{@court.number}機"
+      tr
+        td 床：
+        td = @court.floor
+      tr
+        td 料金：
+        td = @court.fee
+      tr
+        td 駅：
+        td ああああああああああfffffff
+    table.col-6
+      tr
+        td id="star-rate-#{@court.id}" = link_to "", court_review_path(@court)
+      tr
+        td 駐車場：
+        td = @court.parking
+      tr
+        td 利用時間：
+        td = @court.available_time
+      tr
+        td 利用状況：
+        td
+          - if @court.is_valid == true
+            span 利用可
+          - else
+            span 利用不可
+      tr
+        td 最終更新：
+        td = l @court.updated_at, format: :short

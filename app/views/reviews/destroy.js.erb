@@ -1,0 +1,2 @@
+$(".review_<%= @court.id %>").html("<%= j(render 'reviews/review', reviews: @reviews) %>")
+$('#alert-message').html('<div class="alert alert-success fas fa-basketball-ball" id="notice"><%= @success %></div>')

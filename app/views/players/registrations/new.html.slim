@@ -1,50 +1,40 @@
+= stylesheet_link_tag 'players'
+
+
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = render "devise/shared/error_messages", resource: resource
 
+  h2.view-title 新規登録画面
   .row
-    .col-md-6
-      h2 新規会員登録
-      .form-row
-        = f.label "登録名", class: "col-sm-5"
-        = f.text_field :name, autofocus: true, autocomplete: "name", class: "col-sm-5"
-      br/
-      .form-row
-        = f.label "email", class: "col-sm-5"
-        = f.email_field :email, class: "col-sm-5"
-      br/
-      .form-row
-        = f.label "ポジション", class: "col-sm-5"
-        / = f.select :position, [["PG",1],["SG",2],["SF",3],["PF",4],["C",5]],
-                             class: "col-sm-5", prompt: "選択してください"
+    .player-left.col-6
+      .form-row.form-group
+        = f.label "登録名(2~10文字)", class: "col-5"
+        = f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "必須", class: "col-5 form-control"
+      .form-group.form-row
+        = f.label "email", class: "col-5"
+        = f.email_field :email, placeholder: "必須", class: "form-control col-5"
+      .form-group.form-row
+        = f.label "ポジション", class: "col-5"
         = f.select :position, Player.positions.keys.map {|k| [I18n.t("enums.player.position.#{k}"), k]},
-                              class: "col-sm-5", prompt: "選択してください"
-
-      br/
-      .form-row
-        = f.label "バスケ歴", class: "col-sm-5"
-        / = f.select :history, [["1年未満",1],["1~3年",2],["3~5年",3],["5~10年",4],["10年以上",5]],
-                             class: "col-sm-5", prompt: "選択してください"
+                              {prompt: "選択してください"}, class: "form-control col-5"
+      .form-group.form-row
+        = f.label "バスケ歴", class: "col-5"
         = f.select :history, Player.histories.keys.map {|k| [I18n.t("enums.player.history.#{k}"), k]},
-                             class: "col-sm-5", prompt: "選択してください"
-      br/
-      .form-row
-        = f.label "シグネチャームーブ", class: "col-sm-5"
-        = f.text_area :skill, class: "col-sm-5"
-      br/
-      .form-row
-        = f.label "パスワード", class: "col-sm-5"
+                             {prompt: "選択してください"}, class: "form-control col-5"
+      .form-group.form-row
+        = f.label "シグネチャームーブ", class: "col-5"
+        = f.text_area :skill, placeholder: "任意（改行推奨）", class: "form-control col-5"
+      .form-group.form-row
+        = f.label "パスワード", class: "col-5"
           - if @minimum_password_length
             | パスワード(#{@minimum_password_length} 文字以上)
-        = f.password_field :password, autocomplete: "new-password", class: "col-sm-5"
-      br/
-      .form-row
-        = f.label "パスワード確認", class: "col-sm-5"
-        = f.password_field :password_confirmation, autocomplete: "new-password", class: "col-sm-5"
-      br/
-      .form-row
-        = f.label "自己紹介", class: "col-sm-5"
-        = f.text_area :intro, class: "col-sm-5"
-      br/
+        = f.password_field :password, autocomplete: "new-password", placeholder: "必須", class: "form-control col-5"
+      .form-group.form-row
+        = f.label "パスワード確認", class: "col-5"
+        = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "必須", class: "form-control col-5"
+      .form-group.form-row
+        = f.label "自己紹介(300文字まで)", class: "col-5"
+        = f.text_area :intro, placeholder: "任意（改行推奨）", class: "form-control col-5"
       .kotira
         h2 既に登録済みの方
         p
@@ -52,11 +42,17 @@
           | からログインしてください。
 
 
-    .col-md-6
-      .form-row
-        = attachment_image_tag resource, :player_image, fallback: "/assets/no_image.jpg", class: "image-xl"
+    .player-right.col-6.position-relative
+      .form-group.form-row
+        = f.label 'Twitter URL', class: 'col-5'
+        = f.text_field :twitter, placeholder: "任意", class: "form-control col-5"
+      .form-group.form-row
+        = f.label 'Instagram URL', class: 'col-5'
+        = f.text_field :instagram, placeholder: "任意", class: "form-control col-5"
+
+      h3.underline-orange プロフィール画像登録
+      .new-pic-select
         = f.attachment_field :player_image
-      .actions
+      .new-btn-bottom
         = f.submit "新規登録", class: "btn btn-success btn-lg"
-      br/
 

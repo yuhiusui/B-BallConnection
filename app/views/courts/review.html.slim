@@ -1,22 +1,24 @@
 = stylesheet_link_tag 'courts'
+= stylesheet_link_tag 'players'
 
-h2.view-title コートレビュー
+.row
+  .court-left.col-5
+    h2.view-title コートレビュー
+    = link_to "編集（管理者）", edit_court_path(@court), class: "btn btn-dark ml-4 mb-3"
+    .court-links.d-flex
+      = link_to "コートのプレイヤー", court_liked_players_path(@court), class: "btn btn-primary"
+      = link_to "コメント(#{@court.comments.count})", court_comment_path(@court), class: "btn btn-info ml-2"
+      = link_to "詳細ページ", court_path(@court), class: "btn btn-primary ml-2"
+    .court-image
+      = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-lg image-shape"
+      .like-court-show.court_#{@court.id}
+        = render 'likes/likes', court: @court
+    = render 'courts/info', court: @court
 
-row
-  .col-xs-4
-    = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-xl"
-  .col-xs-4
-    table.bottom-space
-      tr
-        td 商品名
-        td= @court.name
-      tr
-        td 利用状況
-        td
-          - if @court.is_valid == true
-            span 利用可
-          - else
-            span 利用不可
-    .bottom-space
-      = link_to "編集", edit_court_path(@court), class: "btn btn-primary"
+  .court-right.col-7
+    = render 'reviews/review', reviews: @reviews
 
+
+
+/ 星評価のjavascript
+= render 'reviews/star', court: @court

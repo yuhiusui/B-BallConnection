@@ -8,33 +8,40 @@
 .retire{
   text-align: center;
 }
-
-.player__edit--left
-.player__edit--right {
-  position: relative;
+.profile {
+  width: 100%;
+  margin-left: 5%;
 }
-.player__edit--pic-select {
+.profile-contents
+.profile-sns, .profile-links {
+  padding: 5px;
+}
+.profile-intro, .profile-skills {
+  word-break: break-all;
+}
+
+
+.new-pic-select {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.new-btn-bottom {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  transform: translateY(-10%)
+}
+.edit-pic-select {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
 }
-.player__edit--btn-bottom {
+.edit-btn-bottom {
   position: absolute;
   bottom: 0;
   left: 40%;
   transform: translateX(-40%)
-}
-
-
-.profile {
-  width: 70%;
-  margin-left: 5%;
-}
-.profile-contents
-.profile-sns {
-  padding: 5px;
-}
-.profile-links{
-  padding: 5px;
 }
