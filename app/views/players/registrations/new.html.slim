@@ -6,7 +6,7 @@
 
   h2.view-title 新規登録画面
   .row
-    .player-left.col-6
+    .player-left.col-lg-6.col-12
       .form-row.form-group
         = f.label "登録名(2~10文字)", class: "col-5"
         = f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "必須", class: "col-5 form-control"
@@ -35,14 +35,6 @@
       .form-group.form-row
         = f.label "自己紹介(300文字まで)", class: "col-5"
         = f.text_area :intro, placeholder: "任意（改行推奨）", class: "form-control col-5"
-      .kotira
-        h2 既に登録済みの方
-        p
-          = link_to "こちら", new_player_session_path
-          | からログインしてください。
-
-
-    .player-right.col-6.position-relative
       .form-group.form-row
         = f.label 'Twitter URL', class: 'col-5'
         = f.text_field :twitter, placeholder: "任意", class: "form-control col-5"
@@ -50,9 +42,17 @@
         = f.label 'Instagram URL', class: 'col-5'
         = f.text_field :instagram, placeholder: "任意", class: "form-control col-5"
 
+
+    .player-right.col-lg-6.col-12position-relative
       h3.underline-orange プロフィール画像登録
       .new-pic-select
         = f.attachment_field :player_image
       .new-btn-bottom
         = f.submit "新規登録", class: "btn btn-success btn-lg"
+      / .kotira
+      /   h2 既に登録済みの方
+      /   p
+      /     = link_to "こちら", new_player_session_path
+      /     | からログインしてください。
+
 

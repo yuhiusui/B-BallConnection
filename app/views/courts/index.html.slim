@@ -11,7 +11,7 @@
       = f.search_field :prefecture_code_eq
       = f.submit
 
-.row.row-cols-xl-5.row-cols-lg-4.row-cols-md-3.row-cols-sm-2.row-cols-xs-1
+.row.row-cols-xl-5.row-cols-lg-4.row-cols-md-3.row-cols-sm-2.row-cols-1
   - @courts.each do |court|
     - if court.is_valid == true
       .col.mb-5

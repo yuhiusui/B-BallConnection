@@ -1,0 +1,77 @@
+/*PC → インナーの幅まで
+タブレット → インナーの幅からiPad（768px）まで
+スマホ → iPadより小さい（767px）からiPhone SE（320px）まで*/
+
+/* ========================================
+bootstrap ブレークポイント
+xs 0-544px
+sm 544-768px
+md 768-992px
+lg 992-1200px
+xl 1200- */
+
+// @media (max-width: 575.98px) {
+// }
+@media (max-width: 767.98px) {
+    .new-pic-select {
+      position: static!important;
+      top: 0 !important;
+      left: 0!important;
+      transform: translateY(0)!important;
+    }
+    .new-btn-bottom{
+      position: static!important;
+      bottom: 0!important;
+      left: 0!important;
+      transform: translateY(0%)!important;
+    }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+}
+@media (min-width: 1200px) {
+}
+
+/*=========================================
+{{スマホを基本設計にする}}
+ - 〜479px：SP縦
+ - 480px〜599px：SP横
+ - 600px〜959px：タブレット
+ - 960px〜1279px：小型PC
+ - 1280px〜：大型PC
+====================*/
+
+/* ================================ */
+/* 文字サイズを自動変更 */
+/* 見出しのfont-sizeは640px〜1200pxの間は可変するようにし、640px以下と1200px以上では固定の数値を設定しています。 */
+
+h1 {
+    font-size: 36px;/* IE8以下とAndroid4.3以下用フォールバック */
+    font-size: calc(2.4rem + ((1vw - 0.64rem) * 2.1429));/* 24px~36pxで可変*/
+    line-height: 1.3;
+}
+h2 {
+    font-size: 24px;/* IE8以下とAndroid4.3以下用フォールバック */
+    font-size: calc(2rem + ((1vw - 0.64rem) * 0.7143));/* 20px~24pxで可変*/
+    line-height: 1.3;
+}
+@media (min-width: 1200px) {/* 1200px以上*/
+    h1 {
+        font-size: 3.6rem;/* 36px*/
+    }
+    h2 {
+        font-size: 2.4rem;/* 24px*/
+    }
+}
+@media screen and (max-width: 640px) {/* 640px以下*/
+    body{
+    line-height: 2;
+    }
+    h1{
+        font-size: 2.4rem;/* 24px*/
+    }
+    h2 {
+        font-size: 2rem;/* 20px*/
+    }
+}

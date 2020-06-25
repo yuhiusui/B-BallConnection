@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
+ *= require responsive
  */
  /*Custom bootstrap variables must be set or imported *before* bootstrap.*/
 @import "bootstrap";
@@ -29,7 +30,7 @@
   }
   body {
     padding: 73px 0 30px;/*←header footerの高さ*/
-    min-width: 1000px;
+    // min-width: 1000px;
     width: 100%;
     font-weight: 500;
     line-height: 2;
@@ -49,6 +50,7 @@
     width: 100%;                /* 横幅100%　*/
   }
   .main-content {
+    width: 100%;
     min-height: 670px;
     background-image: image-url("bbc-bg.jpg");
     background-attachment: fixed;
@@ -62,9 +64,9 @@
   footer {
     display: flex;
     justify-content: center;
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
+    // position: fixed;
+    // bottom: 0px;
+    // left: 0px;
     width: 100%;
     height: 50px;
     background-image: image-url("sky1.jpg");
@@ -184,22 +186,6 @@
     padding: 3px;
     border: 3px groove #f4a460;
   }
-
-  .image1 {
-    background-image: image-url("test1.jpg");
-  }
-  .image2 {
-    background-image: image-url("test2.jpg");
-  }
-  .image3 {
-    background-image: image-url("test3.jpg");
-  }
-  .image4 {
-    background-image: image-url("test4.jpg");
-  }
-  .image5 {
-    background-image: image-url("test5.jpg");
-  }
 /*image*/
 
 /*fontawesome*/
@@ -236,4 +222,7 @@
   .fa-basketball-ball {
   }
 /*fontawesome*/
+
+
+
 
