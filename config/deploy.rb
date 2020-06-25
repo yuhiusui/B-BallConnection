@@ -2,7 +2,7 @@
 lock "~> 3.14.1"
 
 set :application, "B-BallConnection"
-set :repo_url, "usui.hanshin@gmail.com"
+set :repo_url, "git@github.com:yuhiusui/B-BallConnection.git"
 
 set :deploy_to, "/home/ec2-user/B-BallConnection"
 set :rbenv_ruby, '2.5.7'
