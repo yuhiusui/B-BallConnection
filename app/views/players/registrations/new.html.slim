@@ -6,49 +6,49 @@
 
   h2.view-title 新規登録画面
   .row
-    .player-left.col-lg-6.col-12
+    .player-left.col-md-6.col-12
       .form-row.form-group
-        = f.label "登録名(2~10文字)", class: "col-5"
-        = f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "必須", class: "col-5 form-control"
+        = f.label "登録名(2~10文字)", class: "col-6 col-md-5"
+        = f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "必須", class: "col-6 col-md-5 form-control"
       .form-group.form-row
-        = f.label "email", class: "col-5"
-        = f.email_field :email, placeholder: "必須", class: "form-control col-5"
+        = f.label "email", class: "col-6 col-md-5"
+        = f.email_field :email, placeholder: "必須", class: "form-control col-6 col-md-5"
       .form-group.form-row
-        = f.label "ポジション", class: "col-5"
+        = f.label "ポジション", class: "col-6 col-md-5"
         = f.select :position, Player.positions.keys.map {|k| [I18n.t("enums.player.position.#{k}"), k]},
-                              {prompt: "選択してください"}, class: "form-control col-5"
+                              {prompt: "選択してください"}, class: "form-control col-6 col-md-5"
       .form-group.form-row
-        = f.label "バスケ歴", class: "col-5"
+        = f.label "バスケ歴", class: "col-6 col-md-5"
         = f.select :history, Player.histories.keys.map {|k| [I18n.t("enums.player.history.#{k}"), k]},
-                             {prompt: "選択してください"}, class: "form-control col-5"
+                             {prompt: "選択してください"}, class: "form-control col-6 col-md-5"
       .form-group.form-row
-        = f.label "シグネチャームーブ", class: "col-5"
-        = f.text_area :skill, placeholder: "任意（改行推奨）", class: "form-control col-5"
+        = f.label "シグネチャームーブ", class: "col-6 col-md-5"
+        = f.text_area :skill, placeholder: "任意（改行推奨）", class: "form-control col-6 col-md-5"
       .form-group.form-row
-        = f.label "パスワード", class: "col-5"
+        = f.label "パスワード", class: "col-6 col-md-5"
           - if @minimum_password_length
             | パスワード(#{@minimum_password_length} 文字以上)
-        = f.password_field :password, autocomplete: "new-password", placeholder: "必須", class: "form-control col-5"
+        = f.password_field :password, autocomplete: "new-password", placeholder: "必須", class: "form-control col-6 col-md-5"
       .form-group.form-row
-        = f.label "パスワード確認", class: "col-5"
-        = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "必須", class: "form-control col-5"
+        = f.label "パスワード確認", class: "col-6 col-md-5"
+        = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "必須", class: "form-control col-6 col-md-5"
       .form-group.form-row
-        = f.label "自己紹介(300文字まで)", class: "col-5"
-        = f.text_area :intro, placeholder: "任意（改行推奨）", class: "form-control col-5"
+        = f.label "自己紹介(300文字まで)", class: "col-6 col-md-5"
+        = f.text_area :intro, placeholder: "任意（改行推奨）", class: "form-control col-6 col-md-5"
       .form-group.form-row
-        = f.label 'Twitter URL', class: 'col-5'
-        = f.text_field :twitter, placeholder: "任意", class: "form-control col-5"
+        = f.label 'Twitter URL', class: 'col-6 col-md-5'
+        = f.text_field :twitter, placeholder: "任意", class: "form-control col-6 col-md-5"
       .form-group.form-row
-        = f.label 'Instagram URL', class: 'col-5'
-        = f.text_field :instagram, placeholder: "任意", class: "form-control col-5"
+        = f.label 'Instagram URL', class: 'col-6 col-md-5'
+        = f.text_field :instagram, placeholder: "任意", class: "form-control col-6 col-md-5"
 
 
-    .player-right.col-lg-6.col-12position-relative
+    .player-right.col-md-6.col-12position-relative
       h3.underline-orange プロフィール画像登録
       .new-pic-select
         = f.attachment_field :player_image
       .new-btn-bottom
-        = f.submit "新規登録", class: "btn btn-success btn-lg"
+        = f.submit "新規登録", class: "btn btn-success btn-md"
       / .kotira
       /   h2 既に登録済みの方
       /   p
