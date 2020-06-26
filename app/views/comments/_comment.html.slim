@@ -19,7 +19,11 @@ div class="scroll-box comment_#{@court.id}"
 .comment-form
   = form_with model:[@court, @comment], data: {remote: true} do |f|
     .row
-      .offset-4.col-3
-        = f.text_area :comment, placeholder: "コメント(3~50文字)"
-      .col-3.offset-1
+      / .col-3
+      /   = f.submit '投稿する', class: "btn btn-success btn-lg"
+      / .col-3
+      /   = f.text_area :comment, placeholder: "コメント(3~50文字)"
+      .form-group.col-4.ml-auto
+        = f.text_area :comment, placeholder: "コメント(3~50文字)", class: "form-control"
+      .col-4
         = f.submit '投稿する', class: "btn btn-success btn-lg"

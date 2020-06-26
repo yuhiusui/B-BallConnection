@@ -5,7 +5,7 @@
   = render "devise/shared/error_messages", resource: @player
   h2.view-title 登録情報編集
   .row
-    .player-left.col-6
+    .player-left.col-12.col-md-6
       .form-row.form-group
         = f.label "登録名(2~10文字)", class: "col-5"
         = f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "必須", class: "col-5 form-control"
@@ -35,7 +35,7 @@
         = f.label "自己紹介(300文字まで)", class: "col-5"
         = f.text_area :intro, placeholder: "任意（改行推奨）", class: "form-control col-5"
 
-    .player-right.col-6.position-relative
+    .player-right.col-12.col-md-6.position-relative
       .form-group.form-row
         = f.label 'Twitter URL', class: 'col-5'
         = f.text_field :twitter, placeholder: "任意", class: "form-control col-5"

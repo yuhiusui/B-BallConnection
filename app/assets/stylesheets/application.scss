@@ -15,7 +15,7 @@
  */
  /*Custom bootstrap variables must be set or imported *before* bootstrap.*/
 @import "bootstrap";
-/*common*/
+/*common facter*/
   *{
     margin:0;
     padding: 0;
@@ -31,7 +31,7 @@
   body {
     padding: 73px 0 30px;/*←header footerの高さ*/
     // min-width: 1000px;
-    width: 100%;
+    // width: 100%;
     font-weight: 500;
     line-height: 2;
     color: #333;
@@ -52,6 +52,7 @@
   .main-content {
     width: 100%;
     min-height: 670px;
+    overflow: hidden;
     background-image: image-url("bbc-bg.jpg");
     background-attachment: fixed;
     background-size: cover;
@@ -84,6 +85,9 @@
     content: "\f434";
     font-family: "Font Awesome 5 Free";
   }
+/*common*/
+
+// parts
   .view-title {
     // 各ページのタイトル
     display: inline-block;
@@ -109,7 +113,7 @@
     // 新規画像プレビューの大きさ
     width: 80%;
   }
-/*common*/
+// parts
 
 /*table*/
   table {
@@ -150,6 +154,9 @@
   }
   .btn-margin {
     margin: 50px 0;
+  }
+  .navbar-light .navbar-toggler {
+    border: groove 4px #f4a460;
   }
 /*btn*/
 
@@ -198,22 +205,22 @@
   /*Twitter*/
   .fa-twitter-square{
     color:#1da1f2;
-    font-size: 2.5em;
+    font-size: 40px;
   }
-  /*Facebook*/
-  .fa-facebook-square{
-    color:#3b5998;
-    font-size: 2.5em;
-  }
-  /*instagram*/
   .fa-instagram{
     color:#e1306c;
-    font-size: 2.5em;
+    font-size: 40px;
   }
   .fa-cog {
     color:gray;
-    font-size: 2.5em;
+    font-size: 40px;
   }
+  // /*Facebook*/
+  // .fa-facebook-square{
+  //   color:#3b5998;
+  //   font-size: 25px;
+  // }
+  /*instagram*/
   /*YouTube*/
   .fa-youtube{color:#ff0000;}
   /*LINE*/

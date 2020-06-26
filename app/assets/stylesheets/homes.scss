@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// to_adminページ
+  .admin-sns > .admin-sns-size{
+    font-size: 140px;
+    margin-right: 30px;
+  }
+
+
+// topページ
   .section-space {
     padding: 100px 0;
   }
@@ -11,7 +19,6 @@
     font-weight: bolder;
   }
   .section-text {
-    font-size: 20px;
     text-align: center;
     line-height: 1.5;
   }
@@ -20,17 +27,12 @@
   }
 
 
-  #introduction {
-  }
-
-
-
   #feature {
     background: image-url("logo.jpg") center center no-repeat;
     background-size: cover;
     background-attachment: fixed;
   }
-  .feature-list {
+  .feature-list-pc {
     max-width: 960px;
     margin: 0 auto;
     padding: 50px;
@@ -44,8 +46,14 @@
     display: flex;
     background-color: #fffff5;
   }
+  .feature-block-sp {
+    background-color: #fffff5;
+  }
   .feature-block-img {
     width: 50%;
+  }
+  .feature-block-img-sp {
+    width: 100%;
   }
   .feature-block-wrapper {
     width: 50%;
@@ -63,11 +71,9 @@
   }
 
 
-
   #master {
     font-family: "851手書き雑フォント";
   }
-
   .master-list {
     display: flex;
     justify-content: space-between;
@@ -79,12 +85,4 @@
     position: absolute;
     bottom: 20px;
     right: 0;
-  }
-
-  .skipper {
-    height: 500px;
-  }
-  #theTarget div{
-    width: 300px;
-    height: 300px;
   }

@@ -1,17 +1,19 @@
 = stylesheet_link_tag 'courts'
 
-.d-flex
-  h2.view-title コート一覧
-  p.ml-2 = paginate @courts
-  p.ml-2
+.row
+  .ml-2
     = search_form_for @q, url:courts_path do |f|
-      = f.label :name_cont, "コート名"
-      = f.search_field :name_cont
-      = f.label :prefecture_code_eq, "都道府県検索"
-      = f.search_field :prefecture_code_eq
-      = f.submit
+      .row
+        .col-12.col-md-6
+          = f.label :name_cont, "コート名"
+          = f.search_field :name_cont
+          = f.submit
+        .col-12.col-md-6
+          = f.label :prefecture_code_eq, "都道府県"
+          = f.search_field :prefecture_code_eq
+          = f.submit
 
-.row.row-cols-xl-5.row-cols-lg-4.row-cols-md-3.row-cols-sm-2.row-cols-1
+.row.row-cols-xl-5.row-cols-lg-4.row-cols-md-3.row-cols-2
   - @courts.each do |court|
     - if court.is_valid == true
       .col.mb-5
@@ -19,10 +21,11 @@
           = attachment_image_tag court, :court_image, fallback: "/assets/no_image.jpg", class: "image-md-court card-img-top"
           div class="like-court-index court_#{court.id}"
             = render 'likes/likes', court: court
-          .card-body
+          .card-body.pt-0
             = link_to court_path(court) do
-              h5 class="card-text.card-court-name" id="star-rate-#{court.id}"
+              h5 class="card-text.card-court-name mb-0"
                 = court.name
+              div id="star-rate-#{court.id}"
                 / 星評価のjavascript
                 = render 'reviews/star', court: court
             table.table.table-borderless
@@ -32,3 +35,4 @@
               tr
                 td.card-text = court.address
                 td.card-text = "リング:#{court.number}"
+= paginate @courts

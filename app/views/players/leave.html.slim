@@ -5,8 +5,14 @@
   h2 本当に退会しますか？
   br
   br
-  p 退会すると、会員登録情報が消去されます。
-  p 退会する場合、「退会する」をクリックしてください。
+  p
+    |退会すると、
+    br.sp-br
+    |会員登録情報が消去されます。
+  p
+    |退会する場合、
+    br.sp-br
+    |「退会する」をクリックしてください。
   = link_to "退会しない", player_path(current_player), class: " btn btn-primary w-25"
   = link_to '退会する', leave_path(@player), method: :patch, class: 'btn btn-danger w-25'
 

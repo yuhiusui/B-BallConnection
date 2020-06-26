@@ -2,12 +2,12 @@ class LikesController < ApplicationController
   before_action :authenticate_player!
   def liked_courts
     @player = Player.find(params[:player_id])
-    @courts = @player.liked_courts.page(params[:page]).reverse_order.per(10)
+    @courts = @player.liked_courts.page(params[:page]).reverse_order.per(15)
   end
 
   def liked_players
     @court = Court.find(params[:court_id])
-    @players = @court.liked_players.page(params[:page]).reverse_order.per(10)
+    @players = @court.liked_players.page(params[:page]).reverse_order.per(20)
   end
 
   def create

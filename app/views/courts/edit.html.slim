@@ -2,7 +2,7 @@
 = form_with model: @court, local: true do |f|
   h2.view-title コート編集（管理者）
   .row
-    .court-left.col-6
+    .court-left.col-12.col-md-6
       .form-group
         = f.attachment_field :court_image, class: "form-control-file"
       .form-group.form-row
@@ -24,7 +24,7 @@
         = f.label :station, "駅", class: "col-5"
         = f.text_field :station, class: "form-control col-5", placeholder: "~駅徒歩00分"
 
-    .court-right.col-6.position-relative
+    .court-right.col-12.col-md-6.position-relative
       .form-group.form-row
         = f.label :name, "コート名", class: "col-5"
         = f.text_field :name, class: "form-control col-5"
@@ -53,5 +53,5 @@
         = f.label :other, "その他補足", class: "col-5"
         = f.text_area :other, class: "form-control col-5"
       .btn-bottom
-        = f.submit "更新する" , class: "btn btn-success mr-3"
-        = link_to '削除する', court_path(@court), method: :delete, class: 'btn btn-danger'
+        = f.submit "更新する" , class: "btn btn-success"
+        = link_to '削除する', court_path(@court), method: :delete, class: 'btn btn-danger ml-3'

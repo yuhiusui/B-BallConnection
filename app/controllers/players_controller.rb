@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
   before_action :ensure_admin_player?, only: [:admin_destroy]
 
   def index
-    @players = Player.page(params[:page]).reverse_order.per(50)
+    @players = Player.page(params[:page]).reverse_order.per(20)
     # gon.players = Player.all
   end
 

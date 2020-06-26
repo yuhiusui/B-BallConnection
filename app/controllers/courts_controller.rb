@@ -13,7 +13,7 @@ class CourtsController < ApplicationController
         name_cont: params[:q][:name_cont],
       })
     end
-    @courts = @q.result(distinct: true).page(params[:page]).reverse_order.per(10)
+    @courts = @q.result(distinct: true).page(params[:page]).reverse_order.per(15)
     @q = Court.ransack()
   end
 

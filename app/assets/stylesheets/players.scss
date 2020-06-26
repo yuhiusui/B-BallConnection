@@ -12,12 +12,17 @@
   width: 100%;
   margin-left: 5%;
 }
-.profile-contents
+.profile-contents {
+  padding: 0;
+}
 .profile-sns, .profile-links {
   padding: 5px;
 }
 .profile-intro, .profile-skills {
   word-break: break-all;
+}
+.profile-skills {
+  width: 60%;
 }
 
 
