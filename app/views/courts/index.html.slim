@@ -18,7 +18,7 @@
     - if court.is_valid == true
       .col.mb-5
         .card.court-image
-          = attachment_image_tag court, :court_image, fallback: "/assets/no_image.jpg", class: "image-md-court card-img-top"
+          = attachment_image_tag court, :court_image, fallback: "no_image.jpg", class: "image-md-court card-img-top"
           div class="like-court-index court_#{court.id}"
             = render 'likes/likes', court: court
           .card-body.pt-0
