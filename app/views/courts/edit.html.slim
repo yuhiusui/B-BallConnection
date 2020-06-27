@@ -52,6 +52,6 @@
       .form-group.form-row
         = f.label :other, "その他補足", class: "col-5"
         = f.text_area :other, class: "form-control col-5"
-      .btn-bottom
-        = f.submit "更新する" , class: "btn btn-success"
-        = link_to '削除する', court_path(@court), method: :delete, class: 'btn btn-danger ml-3'
+      / .btn-bottom
+      = f.submit "更新する" , class: "btn btn-success"
+      = link_to '削除する', court_path(@court), method: :delete, class: 'btn btn-danger ml-3'

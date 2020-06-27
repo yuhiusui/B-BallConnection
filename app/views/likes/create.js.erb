@@ -4,15 +4,3 @@ if (location.pathname == '/courts') {
   $(".court_<%= @court.id %>").html("<%= j(render 'likes/likes', court: @court ) %>")
 }
 
-
-// if (location.pathname == '/courts') {
-//   $(".court_#{court.id}").html("#{j(render 'likes/likes', court: court )}")
-// } else {
-//   $(".court_{@court.id}").html("#{j(render 'likes/likes', court: @court )}")
-// }
-
-// if (location.pathname == '/courts') {
-//   $(".court_\#{court.id}").html("#{j(render 'likes/likes', court: court )}")
-// }else {
-//   $(".court_\#{@court.id}").html("#{j(render 'likes/likes', court: @court )}")
-// }

@@ -2,7 +2,6 @@
 = stylesheet_link_tag 'players'
 
 .row
-
   .court-left.col-12.col-md-5
     .d-flex
       h2.view-title コートコメント
@@ -13,7 +12,7 @@
       = link_to "詳細ページ", court_path(@court), class: "btn btn-primary ml-2"
     .court-image
       = attachment_image_tag @court, :court_image, fallback: "/assets/no_image.jpg", class: "image-lg image-shape"
-      .like-court-show.court_#{@court.id}
+      div class="like-court-show court_#{@court.id}"
         = render 'likes/likes', court: @court
     = render 'courts/info', court: @court
 
