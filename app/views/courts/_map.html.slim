@@ -1,11 +1,9 @@
 javascript:
-
-    // mapを関数の外で定義(codeAddressでも使うため)
     let map
     let geocoder
     let marker = []; // マーカーを複数表示させたいので、配列化
     let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
-    let markerData = courts; // コントローラーで定義したインスタンス変数を変数に代入
+    let markerData = Court.all;
 
     // function initMap(){
     //   // geocoderを初期化
@@ -55,11 +53,17 @@ javascript:
               // position: markerLatLng,
             });
 
-
             // 各地点の吹き出しを作成
             infoWindow[i] = new google.maps.InfoWindow({
               content: markerData[i]['name']
             });
+            // infoWindow[i] = new google.maps.InfoWindow({
+            //   // <a>タグでリンクを作成
+            //   content: `<a href='/courts/${ id }'>${ markerData[i]['name'] }</a>`
+            // });
+
+            // マーカーにクリックイベントを追加
+            markerEvent(i);
 
             // var marker = new google.maps.Marker({
             //   map: map, // マーカーの落ちる場所を中心に
@@ -74,8 +78,6 @@ javascript:
             //   infoWindow.open(map, marker); // 吹き出しの表示
             // });
 
-            // マーカーにクリックイベントを追加
-            markerEvent(i);
           }
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
