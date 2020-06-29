@@ -3,30 +3,4 @@
 .d-flex
   h2.view-title お気に入りのコート
 
-.row.row-cols-xl-5.row-cols-lg-4.row-cols-md-3.row-cols-2
-  - @courts.each do |court|
-    - if court.is_valid == true
-      .col.mb-5
-        .card.court-image
-          = attachment_image_tag court, :court_image, fallback: "no_image.jpg", class: "image-md-court card-img-top"
-          div class="like-court-index court_#{court.id}"
-            = render 'likes/likes', court: court
-          .card-body.pt-0
-            = link_to court_path(court) do
-              h5 class="card-text.card-court-name mb-0"
-                = court.name
-              div id="star-rate-#{court.id}"
-                / 星評価のjavascript
-                = render 'reviews/star', court: court
-            table.table.table-borderless
-              tr
-                td.card-text = link_to "口コミ#{court.reviews.count}件", court_review_path(court)
-                td.card-text = link_to "コメント#{court.comments.count}件"
-              tr
-                td.card-text = court.address
-                td.card-text = "リング:#{court.number}"
-= paginate @courts
-
-
-/ 星評価のjavascript
-/ = render 'reviews/star', court: @court
+= render 'courts/courts-index', courts: @courts

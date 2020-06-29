@@ -7,16 +7,17 @@
         = f.attachment_field :court_image, class: "form-control-file"
       .form-group.form-row
         = f.label :postal_code, "郵便番号", class: "col-5"
-        = f.text_field :postal_code, class: "form-control col-5"
+        = f.text_field :postal_code, class: "form-control col-5", id: "court_postal_code"
       .form-group.form-row
         = f.label :prefecture_code, "都道府県", class: "col-5"
-        = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name, {selected: @court.prefecture_name }, {class: "form-control col-5"}
+        = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all,
+                              :code, :name, {class: "form-control col-5", id: "court_prefecture_code"}
       .form-group.form-row
         = f.label :city, "市町区以下", class: "col-5"
-        = f.text_field :city, class: "form-control col-5"
+        = f.text_field :city, class: "form-control col-5", id: "court_city"
       .form-group.form-row
         = f.label :street, "番地", class: "col-5"
-        = f.text_field :street, class: "form-control col-5"
+        = f.text_field :street, class: "form-control col-5", id: "court_street"
       .form-group.form-row
         = f.label :address, "場所（表示）", class: "col-5"
         = f.text_field :address, class: "form-control col-5", placeholder: "〇〇市"
