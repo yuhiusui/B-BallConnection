@@ -1,9 +1,9 @@
 
 
 # B-Ball Connection
-##ビジュアル
+## ビジュアル
 
-###サイトデザイン
+### サイトデザイン
 ストリートバスケを連想
 ![スクリーンショット 2020-06-27 22 29 05](https://user-images.githubusercontent.com/61815727/85978089-dee8c680-ba18-11ea-9fef-c6fd865ac15d.png)
 
