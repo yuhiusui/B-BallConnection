@@ -3,9 +3,33 @@ javascript:
     // mapを関数の外で定義(codeAddressでも使うため)
     let map
     let geocoder
-    // let marker = []; // マーカーを複数表示させたいので、配列化
-    // let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
-    // let markerData = courts; // コントローラーで定義したインスタンス変数を変数に代入
+    let marker = []; // マーカーを複数表示させたいので、配列化
+    let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
+    let markerData = courts; // コントローラーで定義したインスタンス変数を変数に代入
+
+    // function initMap(){
+    //   // geocoderを初期化
+    //   geocoder = new google.maps.Geocoder()
+
+    //   // 初期ポジション
+    //   map = new google.maps.Map(document.getElementById('map'), {
+    //     center: {lat: 35.6585, lng: 139.7486}, //東京タワー
+    //     zoom: 8
+    //   });
+
+    //   geocoder.geocode( { 'address': $('#map').attr('class')}, function(results, status) {
+    //     if (status == 'OK') {
+    //       map.setCenter(results[0].geometry.location); // map.setCenterで地図が移動
+
+    //       var marker = new google.maps.Marker({
+    //           map: map, // マーカーの落ちる場所を中心に
+    //           position: results[0].geometry.location // マーカーを落とす場所
+    //       });
+    //     } else {
+    //       alert('Geocode was not successful for the following reason: ' + status);
+    //     }
+    //   });
+    // }
 
     function initMap(){
       // geocoderを初期化
@@ -19,60 +43,53 @@ javascript:
 
       geocoder.geocode( { 'address': $('#map').attr('class')}, function(results, status) {
         if (status == 'OK') {
-          map.setCenter(results[0].geometry.location); // map.setCenterで地図が移動
+          // 繰り返し処理でマーカーと吹き出しを複数表示させる
+          for (var i = 0; i < markerData.length; i++) {
+            let id = markerData[i]['id']
+            map.setCenter(results[0].geometry.location); // map.setCenterで地図が移動
 
-          var marker = new google.maps.Marker({
-              map: map, // マーカーの落ちる場所を中心に
-              position: results[0].geometry.location // マーカーを落とす場所
-          });
-
-          var infoWindow = new google.maps.InfoWindow({ // 吹き出しの追加
-                content: '<div class="map">TAM 大阪</div>' // 吹き出しに表示する内容
-          });
-
-          marker.addListener('click', function() { // マーカーをクリックしたとき
-             infoWindow.open(map, marker); // 吹き出しの表示
+            // 各地点のマーカーを作成
+            marker[i] = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+              // position: markerLatLng,
             });
+
+
+            // 各地点の吹き出しを作成
+            infoWindow[i] = new google.maps.InfoWindow({
+              content: markerData[i]['name']
+            });
+
+            // var marker = new google.maps.Marker({
+            //   map: map, // マーカーの落ちる場所を中心に
+            //   position: results[0].geometry.location // マーカーを落とす場所
+            // });
+
+            // var infoWindow = new google.maps.InfoWindow({ // 吹き出しの追加
+            //   content: '#{@court.name}' // 吹き出しに表示する内容
+            // });
+
+            // marker.addListener('click', function() { // マーカーをクリックしたとき
+            //   infoWindow.open(map, marker); // 吹き出しの表示
+            // });
+
+            // マーカーにクリックイベントを追加
+            markerEvent(i);
+          }
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
         }
       });
-
-    //   // 繰り返し処理でマーカーと吹き出しを複数表示させる
-    //   for (var i = 0; i < markerData.length; i++) {
-    //     let id = markerData[i]['id']
-
-    //     // 各地点の緯度経度を算出
-    //     markerLatLng = new google.maps.LatLng({
-    //       lat: markerData[i]['latitude'],
-    //       lng: markerData[i]['longitude']
-    //     });
-
-    //     // 各地点のマーカーを作成
-    //     marker[i] = new google.maps.Marker({
-    //       position: markerLatLng,
-    //       map: map
-    //     });
-
-    //     // 各地点の吹き出しを作成
-    //     infoWindow[i] = new google.maps.InfoWindow({
-    //       // 吹き出しの内容
-    //       content: markerData[i]['address']
-    //     });
-
-    //     // マーカーにクリックイベントを追加
-    //     markerEvent(i);
-    //   }
-    // }
-
-    // // マーカーをクリックしたら吹き出しを表示
-    // function markerEvent(i) {
-    //   marker[i].addListener('click', function () {
-    //     infoWindow[i].open(map, marker[i]);
-    //   });
-    // }
-
     }
 
+    // マーカーをクリックしたら吹き出しを表示
+    function markerEvent(i) {
+      marker[i].addListener('click', function () {
+        infoWindow[i].open(map, marker[i]);
+      });
+    }
+
+
+
 script async="" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAP_API']}&callback=initMap"
-/ script async="" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=#AIzaSyDbvnT0eIZajpvDjLqcwY8U6TrI05Z9yyk&callback=initMap"
