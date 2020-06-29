@@ -4,16 +4,14 @@
 ##ビジュアル
 
 ###サイトデザイン
-![スクリーンショット 2020-06-27 22 29 05]
-(https://user-images.githubusercontent.com/61815727/85978089-dee8c680-ba18-11ea-9fef-c6fd865ac15d.png)
 ストリートバスケを連想
+![スクリーンショット 2020-06-27 22 29 05](https://user-images.githubusercontent.com/61815727/85978089-dee8c680-ba18-11ea-9fef-c6fd865ac15d.png)
 
 ### サイトテーマ
-![image]
-(https://user-images.githubusercontent.com/61815727/85978069-d42e3180-ba18-11ea-8bfa-2592692d134a.png)
 ①日本発のアプリである（日の丸をイメージ）
 ②人々を繋げる（黒人と白人が握手＝調和をイメージ）
 ③B-Ball Connectionという橋のもとで実現。
+![image](https://user-images.githubusercontent.com/61815727/85978069-d42e3180-ba18-11ea-8bfa-2592692d134a.png)
 
 ## サイト概要
 
