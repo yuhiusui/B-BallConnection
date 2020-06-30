@@ -6,6 +6,7 @@ class Player < ApplicationRecord
   attachment :court_image, destroy: false
 
   validates :name, presence: true, length: { in: 2..10 }
+  validates :email, presence: true
   validates :intro, length: {maximum: 300}
 
   has_many :comments, dependent: :destroy

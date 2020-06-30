@@ -91,6 +91,7 @@ gem 'rails-i18n'
 
 gem 'ransack'
 gem 'jp_prefecture'
+gem "geocoder"
 
 
 

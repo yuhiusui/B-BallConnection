@@ -6,6 +6,13 @@ class Court < ApplicationRecord
 
   attachment :court_image, destroy: false
   attachment :player_image, destroy: false
+  geocoded_by :the_address
+  after_validation :geocode
+
+# geocoderで緯度経度取得するため
+  def the_address
+    [prefecture_name, city, street].compact.join(', ')
+  end
 
 
 # 住所登録関連
