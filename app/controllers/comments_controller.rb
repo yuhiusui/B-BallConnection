@@ -17,14 +17,14 @@ class CommentsController < ApplicationController
     @court = @comment.court
     @comments = @court.comments.order("id DESC")
 
-  # ボタンプッシュ後
+    # ボタンプッシュ後
     redirect_to request.referer if @comment.player != current_player
     @comment.destroy
     @success = "コメントが削除されました"
   end
 
-
   private
+
   def comment_params
     params.require(:comment).permit(:comment)
   end

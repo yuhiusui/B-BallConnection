@@ -9,28 +9,28 @@ class Court < ApplicationRecord
   geocoded_by :the_address
   after_validation :geocode
 
-# geocoderで緯度経度取得するため
+  # geocoderで緯度経度取得するため
   def the_address
-    [prefecture_name, city, street].compact.join(', ')
+    [prefecture_name, city, street].compact.join(',　')
   end
 
-
-# 住所登録関連
+  # 住所登録関連
   include JpPrefecture
   jp_prefecture :prefecture_code
   def prefecture_name
     JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
   end
+
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name)
   end
 
-
-# いいね確認用
+  # いいね確認用
   def liked_by?(player)
     likes.where(player_id: player.id).exists?
   end
+
   def already_liked?(court)
-    self.likes.exists?(court_id: court.id)
+    likes.exists?(court_id: court.id)
   end
 end

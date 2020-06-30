@@ -16,7 +16,6 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
   end
 
-
   def update
     @player = Player.find(params[:id])
     if @player.update(player_params)
@@ -49,12 +48,11 @@ class PlayersController < ApplicationController
     redirect_to root_path
   end
 
-
-
   private
+
   def player_params
     params.require(:player).permit(:name, :email, :intro, :player_image,
-                                   :position,:history, :skill,
+                                   :position, :history, :skill,
                                    :twitter, :fadebook, :instagram)
   end
 
@@ -66,6 +64,4 @@ class PlayersController < ApplicationController
   def ensure_admin_player?
     redirect_to player_path(current_player) unless current_player.admin?
   end
-
-
 end

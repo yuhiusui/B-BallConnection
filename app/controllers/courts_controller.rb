@@ -14,13 +14,13 @@ class CourtsController < ApplicationController
       })
     end
     @courts = @q.result(distinct: true).page(params[:page]).reverse_order.per(15)
-    @q = Court.ransack()
+    @q = Court.ransack
   end
-
 
   def new
     @court = Court.new
   end
+
   def create
     @court = Court.new(court_params)
     if @court.save
@@ -30,26 +30,27 @@ class CourtsController < ApplicationController
     end
   end
 
-
   def show
     @court = Court.find(params[:id])
     @courts = Court.all
   end
+
   def review
     @court = Court.find(params[:court_id])
     @review = Review.new
     @reviews = @court.reviews.order("id DESC")
   end
+
   def comment
     @court = Court.find(params[:court_id])
     @comment = Comment.new
     @comments = @court.comments.order("id DESC")
   end
 
-
   def edit
     @court = Court.find(params[:id])
   end
+
   def update
     @court = Court.find(params[:id])
     if @court.update(court_params)
@@ -58,6 +59,7 @@ class CourtsController < ApplicationController
       render :edit
     end
   end
+
   def destroy
     @court = Court.find(params[:id])
     @court.destroy
@@ -66,8 +68,8 @@ class CourtsController < ApplicationController
 
   private
 
-  def  court_params
-    params.require(:court).permit(:court_image,:name, :number, :floor, :fee, :station,
+  def court_params
+    params.require(:court).permit(:court_image, :name, :number, :floor, :fee, :station,
                                   :url, :available_time, :station, :parking, :postal_code,
                                   :prefecture_code, :city, :street, :address,
                                   :is_valid, :other)

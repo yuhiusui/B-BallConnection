@@ -18,10 +18,10 @@
 //= require bootstrap-sprockets
 //= require jquery.raty
 //= require jquery.jposta
-//= require_tree .
-
+//= require jquery.uploadThumbs
 
 $(document).ready(function () {
+
 // jpostal
   $(document).on('turbolinks:load', () => {
     $('#court_postal_code').jpostal({
@@ -42,5 +42,6 @@ $(document).ready(function () {
                          // any: arbitrarily jquery selector
       imgbreak : true    // append <br> after thumbnail images
   });
-
 });
+
+

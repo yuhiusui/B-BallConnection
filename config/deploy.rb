@@ -6,9 +6,8 @@ set :repo_url, "git@github.com:yuhiusui/B-BallConnection.git"
 
 set :deploy_to, "/home/ec2-user/B-BallConnection"
 set :rbenv_ruby, '2.5.7'
-set :linked_files, %w{config/master.key .env}
+set :linked_files, %w(config/master.key .env)
 append :linked_dirs, "log", "public/system", "tmp"
-
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

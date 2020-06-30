@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :players, controllers:{
+  devise_for :players, controllers: {
     registrations: 'players/registrations',
     sessions: 'players/sessions',
-    passwords: 'players/passwords'
+    passwords: 'players/passwords',
   }
 
-  devise_for :admins, controllers:{
+  devise_for :admins, controllers: {
     registrations: 'admins/registrations',
     sessions: 'admins/sessions',
-    passwords: 'admins/passwords'
+    passwords: 'admins/passwords',
   }
 
   resources :players do

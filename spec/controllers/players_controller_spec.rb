@@ -5,6 +5,7 @@ RSpec.describe PlayersController, type: :controller do
       before do
         get players_path
       end
+
       it 'リクエストは200 OKとなること' do
         expect(response.status).to eq 200
       end

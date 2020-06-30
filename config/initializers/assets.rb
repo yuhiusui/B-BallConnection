@@ -11,8 +11,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-Rails.application.config.assets.precompile += %w(comments.scss courts.scss favorites.scss 
-                                                 homes.scss players.scss relations.scss 
-                                                 images.scss profiles.scss items.scss 
-                                                 images.scss profiles.scss items.scss)
+Rails.application.config.assets.precompile += %w(courts.scss homes.scss players.scss 
+                                                 court-map.js)
 
