@@ -1,5 +1,11 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_player!
+  def review
+    @court = Court.find(params[:court_id])
+    @review = Review.new
+    @reviews = @court.reviews.order("id DESC")
+  end
+
   def create
     @court = Court.find(params[:court_id])
     @reviews = @court.reviews.order("id DESC")

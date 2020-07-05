@@ -1,5 +1,11 @@
 class CommentsController < ApplicationController
   before_action :authenticate_player!
+  def comment
+    @court = Court.find(params[:court_id])
+    @comment = Comment.new
+    @comments = @court.comments.order("id DESC")
+  end
+
   def create
     @court = Court.find(params[:court_id])
     @comments = @court.comments.order("id DESC")

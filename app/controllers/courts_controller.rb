@@ -35,18 +35,6 @@ class CourtsController < ApplicationController
     @courts = Court.all
   end
 
-  def review
-    @court = Court.find(params[:court_id])
-    @review = Review.new
-    @reviews = @court.reviews.order("id DESC")
-  end
-
-  def comment
-    @court = Court.find(params[:court_id])
-    @comment = Comment.new
-    @comments = @court.comments.order("id DESC")
-  end
-
   def edit
     @court = Court.find(params[:id])
   end
