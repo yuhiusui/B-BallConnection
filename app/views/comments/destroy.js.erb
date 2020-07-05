@@ -1,2 +1,2 @@
-$(".comment_<%= @court.id %>").html("<%= j(render 'comments/comment', comments: @comments) %>")
+$(".comments").html("<%= j(render 'comments/comments', comments: @comments, court: @court) %>");
 $('#alert-message').html('<div class="alert alert-success fas fa-basketball-ball" id="notice"><%= @success %></div>')

@@ -40,8 +40,6 @@ class Player < ApplicationRecord
     super && (is_valid == true)
   end
 
-  # 会員一覧をIDの古い順番で表示
-  default_scope -> { order(created_at: :desc) }
 
   enum history: {
     a: 0,

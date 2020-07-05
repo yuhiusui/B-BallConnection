@@ -19,10 +19,10 @@ Rails.application.routes.draw do
     get 'liked_courts' => 'likes#liked_courts'
   end
   resources :courts do
-    resource :reviews, only: [:create, :destroy]
+    resource :reviews, only: [:create, :destroy, :review]
     resource :comments, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
-    get 'review' => 'courts#review'
+    # get 'review' => 'courts#review'
     get 'comment' => 'courts#comment'
     get 'liked_players' => 'likes#liked_players'
   end
@@ -31,4 +31,5 @@ Rails.application.routes.draw do
   get 'to_admin' => 'homes#to_admin'
   get 'leave' => 'players#leave'
   patch 'leave' => 'players#update_status'
+  get 'get_checked_comment' => 'natural_language_api#get_checked_comment'
 end

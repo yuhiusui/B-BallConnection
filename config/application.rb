@@ -10,6 +10,7 @@ module BBallconnection
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.paths.add 'lib', eager_load: true
     config.generators.template_engine = :slim #slimに変更
     config.i18n.default_locale = :ja #日本語化
     config.time_zone = 'Asia/Tokyo' #日本時間

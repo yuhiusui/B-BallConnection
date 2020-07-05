@@ -1,6 +1,8 @@
 $("textarea").val("");
 $("input").val("");
-$(".review_<%= @court.id %>").html("<%= j(render 'reviews/review', reviews: @reviews) %>");
+$(".reviews").html("<%= j(render 'reviews/reviews', reviews: @reviews) %>");
+$(".review").html("<%= j(render 'reviews/review', review: @review, court: @court) %>");
+
 var success = '<%= @success %>';
 if (success) {
   $('#alert-message').html('<div class="alert alert-success fas fa-basketball-ball" id="notice"><%= @success %></div>')

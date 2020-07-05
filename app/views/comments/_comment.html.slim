@@ -1,29 +1,8 @@
-div class="scroll-box comment_#{@court.id}"
-  table.table.table-borderless
-    - comments.each do |comment|
-      tbody
-        tr.row
-          td.col-2.text-right
-            = link_to player_path(comment.player), class: "player_#{comment.player.id}" do
-              = attachment_image_tag comment.player, :player_image, fallback: "no_image.jpg", class: "image-xs image-shape-round"
-          td.col-7
-            = comment.player.name
-            br/
-            = comment.comment
-          td.col-3
-            = l comment.created_at, format: :short
-            br/
-            - if current_player?(comment.player) || current_player.admin?
-              = link_to 'Destroy', court_comments_path(comment), method: :delete, remote: true, class: 'btn-sm btn-danger'
-
 .comment-form
-  = form_with model:[@court, @comment], data: {remote: true} do |f|
+  = form_with model:[court, comment], data: {remote: true}, id: 'comment-form' do |f|
     .row
-      / .col-3
-      /   = f.submit '投稿する', class: "btn btn-success btn-lg"
-      / .col-3
-      /   = f.text_area :comment, placeholder: "コメント(3~50文字)"
       .form-group.col-4.ml-auto
         = f.text_area :comment, placeholder: "コメント(3~50文字)", class: "form-control"
+        = f.hidden_field :score, id: "comment-score"
       .col-4
-        = f.submit '投稿する', class: "btn btn-success btn-lg"
+        = button_tag '投稿する',  type: 'button', id: "comment", class: "btn btn-success btn-lg"

@@ -1,26 +1,7 @@
-div class="scroll-box review_#{@court.id}"
-  table.table.table-borderless
-    - reviews.each do |review|
-      tbody
-        tr.row
-          td.col-2.text-right
-            = link_to player_path(review.player), class: "player_#{review.player.id}" do
-              = attachment_image_tag review.player, :player_image, fallback: "no_image.jpg", class: "image-xs image-shape-round"
-            - if current_player?(review.player) || current_player.admin?
-              = link_to 'Destroy', court_reviews_path(review), method: :delete, remote: true, class: 'btn-sm btn-danger'
-          td.col-7
-            .font-weight-bold = "#{review.rate}：#{review.rv_title}"
-            p.handwrite = "#{review.rv_body}"
-          td.col-3
-            = l review.created_at, format: :short
-            br/
-            = "by#{review.player.name}"
-
-
 .review-form
-  = form_with model:[@court, @review], data: {remote: true} do |f|
+  = form_with model:[court, review], data: {remote: true} do |f|
     .row
-      .form-group#star.col-4
+      .form-group.col-4#star
         = f.text_field :rv_title, placeholder: "タイトル(3~10文字)", class: "form-control"
         = f.label :rate, "点数"
         = f.hidden_field :rate, id: :review_star

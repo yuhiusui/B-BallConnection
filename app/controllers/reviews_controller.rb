@@ -2,9 +2,10 @@ class ReviewsController < ApplicationController
   before_action :authenticate_player!
   def create
     @court = Court.find(params[:court_id])
+    @reviews = @court.reviews.order("id DESC")
     @review = @court.reviews.new(review_params)
     @review.player_id = current_player.id
-    @reviews = @court.reviews.order("id DESC")
+    @review.score = Language.get_data(review_params[:rv_body])
     if @review.save
       @success = "レビューが保存されました"
     else

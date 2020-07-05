@@ -17,7 +17,53 @@
     = render 'courts/info', court: @court
 
   .court-right.col-12.col-md-7
-    = render 'comments/comment', comments: @comments
+    .comments.scroll-box
+      = render 'comments/comments', comments: @comments
+    .comment
+      = render 'comments/comment', comment: @comment, court: @court
 
 / 星評価のjavascript
 = render 'reviews/star', court: @court
+
+
+/ Natural Language APIを用いてコメントをチェック
+/ 部分テンプレート化するとエラー
+javascript:
+  $(document).on('click', '#comment', function (e) {
+    let comment = $('textarea');
+    let button = $(this);
+    button.prop('disabled', true);
+
+    if (comment.val() == ""){
+      alert('コメントを入力してください');
+      button.prop('disabled', false);
+      return;
+    }
+
+    $.ajax({
+      type: 'GET',
+      url: "/get_checked_comment?=comment",
+      data: { comment: comment.val() },
+      dataType: 'json'
+    })
+    .done(function (score){
+      if (score < -0.5) {
+        let answer = confirm('このコメントは意図せずに他者を傷つける可能性があります。このまま投稿しますか？');
+        if (!answer) {
+          comment.select();
+         } else {
+          $("#comment-score").val(score);
+          Rails.fire($("#comment-form")[0], "submit");
+        }
+        button.prop('disabled', false);
+      } else {
+        $("#comment-score").val(score);
+        Rails.fire($("#comment-form")[0], "submit");
+      }
+    })
+    .fail(function (data) {
+      alert('通信に失敗しました')
+      button.prop('disabled', false);
+      return;
+    });
+  });

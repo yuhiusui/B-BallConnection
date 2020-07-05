@@ -1,6 +1,6 @@
 = stylesheet_link_tag 'courts'
 = stylesheet_link_tag 'players'
-= javascript_include_tag 'court-map'
+/ = javascript_include_tag 'court-map'
 
 .d-flex
   h1.view-title コート詳細
@@ -30,4 +30,4 @@
 / 星評価のjs
 = render 'reviews/star', court: @court
 / googlemapのjs
-/ = render 'courts/map'
+= render 'courts/map'

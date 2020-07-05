@@ -4,8 +4,8 @@
     br
     = link_to "(HPはこちら)", @court.url, :target=>["_blank"]
   p id="star-rate-#{@court.id}" style="width: 100%;" = link_to "", court_review_path(@court)
-  .row
-    table.col-8.offset-1.col-md-6
+  .row.pl-3
+    table.col-8.col-md-6
       tr
         td.fas.fa-basketball-ball：
         td = "ゴール#{@court.number}機"
@@ -18,7 +18,7 @@
       tr
         td 駅：
         td = @court.station
-    table.col-8.offset-1.col-md-6
+    table.col-8.col-md-6
       tr
         td id="star-rate-#{@court.id}" = link_to "", court_review_path(@court)
       tr

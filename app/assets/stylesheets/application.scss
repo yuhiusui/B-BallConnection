@@ -33,7 +33,7 @@
     font-weight: 500;
     line-height: 2;
     color: #333;
-    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+    box-sizing: border-box;
     font-family: "Ricky Diminished", "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
   }
   strong, b, mark, .typo-bold {
@@ -42,14 +42,14 @@
   }
   header nav{
     background-image: image-url("sky1.jpg");
-    position: fixed;            /* ヘッダーの固定 */
-    top: 0px;                   /* 位置(上0px) */
-    left: 0px;                  /* 位置(右0px) */
-    width: 100%;                /* 横幅100%　*/
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
   }
   .main-content {
     width: 100%;
-    min-height: 670px;
+    min-height: 600px;
     overflow: hidden;
     background-image: image-url("bbc-bg.jpg");
     background-attachment: fixed;
@@ -132,7 +132,7 @@
   .scroll-box{
     // 溢れたテーブルのため
     max-width: 600px;
-    height:520px;
+    height:550px;
     overflow-y:scroll;
   }
 /*table*/
@@ -205,27 +205,26 @@
     color:#1da1f2;
     font-size: 40px;
   }
+  /*instagram*/
   .fa-instagram{
     color:#e1306c;
     font-size: 40px;
   }
+  // setting
   .fa-cog {
     color:gray;
     font-size: 40px;
   }
-  // /*Facebook*/
-  // .fa-facebook-square{
-  //   color:#3b5998;
-  //   font-size: 25px;
-  // }
+  /*Facebook*/
+  .fa-facebook-square{
+    color:#3b5998;
+    font-size: 25px;
+  }
   /*instagram*/
   /*YouTube*/
   .fa-youtube{color:#ff0000;}
   /*LINE*/
   .fa-line{color:#00c300;}
-
-  .fa-basketball-ball {
-  }
 /*fontawesome*/
 
 

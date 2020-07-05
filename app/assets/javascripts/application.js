@@ -20,8 +20,9 @@
 //= require jquery.jposta
 //= require jquery.uploadThumbs
 
-$(document).ready(function () {
 
+
+$(document).ready(function () {
 // jpostal
   $(document).on('turbolinks:load', () => {
     $('#court_postal_code').jpostal({

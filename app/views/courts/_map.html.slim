@@ -55,29 +55,3 @@ javascript:
         infoWindow[i].open(map, marker[i]);
       });
     }
-
-  // マーカーシングル表示
-    // function initMap(){
-    //   // geocoderを初期化
-    //   geocoder = new google.maps.Geocoder()
-
-    //   // 初期ポジション
-    //   map = new google.maps.Map(document.getElementById('map'), {
-    //     center: {lat: 35.6585, lng: 139.7486}, //東京タワー
-    //     zoom: 8
-    //   });
-
-    //   geocoder.geocode( { 'address': $('#map').attr('class')}, function(results, status) {
-    //     if (status == 'OK') {
-    //       map.setCenter(results[0].geometry.location); // map.setCenterで地図が移動
-
-    //       var marker = new google.maps.Marker({
-    //           map: map, // マーカーの落ちる場所を中心に
-    //           position: results[0].geometry.location // マーカーを落とす場所
-    //       });
-    //     } else {
-    //       alert('Geocode was not successful for the following reason: ' + status);
-    //     }
-    //   });
-    // }
-

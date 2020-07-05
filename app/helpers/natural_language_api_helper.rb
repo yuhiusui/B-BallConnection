@@ -1,0 +1,2 @@
+module NaturalLanguageApiHelper
+end

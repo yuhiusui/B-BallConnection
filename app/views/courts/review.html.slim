@@ -17,7 +17,10 @@
     = render 'courts/info', court: @court
 
   .court-right.col-12.col-md-7
-    = render 'reviews/review', reviews: @reviews
+    .reviews.scroll-box
+      = render 'reviews/reviews', reviews: @reviews
+    .review
+      = render 'reviews/review', review: @review, court: @court
 
 
 

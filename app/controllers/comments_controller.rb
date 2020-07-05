@@ -2,11 +2,12 @@ class CommentsController < ApplicationController
   before_action :authenticate_player!
   def create
     @court = Court.find(params[:court_id])
+    @comments = @court.comments.order("id DESC")
     @comment = @court.comments.new(comment_params)
     @comment.player_id = current_player.id
-    @comments = @court.comments.order("id DESC")
     if @comment.save
       @success = "コメントが保存されました"
+      @comment = @court.comments.new
     else
       @warning = "コメントを入力してください"
     end
@@ -26,6 +27,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:comment)
+    params.require(:comment).permit(:comment,:score)
   end
 end
