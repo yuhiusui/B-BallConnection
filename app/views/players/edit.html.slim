@@ -24,18 +24,8 @@
         = f.label "シグネチャームーブ", class: "col-5"
         = f.text_area :skill, placeholder: "任意（改行推奨）", class: "form-control col-5"
       .form-group.form-row
-        = f.label "パスワード", class: "col-5"
-          - if @minimum_password_length
-            | パスワード(#{@minimum_password_length} 文字以上)
-        = f.password_field :password, autocomplete: "new-password", placeholder: "必須", class: "form-control col-5"
-      .form-group.form-row
-        = f.label "パスワード確認", class: "col-5"
-        = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "必須", class: "form-control col-5"
-      .form-group.form-row
         = f.label "自己紹介(300文字まで)", class: "col-5"
         = f.text_area :intro, placeholder: "任意（改行推奨）", class: "form-control col-5"
-
-    .player-right.col-12.col-md-6.position-relative
       .form-group.form-row
         = f.label 'Twitter URL', class: 'col-5'
         = f.text_field :twitter, placeholder: "任意", class: "form-control col-5"
@@ -43,6 +33,7 @@
         = f.label 'Instagram URL', class: 'col-5'
         = f.text_field :instagram, placeholder: "任意", class: "form-control col-5"
 
+    .player-right.col-12.col-md-6.position-relative
       h3.underline-orange プロフィール画像変更
       .edit-pic-select
         = f.attachment_field :player_image
