@@ -6,11 +6,10 @@ html
     = favicon_link_tag('BBC_favicon.png')
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
     meta content="width=device-width, initial-scale=1.0" name="viewport"
     script src="https://kit.fontawesome.com/61abcfe439.js" crossorigin="anonymous"
-    script async="" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAP_API']}&callback=initMap"
 
   body
     = render "layouts/header"
