@@ -11,7 +11,6 @@ class ReviewsController < ApplicationController
     @reviews = @court.reviews.order("id DESC")
     @review = @court.reviews.new(review_params)
     @review.player_id = current_player.id
-    @review.score = Language.get_data(review_params[:rv_body])
     if @review.save
       @success = "レビューが保存されました"
     else
