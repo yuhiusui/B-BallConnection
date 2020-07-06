@@ -5,11 +5,14 @@ table.table.table-borderless
         td.col-2.col-md-2.text-right
           = link_to player_path(review.player), class: "player_#{review.player.id}" do
             = attachment_image_tag review.player, :player_image, fallback: "no_image.jpg", class: "image-xs image-shape-round"
-          - if current_player?(review.player) || current_player.admin?
-            br
-            = link_to '削除', court_reviews_path(review), method: :delete, remote: true, class: 'btn-sm btn-danger'
+          / - if current_player?(review.player) || current_player.admin?
+          /   br
+          /   = link_to '削除', court_reviews_path(review), method: :delete, remote: true, class: 'btn-sm btn-danger'
         td.col-7.col-md-7
-          .font-weight-bold = "#{review.rate}：#{review.rv_title}"
+          .font-weight-bold
+            = "#{review.rate}：#{review.rv_title} "
+            - if current_player?(review.player) || current_player.admin?
+              = link_to '削除', court_reviews_path(review), method: :delete, remote: true, class: 'btn-sm btn-danger'
           p.handwrite.review-style = "#{review.rv_body}"
         td.col-3
           = l review.created_at, format: :short
