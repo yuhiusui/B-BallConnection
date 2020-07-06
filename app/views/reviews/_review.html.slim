@@ -1,11 +1,10 @@
 .review-form
   = form_with model:[court, review], data: {remote: true} do |f|
     .row
-      .form-group.col-4#star
+      .form-group.col-4.px-1#star
         = f.text_field :rv_title, placeholder: "タイトル(3~10文字)", class: "form-control"
-        = f.label :rate, "点数"
         = f.hidden_field :rate, id: :review_star
-      .form-group.col-4
-        = f.text_area :rv_body, placeholder: "コメント(3~50文字)", class: "form-control"
-      .col-4
-        = f.submit '投稿する', class: "btn btn-success btn-lg"
+      .form-group.col-4.px-1
+        = f.text_area :rv_body, placeholder: "コメント(3~50文字)", class: "form-control review-textarea"
+      .col-4.px-1
+        = f.submit '投稿', class: "btn btn-success btn-lg"

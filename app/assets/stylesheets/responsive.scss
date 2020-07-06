@@ -54,6 +54,10 @@ xl 1200- */
     left: 0!important;
     transform: translateY(0)!important;
   }
+  .comment-textarea {
+    width: 200px!important;
+    height: 100%;
+  }
 }
 @media (min-width: 768px){
   .sp-br, .feature-list-sp {
