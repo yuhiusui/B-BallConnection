@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
     @review.player_id = current_player.id
     if @review.save
       @success = "レビューが保存されました"
+      @review = @court.reviews.new
     else
       @warning = "必要箇所を記入してください"
     end

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get 'followers' => 'relations#followed', as: 'followers'
     get 'liked_courts' => 'likes#liked_courts'
   end
+
   resources :courts do
     resource :reviews, only: [:create, :destroy]
     resource :comments, only: [:create, :destroy]

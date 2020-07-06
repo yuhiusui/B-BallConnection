@@ -1,5 +1,3 @@
-$("textarea").val("");
-$("input").val("");
 $(".reviews").html("<%= j(render 'reviews/reviews', reviews: @reviews) %>");
 $(".review").html("<%= j(render 'reviews/review', review: @review, court: @court) %>");
 

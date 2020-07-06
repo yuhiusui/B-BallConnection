@@ -13,7 +13,7 @@ h2.view-title
 
         .profile-contents.col-5.col-md-7
           .profile-sns
-            - if current_player?(@player)
+            - if current_player?(@player) || current_player.admin?
               = link_to "", edit_player_path(@player), class: "fa fa-cog mr-2"
             - if @player.twitter.present?
               = link_to "", @player.twitter, target: :_blank, class: "fa fa-twitter-square mr-2"

@@ -1,11 +1,11 @@
 class PlayersController < ApplicationController
   before_action :authenticate_player!
-  before_action :ensure_current_player?, only: [:edit, :update, :destroy]
+  before_action :ensure_current_player?, only: [:destroy]
   before_action :ensure_admin_player?, only: [:admin_destroy]
+  before_action :ensure_current_or_admin_player?, only: [:edit, :update]
 
   def index
     @players = Player.page(params[:page]).reverse_order.per(20)
-    # gon.players = Player.all
   end
 
   def show
@@ -63,5 +63,11 @@ class PlayersController < ApplicationController
 
   def ensure_admin_player?
     redirect_to player_path(current_player) unless current_player.admin?
+  end
+
+  # ユーザー情報管理を管理者側でも可能にするため
+  def ensure_current_or_admin_player?
+    player = Player.find(params[:id])
+    redirect_to player_path(current_player) unless current_player.admin? || current_player.admin?
   end
 end
