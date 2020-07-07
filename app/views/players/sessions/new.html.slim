@@ -9,8 +9,8 @@ h2 会員の方はこちらからログイン
     = f.label :パスワード, class: "col-sm-offset-3 col-sm-3"
     = f.password_field :password, autocomplete: "current-password", class: "col-sm-6"
   br/
-  = link_to "=>パスワードを忘れた方はこちら", new_password_path(resource_name)
-  br/
+  / = link_to "=>パスワードを忘れた方はこちら", new_password_path(resource_name)
+  / br/
   .actions
     = f.submit "ログイン", class: "btn btn-primary"
 h2 登録がお済みでない方

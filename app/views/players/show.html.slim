@@ -49,7 +49,10 @@ h2.view-title
             th.col-xs-6 バスケ歴
             th.col-xs-6 = @player.history_i18n
           tr
-            th.col-xs-6 シグネチャームーブ
+            th.col-xs-6
+              |シグネチャー
+              br.sp-br
+              |ムーブ
             th.col-xs-6.profile-skills = simple_format(@player.skill)
     .col-12.col-md-5
       h3.underline-orange 自己紹介
