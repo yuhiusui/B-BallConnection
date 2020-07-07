@@ -1,4 +1,5 @@
 = stylesheet_link_tag 'courts'
+
 = form_with model: @court, local: true do |f|
   h2.view-title コート作成（管理者）
   .row
@@ -53,5 +54,4 @@
       .form-group.form-row
         = f.label :other, "その他補足", class: "col-5"
         = f.text_area :other, class: "form-control col-5"
-      / .btn-bottom
       = f.submit "作成する" , class: "btn btn-success mr-3"

@@ -5,8 +5,8 @@ javascript:
    starOff: "#{asset_path('star-off.png')}",
    starOn: "#{asset_path('star-on.png')}",
    starHalf: "#{asset_path('star-half.png')}",
-   scoreName: 'review[rate]', //reviewカラムに保存するので忘れないように
-   half: true, //★の半分の入力を行う
+   scoreName: 'review[rate]',
+   half: true,
   });
 
   // 星平均
@@ -18,5 +18,4 @@ javascript:
     half: true,
     readOnly: true,
     score: "#{court.reviews.average(:rate).to_f.round(1)}",
-    //注目ポイント↑ 平均点を算出し、round関数で切り上げ
   });

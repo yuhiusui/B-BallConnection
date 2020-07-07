@@ -16,11 +16,3 @@
   = link_to "退会しない", player_path(current_player), class: " btn btn-primary w-25"
   = link_to '退会する', leave_path(@player), method: :patch, class: 'btn btn-danger w-25'
 
-
-
-  / 会員ステータス(is_valid)をfalseに変更
-  / = form_with model: @player,url: {controller: 'players', action: 'update_status' },lacal: true do |f|
-  /   = f.hidden_field :is_valid, value: "false"
-  /   = f.submit "退会する", class: "btn btn-danger w-25"
-
-
