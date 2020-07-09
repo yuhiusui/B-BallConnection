@@ -68,6 +68,6 @@ class PlayersController < ApplicationController
   # ユーザー情報管理を管理者側でも可能にするため
   def ensure_current_or_admin_player?
     player = Player.find(params[:id])
-    redirect_to player_path(current_player) unless current_player.admin? || current_player.admin?
+    redirect_to player_path(current_player) unless player == current_player || current_player.admin?
   end
 end
